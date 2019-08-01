@@ -83,6 +83,10 @@ PODS:
     - React-fishhook (= 0.60.0)
   - RNGestureHandler (1.3.0):
     - React
+  - RNReanimated (1.1.0):
+    - React
+  - RNScreens (1.0.0-alpha.23):
+    - React
   - RNVectorIcons (6.6.0):
     - React
   - yoga (0.60.0.React)
@@ -110,6 +114,8 @@ DEPENDENCIES:
   - React-RCTVibration (from `../node_modules/react-native/Libraries/Vibration`)
   - React-RCTWebSocket (from `../node_modules/react-native/Libraries/WebSocket`)
   - RNGestureHandler (from `/Users/penguin/open-source/wwktmMobile/node_modules/react-native-gesture-handler`)
+  - RNReanimated (from `/Users/penguin/open-source/wwktmMobile/node_modules/react-native-reanimated`)
+  - RNScreens (from `/Users/penguin/open-source/wwktmMobile/node_modules/react-native-screens`)
   - RNVectorIcons (from `/Users/penguin/open-source/wwktmMobile/node_modules/react-native-vector-icons`)
   - yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
@@ -162,6 +168,10 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/Libraries/WebSocket"
   RNGestureHandler:
     :path: "/Users/penguin/open-source/wwktmMobile/node_modules/react-native-gesture-handler"
+  RNReanimated:
+    :path: "/Users/penguin/open-source/wwktmMobile/node_modules/react-native-reanimated"
+  RNScreens:
+    :path: "/Users/penguin/open-source/wwktmMobile/node_modules/react-native-screens"
   RNVectorIcons:
     :path: "/Users/penguin/open-source/wwktmMobile/node_modules/react-native-vector-icons"
   yoga:
@@ -191,6 +201,8 @@ SPEC CHECKSUMS:
   React-RCTVibration: 4ee1cf208ab17a50fafb1c16ffe28fe594a64e4f
   React-RCTWebSocket: fca087d583724aa0e5fef7d911f0f2a28d0f2736
   RNGestureHandler: 5329a942fce3d41c68b84c2c2276ce06a696d8b0
+  RNReanimated: 7a52c90473b5e81c13408d40d797b98387eaddde
+  RNScreens: f28b48b8345f2f5f39ed6195518291515032a788
   RNVectorIcons: 0bb4def82230be1333ddaeee9fcba45f0b288ed4
   yoga: 616fde658be980aa60a2158835170f3f9c2d04b4
 
