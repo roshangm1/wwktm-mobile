@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "622667721412",
+    "firebase_url": "https://wwktm-17898.firebaseio.com",
+    "project_id": "wwktm-17898",
+    "storage_bucket": "wwktm-17898.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:622667721412:android:a964fde34cbaf620",
+        "android_client_info": {
+          "package_name": "info.roshan.wwktm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "622667721412-h2is1bmp9u0u07riuaa9ork2415o63se.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBdyy_ezO-8P1bKSe7HwTQhKkFbi7m8Jgc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "622667721412-h2is1bmp9u0u07riuaa9ork2415o63se.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "622667721412-f62t59a8ied3cvlacvnnpe5d97u6iqn5.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "info.roshan.wwktm"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

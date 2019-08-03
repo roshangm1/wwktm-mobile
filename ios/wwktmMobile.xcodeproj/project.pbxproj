@@ -19,6 +19,7 @@
 		2DCD954D1E0B4F2C00145EB5 /* wwktmMobileTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* wwktmMobileTests.m */; };
 		2E7A9F92CEE37EDFD3533801 /* libPods-wwktmMobileTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E2B1BCE968BD36713835CA00 /* libPods-wwktmMobileTests.a */; };
 		60251FB434FB4E37198331F3 /* libPods-wwktmMobile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D313A78DD64353F2034DBDBC /* libPods-wwktmMobile.a */; };
+		AA0D912722F36295000A864B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA0D912622F36295000A864B /* GoogleService-Info.plist */; };
 		BCF7539869E82C94A16820FE /* libPods-wwktmMobile-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5891ED862932BF60FDA9DE33 /* libPods-wwktmMobile-tvOSTests.a */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +62,7 @@
 		5891ED862932BF60FDA9DE33 /* libPods-wwktmMobile-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-wwktmMobile-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		93FD6BB7D411058C5DF8A886 /* Pods-wwktmMobile.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wwktmMobile.debug.xcconfig"; path = "Target Support Files/Pods-wwktmMobile/Pods-wwktmMobile.debug.xcconfig"; sourceTree = "<group>"; };
 		A458841659ADBD7BA619E50A /* Pods-wwktmMobile-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wwktmMobile-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-wwktmMobile-tvOSTests/Pods-wwktmMobile-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		AA0D912622F36295000A864B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C5883C7F8F224EE4C07C39AF /* libPods-wwktmMobile-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-wwktmMobile-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D313A78DD64353F2034DBDBC /* libPods-wwktmMobile.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-wwktmMobile.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF718BCE9CE8B0A499638356 /* Pods-wwktmMobileTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wwktmMobileTests.debug.xcconfig"; path = "Target Support Files/Pods-wwktmMobileTests/Pods-wwktmMobileTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
+				AA0D912622F36295000A864B /* GoogleService-Info.plist */,
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
@@ -161,7 +164,6 @@
 				DF718BCE9CE8B0A499638356 /* Pods-wwktmMobileTests.debug.xcconfig */,
 				1632E83C94C6AF42D192B7AF /* Pods-wwktmMobileTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -309,6 +311,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -339,6 +342,7 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				AA0D912722F36295000A864B /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -459,8 +463,6 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-wwktmMobile/Pods-wwktmMobile-resources.sh",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf",
@@ -479,10 +481,9 @@
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Octicons.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Zocial.ttf",
+				"${PODS_CONFIGURATION_BUILD_DIR}/gRPC-C++/gRPCCertificates-Cpp.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AntDesign.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Entypo.ttf",
@@ -500,6 +501,7 @@
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Octicons.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SimpleLineIcons.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Zocial.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/gRPCCertificates-Cpp.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

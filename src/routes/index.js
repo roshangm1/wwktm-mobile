@@ -12,6 +12,9 @@ const SpeakerNavigator = createStackNavigator(
     Speakers: {
       screen: screens.Speakers,
     },
+    SpeakerDetail: {
+      screen: screens.SpeakerDetail,
+    },
   },
   { headerMode: 'none' },
 );

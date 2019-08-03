@@ -7,7 +7,9 @@ const Toolbar = ({ title, icon, navigation, actions = null }) => {
     <Appbar.Header dark>
       <Appbar.Action
         icon={icon}
-        onPress={icon === 'menu' ? navigation.openDrawer : navigation.goBack()}
+        onPress={
+          icon === 'menu' ? navigation.openDrawer : () => navigation.goBack()
+        }
       />
       <Appbar.Content title={title} />
       {actions}
