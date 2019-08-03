@@ -1,13 +1,13 @@
 import React from 'react';
 import { Text, View } from 'react-native';
+import { logout } from '../../firebase/auth';
 import MainLayout from '../MainLayout';
-import { loginAnon } from '../../firebase/auth';
 
 const Home = ({ params }) => {
   return (
     <MainLayout title="Home">
       <View>
-        <Text onPress={loginAnon}>Home</Text>
+        <Text onPress={logout}>Logout</Text>
       </View>
     </MainLayout>
   );

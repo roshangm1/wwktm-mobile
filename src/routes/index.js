@@ -3,9 +3,11 @@ import {
   createAppContainer,
   createDrawerNavigator,
   createStackNavigator,
+  createSwitchNavigator,
 } from 'react-navigation';
 import DrawerContent from './DrawerContent';
 import * as screens from '../screens';
+import AuthLoading from '../screens/AuthLoadingScreen';
 
 const SpeakerNavigator = createStackNavigator(
   {
@@ -18,7 +20,20 @@ const SpeakerNavigator = createStackNavigator(
   },
   { headerMode: 'none' },
 );
-const DrawerStack = createDrawerNavigator(
+
+const AuthStack = createStackNavigator(
+  {
+    Login: {
+      screen: screens.Login,
+    },
+    Register: {
+      screen: screens.Register,
+    },
+  },
+  { headerMode: 'none' },
+);
+
+const AppStack = createDrawerNavigator(
   {
     Home: {
       screen: screens.Home,
@@ -35,4 +50,25 @@ const DrawerStack = createDrawerNavigator(
   },
 );
 
-export const AppContainer = createAppContainer(DrawerStack);
+export const AppContainer = createAppContainer(
+  // createSwitchNavigator(
+  //   {
+  //     AuthLoading: AuthLoading,
+  //     AuthStack: AuthStack,
+  //     AppStack: AppStack,
+  //   },
+  //   {
+  //     initialRouteName: 'AuthLoading',
+  //   },
+  // ),
+  createStackNavigator(
+    {
+      AuthStack: AuthStack,
+      AppStack: AppStack,
+    },
+    {
+      headerMode: 'none',
+      initialRouteName: 'AuthStack',
+    },
+  ),
+);

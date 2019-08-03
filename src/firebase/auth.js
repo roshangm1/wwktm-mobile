@@ -6,3 +6,7 @@ export const loginAnon = () => {
     .signInAnonymously()
     .then(cred => console.log(cred));
 };
+
+export const logout = () => {
+  firebase.auth().signOut();
+};
