@@ -26,6 +26,9 @@ const ScheduleNavigator = createStackNavigator(
     Schedule: {
       screen: screens.Schedule,
     },
+    ScheduleDetail: {
+      screen: screens.ScheduleDetail,
+    },
   },
   { headerMode: 'none' },
 );

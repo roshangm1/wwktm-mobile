@@ -5,13 +5,13 @@ import MainLayout from '../MainLayout';
 import { Card, TouchableRipple } from 'react-native-paper';
 import { getProgramSchedule } from '../../firebase/schedule';
 
-const DayZeroRoute = ({ data = { schedule: [] } }) => {
+const DayZeroRoute = ({ data = { schedule: [] }, navigation }) => {
   return (
     <ScrollView>
       {data.schedule.map((sche, index) => (
         <TouchableRipple
           key={index.toString()}
-          onPress={() => {}}
+          onPress={() => navigation.navigate('ScheduleDetail')}
           style={{ padding: 4 }}
         >
           <Card>
@@ -28,7 +28,7 @@ const DayZeroRoute = ({ data = { schedule: [] } }) => {
 
 const DayTwoRoute = () => <View style={{ backgroundColor: '#673ac4' }} />;
 
-const Schedule = ({ params }) => {
+const Schedule = ({ navigation }) => {
   const [navigationState, setNavigationState] = useState({
     index: 0,
     routes: [
@@ -61,8 +61,12 @@ const Schedule = ({ params }) => {
       <TabView
         navigationState={navigationState}
         renderScene={SceneMap({
-          day0: () => <DayZeroRoute data={schedule[0]} />,
-          day1: () => <DayZeroRoute data={schedule[1]} />,
+          day0: () => (
+            <DayZeroRoute data={schedule[0]} navigation={navigation} />
+          ),
+          day1: () => (
+            <DayZeroRoute data={schedule[1]} navigation={navigation} />
+          ),
           day2: DayTwoRoute,
         })}
         renderTabBar={renderTabBar}
