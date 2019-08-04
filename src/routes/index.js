@@ -21,6 +21,15 @@ const SpeakerNavigator = createStackNavigator(
   { headerMode: 'none' },
 );
 
+const ScheduleNavigator = createStackNavigator(
+  {
+    Schedule: {
+      screen: screens.Schedule,
+    },
+  },
+  { headerMode: 'none' },
+);
+
 const AuthStack = createStackNavigator(
   {
     Login: {
@@ -40,6 +49,9 @@ const AppStack = createDrawerNavigator(
     },
     Speakers: {
       screen: SpeakerNavigator,
+    },
+    Schedule: {
+      screen: ScheduleNavigator,
     },
   },
   {
@@ -68,7 +80,7 @@ export const AppContainer = createAppContainer(
     },
     {
       headerMode: 'none',
-      initialRouteName: 'AuthStack',
+      initialRouteName: 'AppStack',
     },
   ),
 );

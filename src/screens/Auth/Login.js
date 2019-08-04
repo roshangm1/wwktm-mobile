@@ -1,10 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { Text, View } from 'react-native';
 import { Card, TextInput, Button } from 'react-native-paper';
+import { loginWithEmailAsync } from '../../firebase/auth';
 
-const Login = ({ params }) => {
+const Login = ({ navigation }) => {
+  const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const loginWithEmail = async () => {
+    setLoading(true);
+    await loginWithEmailAsync(email, password);
+    setLoading(false);
+    navigation.navigate('Home');
+  };
 
   return (
     <View style={{ flex: 1, justifyContent: 'center' }}>
@@ -20,6 +29,7 @@ const Login = ({ params }) => {
             mode="outlined"
             style={{ marginTop: 8 }}
             value={email}
+            autoCapitalize="none"
             onChangeText={text => setEmail(text)}
           />
           <TextInput
@@ -33,7 +43,8 @@ const Login = ({ params }) => {
           <Button
             dark
             mode="contained"
-            onPress={() => {}}
+            loading={loading}
+            onPress={loginWithEmail}
             style={{ marginTop: 16 }}
           >
             Log In
