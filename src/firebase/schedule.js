@@ -12,3 +12,11 @@ export async function addNoteForTalk(talkId, note = 'hello world') {
     .doc(talkId)
     .update({ notes: firebase.firestore.FieldValue.arrayUnion(note) });
 }
+
+export async function getNotes(talkId) {
+  const notesData = await fireStoreRef
+    .collection('talks')
+    .doc(talkId)
+    .get();
+  return notesData.data().notes;
+}

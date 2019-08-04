@@ -11,7 +11,9 @@ const DayZeroRoute = ({ data = { schedule: [] }, navigation }) => {
       {data.schedule.map((sche, index) => (
         <TouchableRipple
           key={index.toString()}
-          onPress={() => navigation.navigate('ScheduleDetail')}
+          onPress={() =>
+            navigation.navigate('ScheduleDetail', { talkId: sche.talkId })
+          }
           style={{ padding: 4 }}
         >
           <Card>
