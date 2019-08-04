@@ -1,10 +1,10 @@
 import React from 'react';
 import Toolbar from '../components/Toolbar';
 
-const MainLayout = ({ title, menu = 'menu', children }) => {
+const MainLayout = ({ title, icon = 'menu', children }) => {
   return (
     <>
-      <Toolbar title={title} icon={menu} />
+      <Toolbar title={title} icon={icon} />
       {children}
     </>
   );

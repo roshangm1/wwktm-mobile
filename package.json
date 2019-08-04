@@ -8,6 +8,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "lodash": "^4.17.15",
     "react": "16.8.6",
     "react-native": "0.60.0",
     "react-native-firebase": "^5.5.6",
@@ -15,6 +16,7 @@
     "react-native-paper": "^2.16.0",
     "react-native-reanimated": "^1.1.0",
     "react-native-screens": "^1.0.0-alpha.23",
+    "react-native-tab-view": "^2.9.0",
     "react-native-vector-icons": "^6.6.0",
     "react-navigation": "^3.11.1",
     "react-navigation-hooks": "^1.0.1"
