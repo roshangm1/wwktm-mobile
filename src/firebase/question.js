@@ -13,6 +13,7 @@ export async function addQuestionForTalk({ question, talkId }) {
     imageUrl: user.photoURL,
     date: new Date().getTime(),
     upvotes: 0,
+    voters: [],
   });
 }
 
