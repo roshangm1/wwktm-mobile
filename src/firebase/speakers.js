@@ -5,6 +5,9 @@ export async function getAllSpeakers() {
   return speakersList.docs.map(speaker => speaker.data());
 }
 
-export async function getSpeaker(speakerKey) {
-  return (await fireStoreRef.collection('speakers').doc(speakerKey).get()).data()
+export async function getSpeaker(speakerId) {
+  return (await fireStoreRef
+    .collection('speakers')
+    .doc(speakerId)
+    .get()).data();
 }
