@@ -8,6 +8,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "jetifier": "^1.6.3",
     "lodash": "^4.17.15",
     "react": "16.8.6",
     "react-native": "0.60.0",
