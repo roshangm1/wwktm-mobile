@@ -22,8 +22,7 @@ export async function getMyNotesFor(talkId) {
         .collection('notes')
         .where("uid", "==", user.uid)
         .get();
-    return notesData.data().notes;
-
+    return notesData.docs.map((d) => d.data());
 }
 
 export async function getAllNotes(talkId) {
@@ -31,5 +30,5 @@ export async function getAllNotes(talkId) {
         .collection('notes')
         .where("talkId", "==", talkId)
         .get();
-    return notesData.data().notes;
+    return notesData.docs.map((d) => d.data());
 }
