@@ -4,7 +4,7 @@ import firebase from 'react-native-firebase';
 export async function addQuestionForTalk({ question, talkId }) {
   let user = auth.currentUser;
   let ref = fireStoreRef.collection('questions').doc();
-  await ref.setData({
+  await ref.set({
     id: ref.id,
     question,
     talkId,
