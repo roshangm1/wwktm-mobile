@@ -1,9 +1,9 @@
-import { fireStoreRef } from '.';
+import { fireStoreRef, auth } from '.';
 import firebase from 'react-native-firebase';
 
 export async function addNoteForTalk(talkId, note = 'hello world') {
-  var user = firebase.auth().currentUser;
-  var ref = fireStoreRef.collection('notes').doc();
+  let user = auth().currentUser;
+  let ref = fireStoreRef.collection('notes').doc();
 
   await ref.set({
     id: ref.id,
@@ -17,8 +17,8 @@ export async function addNoteForTalk(talkId, note = 'hello world') {
 }
 
 export async function getMyNotesFor(talkId) {
-  var user = firebase.auth().currentUser;
-  var notesData = await fireStoreRef
+  let user = firebase.auth().currentUser;
+  let notesData = await fireStoreRef
     .collection('notes')
     .where('uid', '==', user.uid)
     .get();

@@ -1,9 +1,9 @@
-import { fireStoreRef } from '.';
+import { fireStoreRef, auth } from '.';
 import firebase from 'react-native-firebase';
 
 export async function addQuestionForTalk({ question, talkId }) {
-  var user = firebase.auth().currentUser;
-  var ref = fireStoreRef.collection('questions').doc();
+  let user = auth.currentUser;
+  let ref = fireStoreRef.collection('questions').doc();
   await ref.setData({
     id: ref.id,
     question,
@@ -34,7 +34,7 @@ export async function getQuestionsForTalk(talkId) {
 }
 
 export async function getMyQuestions() {
-  var user = firebase.auth().currentUser;
+  let user = auth().currentUser;
   return (await fireStoreRef
     .collection('questions')
     .where('uid', '==', user.uid)
@@ -42,7 +42,6 @@ export async function getMyQuestions() {
 }
 
 export async function upvoteAQuestion(questionId) {
-  // TODO: Add a cloud functon to process the upvote.
   await firebase
     .functions()
     .httpsCallable('upvoteAQuestion')
