@@ -3,9 +3,13 @@ import { Dimensions, StyleSheet, View, ScrollView, Text } from 'react-native';
 import { SceneMap, TabBar, TabView } from 'react-native-tab-view';
 import MainLayout from '../MainLayout';
 import { Card, TouchableRipple } from 'react-native-paper';
-import { getProgramSchedule, addNoteForTalk } from '../../firebase/schedule';
+import { getProgramSchedule } from '../../firebase/schedule';
+import { addNoteForTalk } from './../../firebase/notes';
 
 const DayZeroRoute = ({ data = { schedule: [] }, navigation }) => {
+  const navigateToAddNote = () => {
+    navigation.navigate('AddNote');
+  };
   return (
     <ScrollView>
       {data.schedule.map((sche, index) => (
@@ -25,15 +29,7 @@ const DayZeroRoute = ({ data = { schedule: [] }, navigation }) => {
                 <Text>{sche.time}</Text>
               </View>
               {sche.talkId ? (
-                <Text
-                  style={{ flex: 1 }}
-                  onPress={() =>
-                    addNoteForTalk(
-                      sche.talkId,
-                      `Some speacial note ${Math.random()}`,
-                    )
-                  }
-                >
+                <Text style={{ flex: 1 }} onPress={navigateToAddNote}>
                   Add note
                 </Text>
               ) : null}
