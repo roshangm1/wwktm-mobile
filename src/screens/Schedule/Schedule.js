@@ -1,12 +1,8 @@
-import React, { useState, useEffect } from './node_modules/react';
+import React, { useState, useEffect } from 'react';
 import { Dimensions, StyleSheet, View, ScrollView, Text } from 'react-native';
-import {
-  SceneMap,
-  TabBar,
-  TabView,
-} from './node_modules/react-native-tab-view';
+import { SceneMap, TabBar, TabView } from 'react-native-tab-view';
 import MainLayout from '../MainLayout';
-import { Card, TouchableRipple } from './node_modules/react-native-paper';
+import { Card, TouchableRipple } from 'react-native-paper';
 import { getProgramSchedule, addNoteForTalk } from '../../firebase/schedule';
 
 const DayZeroRoute = ({ data = { schedule: [] }, navigation }) => {

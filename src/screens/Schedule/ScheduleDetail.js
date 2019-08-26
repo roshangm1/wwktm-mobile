@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from './node_modules/react';
+import React, { useEffect, useState } from 'react';
 import { Text, View, FlatList } from 'react-native';
 import { getMyNotesFor } from '../../firebase/schedule';
 import MainLayout from '../MainLayout';

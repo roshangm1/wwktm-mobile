@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from './node_modules/react';
+import React, { useEffect, useState } from 'react';
 import { Text, View } from 'react-native';
-import { Card, TextInput, Button } from './node_modules/react-native-paper';
+import { Card, TextInput, Button } from 'react-native-paper';
 import { loginWithEmailAsync } from '../../firebase/auth';
 
 const Login = ({ navigation }) => {

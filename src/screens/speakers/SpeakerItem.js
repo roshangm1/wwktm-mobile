@@ -1,10 +1,6 @@
-import React from './node_modules/react';
+import React from 'react';
 import { Text, View } from 'react-native';
-import {
-  TouchableRipple,
-  Card,
-  Avatar,
-} from './node_modules/react-native-paper';
+import { TouchableRipple, Card, Avatar } from 'react-native-paper';
 import Row from '../../components/Row';
 
 const SpeakerItem = ({ item, onPress }) => (
