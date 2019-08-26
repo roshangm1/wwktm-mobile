@@ -5,13 +5,10 @@ import { addNoteForTalk } from './../../firebase/notes';
 import { View, StyleSheet, ScrollView } from 'react-native';
 
 const AddNote = () => {
-  const [title, setTitle] = useState('');
-  const [description, setDescrition] = useState('');
-
-  const enterDescription = React.createRef();
+  const [description, setDescription] = useState('');
 
   const onSubmitPress = () => {
-    addNoteForTalk();
+    addNoteForTalk(description);
   };
 
   return (
@@ -19,19 +16,10 @@ const AddNote = () => {
       <MainLayout title="Add Note" icon="arrow-back" />
       <ScrollView contentContainerStyle={styles.mainContainerStyle}>
         <TextInput
-          label="Note title"
-          placeholder="Add title to your note"
-          value={title}
-          onChangeText={() => setTitle(title)}
-          mode="outlined"
-          onSubmitEditing={() => enterDescription.current.focus()}
-        />
-        <TextInput
-          label="Note description"
+          label="Add a note"
           placeholder="Add some description.."
-          ref={enterDescription}
           value={description}
-          onChangeText={() => setDescrition(description)}
+          onChangeText={() => setDescription(description)}
           mode="outlined"
           multiline
           style={styles.descriptionTextStyle}
@@ -57,9 +45,9 @@ const styles = StyleSheet.create({
     padding: 15,
   },
   descriptionTextStyle: {
-    height: 150,
+    height: 250,
     paddingTop: 10,
-    marginTop: 40,
+    marginTop: 20,
   },
   buttonStyle: {
     paddingVertical: 7,
