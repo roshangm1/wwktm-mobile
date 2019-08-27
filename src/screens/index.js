@@ -7,3 +7,6 @@ export { default as ScheduleDetail } from './schedule/ScheduleDetail';
 
 export { default as Login } from './auth/Login';
 export { default as Register } from './auth/Register';
+
+// admin part
+export { default as AddSchedule } from './admin/AddSchedule';

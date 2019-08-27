@@ -56,6 +56,9 @@ const AppStack = createDrawerNavigator(
     Schedule: {
       screen: ScheduleNavigator,
     },
+    AddSchedule: {
+      screen: screens.AddSchedule,
+    },
   },
   {
     drawerWidth: 300,
