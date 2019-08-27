@@ -5,7 +5,7 @@ const AuthLoading = ({ navigation }) => {
   useEffect(() => {
     const currentUser = auth().currentUser;
     navigation.navigate(currentUser ? 'AppStack' : 'AuthStack');
-  }, []);
+  }, [navigation]);
 
   return null;
 };

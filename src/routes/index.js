@@ -72,16 +72,16 @@ const AppStack = createDrawerNavigator(
 );
 
 export const AppContainer = createAppContainer(
-  // createSwitchNavigator(
-  //   {
-  //     AuthLoading: AuthLoading,
-  //     AuthStack: AuthStack,
-  //     AppStack: AppStack,
-  //   },
-  //   {
-  //     initialRouteName: 'AuthLoading',
-  //   },
-  // ),
+  createSwitchNavigator(
+    {
+      AuthLoading: AuthLoading,
+      AuthStack: AuthStack,
+      AppStack: AppStack,
+    },
+    {
+      initialRouteName: 'AuthLoading',
+    },
+  ),
   createStackNavigator(
     {
       AuthStack: AuthStack,

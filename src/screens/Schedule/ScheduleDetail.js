@@ -8,8 +8,6 @@ const ScheduleDetail = ({ navigation }) => {
   const talkId = navigation.state.params.schedule.id;
 
   useEffect(() => {
-    console.log(talkId);
-
     getMyNotesFor(talkId).then(response => setNotes(response));
   }, [talkId]);
 
