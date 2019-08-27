@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Text, View, FlatList } from 'react-native';
-import { getMyNotesFor } from '../../firebase/schedule';
 import MainLayout from '../MainLayout';
+import { getMyNotesFor } from './../../firebase/notes';
 
 const ScheduleDetail = ({ navigation }) => {
   const [notes, setNotes] = useState([]);
