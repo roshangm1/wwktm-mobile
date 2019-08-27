@@ -3,12 +3,13 @@ import { Text, View, FlatList } from 'react-native';
 import { getAllQuestions, upvoteAQuestion } from '../../firebase/question';
 import { Card, Button } from 'react-native-paper';
 import MainLayout from '../MainLayout';
+import { auth } from '../../firebase';
 
 const Questions = ({ params }) => {
   const [questions, setQuestions] = useState(null);
 
   useEffect(() => {
-    getAllQuestions().then(response => setQuestions(response));
+    getAllQuestions(response => setQuestions(response));
   }, []);
 
   const upvoteQuestion = question => {
@@ -16,6 +17,8 @@ const Questions = ({ params }) => {
   };
 
   const renderItem = ({ item }) => {
+    const user = auth().currentUser;
+
     return (
       <Card>
         <Card.Content
@@ -25,7 +28,9 @@ const Questions = ({ params }) => {
             <Text>{item.question}</Text>
             <Text>Upvotes: {item.upvotes}</Text>
           </View>
-          <Button onPress={() => upvoteQuestion(item)}>Upvote</Button>
+          <Button onPress={() => upvoteQuestion(item)}>
+            {item.voters.includes(user.uid) ? 'DownVote' : 'Upvote'}
+          </Button>
         </Card.Content>
       </Card>
     );

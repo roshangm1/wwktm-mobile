@@ -34,11 +34,13 @@ export async function getQuestionsForTalk(talkId) {
     .get()).docs.map(d => d.data());
 }
 
-export async function getAllQuestions() {
-  return (await fireStoreRef
+export async function getAllQuestions(response) {
+  fireStoreRef
     .collection('questions')
     .orderBy('upvotes', 'desc')
-    .get()).docs.map(d => d.data());
+    .onSnapshot(data => {
+      response(data.docs.map(d => d.data()));
+    });
 }
 
 export async function getMyQuestions() {
