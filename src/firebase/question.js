@@ -34,12 +34,12 @@ export async function getQuestionsForTalk(talkId) {
     .get()).docs.map(d => d.data());
 }
 
-export async function getAllQuestions(response) {
+export async function getAllQuestions(updateQuestions) {
   fireStoreRef
     .collection('questions')
     .orderBy('upvotes', 'desc')
     .onSnapshot(data => {
-      response(data.docs.map(d => d.data()));
+      updateQuestions(data.docs.map(d => d.data()));
     });
 }
 
