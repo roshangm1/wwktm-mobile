@@ -6,9 +6,12 @@ import { Dimensions, StyleSheet, View, ScrollView, Text } from 'react-native';
 import MainLayout from '../MainLayout';
 import { getDaySchedule } from '../../utils/array';
 import { getTalkDateRange } from '../../utils/date';
-import { getProgramSchedule, addNoteForTalk } from '../../firebase/schedule';
+import { getProgramSchedule } from '../../firebase/schedule';
 
 const DayZeroRoute = ({ data, navigation }) => {
+  const navigateToAddNote = id => {
+    navigation.navigate('AddNote', { talkId: id });
+  };
   return (
     <ScrollView>
       {data.map((sche, index) => (
@@ -30,12 +33,7 @@ const DayZeroRoute = ({ data, navigation }) => {
               {sche.type === 'session' ? (
                 <Text
                   style={{ flex: 1 }}
-                  onPress={() =>
-                    addNoteForTalk(
-                      sche.talkId,
-                      `Some speacial note ${Math.random()}`,
-                    )
-                  }
+                  onPress={() => navigateToAddNote(sche.id)}
                 >
                   Add note
                 </Text>

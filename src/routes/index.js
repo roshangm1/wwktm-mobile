@@ -29,6 +29,9 @@ const ScheduleNavigator = createStackNavigator(
     ScheduleDetail: {
       screen: screens.ScheduleDetail,
     },
+    AddNote: {
+      screen: screens.AddNote,
+    },
   },
   { headerMode: 'none' },
 );
@@ -86,7 +89,7 @@ export const AppContainer = createAppContainer(
     },
     {
       headerMode: 'none',
-      initialRouteName: 'AppStack',
+      initialRouteName: 'AuthStack',
     },
   ),
 );
