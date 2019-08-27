@@ -26,8 +26,6 @@ const AddSchedule = ({}) => {
   };
 
   const addSchedule = () => {
-    console.log(schedule);
-
     addNewSchedule(schedule);
   };
 
@@ -87,7 +85,6 @@ const AddSchedule = ({}) => {
           <SpeakerPicker
             onValueChange={value => {
               if (value) {
-                console.log(value);
                 handleInputChange('speaker', value.name);
                 handleInputChange('speakerId', value.id.trim());
               }

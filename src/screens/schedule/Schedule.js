@@ -62,7 +62,6 @@ const Schedule = ({ navigation }) => {
 
   useEffect(() => {
     getProgramSchedule().then(scheduleData => {
-      console.log(scheduleData);
       const day0 = getDaySchedule(scheduleData, '2019/09/20');
       const day1 = getDaySchedule(scheduleData, '2019/09/21');
       setDayZero(day0);
