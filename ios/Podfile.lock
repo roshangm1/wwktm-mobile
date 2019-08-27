@@ -21,6 +21,9 @@ PODS:
   - Firebase/Firestore (6.5.0):
     - Firebase/CoreOnly
     - FirebaseFirestore (~> 1.4.2)
+  - Firebase/Functions (6.5.0):
+    - Firebase/CoreOnly
+    - FirebaseFunctions (~> 2.5.1)
   - FirebaseAnalytics (6.0.4):
     - FirebaseCore (~> 6.1)
     - FirebaseInstanceID (~> 4.2)
@@ -55,6 +58,10 @@ PODS:
     - leveldb-library (~> 1.20)
     - nanopb (~> 0.3.901)
     - Protobuf (~> 3.1)
+  - FirebaseFunctions (2.5.1):
+    - FirebaseAuthInterop (~> 1.0)
+    - FirebaseCore (~> 6.0)
+    - GTMSessionFetcher/Core (~> 1.1)
   - FirebaseInstanceID (4.2.2):
     - FirebaseCore (~> 6.0)
     - GoogleUtilities/Environment (~> 6.0)
@@ -212,6 +219,7 @@ DEPENDENCIES:
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
   - Firebase/Auth
   - Firebase/Firestore
+  - Firebase/Functions
   - Folly (from `../node_modules/react-native/third-party-podspecs/Folly.podspec`)
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
   - React (from `../node_modules/react-native/`)
@@ -252,6 +260,7 @@ SPEC REPOS:
     - FirebaseAuthInterop
     - FirebaseCore
     - FirebaseFirestore
+    - FirebaseFunctions
     - FirebaseInstanceID
     - GoogleAppMeasurement
     - GoogleUtilities
@@ -332,6 +341,7 @@ SPEC CHECKSUMS:
   FirebaseAuthInterop: 0ffa57668be100582bb7643d4fcb7615496c41fc
   FirebaseCore: aecf02fb2274ec361b9bebeac112f5daa18273bd
   FirebaseFirestore: 41a035642eb017fc7206318985501626993840bd
+  FirebaseFunctions: 5af7c35d1c5e41608fecbb667eb6c4e672e318d0
   FirebaseInstanceID: 662b8108a09fe9ed01aafdedba100fde8536b0f6
   Folly: 30e7936e1c45c08d884aa59369ed951a8e68cf51
   glog: 1f3da668190260b06b429bb211bfbee5cd790c28
@@ -369,6 +379,6 @@ SPEC CHECKSUMS:
   RNVectorIcons: 0bb4def82230be1333ddaeee9fcba45f0b288ed4
   yoga: 616fde658be980aa60a2158835170f3f9c2d04b4
 
-PODFILE CHECKSUM: 1fa0e95d66637af400a5143f731f9f9833e9c4f0
+PODFILE CHECKSUM: 46ff1a7ecd1fc074d13e0e632c59ebcde24db2b5
 
 COCOAPODS: 1.7.5

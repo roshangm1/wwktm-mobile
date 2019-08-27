@@ -30,6 +30,8 @@ target 'wwktmMobile' do
 
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
+  pod 'Firebase/Functions'
+
 
   target 'wwktmMobileTests' do
     inherit! :search_paths

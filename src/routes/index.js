@@ -32,6 +32,12 @@ const ScheduleNavigator = createStackNavigator(
     AddNote: {
       screen: screens.AddNote,
     },
+    MyQuestions: {
+      screen: screens.MyQuestions,
+    },
+    AddQuestion: {
+      screen: screens.AddQuestion,
+    },
   },
   { headerMode: 'none' },
 );
@@ -61,6 +67,9 @@ const AppStack = createDrawerNavigator(
     },
     AddSchedule: {
       screen: screens.AddSchedule,
+    },
+    Questions: {
+      screen: screens.Questions,
     },
   },
   {

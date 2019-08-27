@@ -1,8 +1,9 @@
 import { fireStoreRef, auth } from '.';
 import firebase from 'react-native-firebase';
 
-export async function addQuestionForTalk({ question, talkId }) {
-  let user = auth.currentUser;
+export async function addQuestionForTalk(talkId, question) {
+  let user = auth().currentUser;
+
   let ref = fireStoreRef.collection('questions').doc();
   await ref.set({
     id: ref.id,
@@ -33,6 +34,13 @@ export async function getQuestionsForTalk(talkId) {
     .get()).docs.map(d => d.data());
 }
 
+export async function getAllQuestions() {
+  return (await fireStoreRef
+    .collection('questions')
+    .orderBy('upvotes', 'desc')
+    .get()).docs.map(d => d.data());
+}
+
 export async function getMyQuestions() {
   let user = auth().currentUser;
   return (await fireStoreRef
@@ -42,10 +50,7 @@ export async function getMyQuestions() {
 }
 
 export async function upvoteAQuestion(questionId) {
-  await firebase
-    .functions()
-    .httpsCallable('upvoteAQuestion')
-    .call({
-      questionId,
-    });
+  await firebase.functions().httpsCallable('upvoteAQuestion')({
+    questionId,
+  });
 }

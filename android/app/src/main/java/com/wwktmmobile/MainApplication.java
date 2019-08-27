@@ -9,6 +9,7 @@ import com.facebook.react.ReactPackage;
 import com.facebook.soloader.SoLoader;
 import io.invertase.firebase.firestore.RNFirebaseFirestorePackage;
 import io.invertase.firebase.auth.RNFirebaseAuthPackage;
+import io.invertase.firebase.functions.RNFirebaseFunctionsPackage;
 
 import java.util.List;
 
@@ -24,10 +25,12 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       @SuppressWarnings("UnnecessaryLocalVariable")
       List<ReactPackage> packages = new PackageList(this).getPackages();
-      // Packages that cannot be autolinked yet can be added manually here, for example:
+      // Packages that cannot be autolinked yet can be added manually here, for
+      // example:
       // packages.add(new MyReactNativePackage());
       packages.add(new RNFirebaseFirestorePackage());
       packages.add(new RNFirebaseAuthPackage());
+      packages.add(new RNFirebaseFunctionsPackage());
       return packages;
     }
 
