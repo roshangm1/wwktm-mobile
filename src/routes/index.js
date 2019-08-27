@@ -59,6 +59,9 @@ const AppStack = createDrawerNavigator(
     Schedule: {
       screen: ScheduleNavigator,
     },
+    AddSchedule: {
+      screen: screens.AddSchedule,
+    },
   },
   {
     drawerWidth: 300,
@@ -69,16 +72,16 @@ const AppStack = createDrawerNavigator(
 );
 
 export const AppContainer = createAppContainer(
-  // createSwitchNavigator(
-  //   {
-  //     AuthLoading: AuthLoading,
-  //     AuthStack: AuthStack,
-  //     AppStack: AppStack,
-  //   },
-  //   {
-  //     initialRouteName: 'AuthLoading',
-  //   },
-  // ),
+  createSwitchNavigator(
+    {
+      AuthLoading: AuthLoading,
+      AuthStack: AuthStack,
+      AppStack: AppStack,
+    },
+    {
+      initialRouteName: 'AuthLoading',
+    },
+  ),
   createStackNavigator(
     {
       AuthStack: AuthStack,
@@ -86,7 +89,7 @@ export const AppContainer = createAppContainer(
     },
     {
       headerMode: 'none',
-      initialRouteName: 'AppStack',
+      initialRouteName: 'AuthStack',
     },
   ),
 );

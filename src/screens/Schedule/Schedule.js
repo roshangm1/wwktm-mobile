@@ -1,22 +1,24 @@
 import React, { useState, useEffect } from 'react';
-import { Dimensions, StyleSheet, View, ScrollView, Text } from 'react-native';
-import { SceneMap, TabBar, TabView } from 'react-native-tab-view';
-import MainLayout from '../MainLayout';
 import { Card, TouchableRipple } from 'react-native-paper';
-import { getProgramSchedule } from '../../firebase/schedule';
-import { addNoteForTalk } from './../../firebase/notes';
+import { SceneMap, TabBar, TabView } from 'react-native-tab-view';
+import { Dimensions, StyleSheet, View, ScrollView, Text } from 'react-native';
 
-const DayZeroRoute = ({ data = { schedule: [] }, navigation }) => {
-  const navigateToAddNote = () => {
-    navigation.navigate('AddNote');
+import MainLayout from '../MainLayout';
+import { getDaySchedule } from '../../utils/array';
+import { getTalkDateRange } from '../../utils/date';
+import { getProgramSchedule } from '../../firebase/schedule';
+
+const DayZeroRoute = ({ data, navigation }) => {
+  const navigateToAddNote = id => {
+    navigation.navigate('AddNote', { talkId: id });
   };
   return (
     <ScrollView>
-      {data.schedule.map((sche, index) => (
+      {data.map((sche, index) => (
         <TouchableRipple
           key={index.toString()}
           onPress={() =>
-            navigation.navigate('ScheduleDetail', { talkId: sche.talkId })
+            navigation.navigate('ScheduleDetail', { schedule: sche })
           }
           style={{ padding: 4 }}
         >
@@ -25,11 +27,14 @@ const DayZeroRoute = ({ data = { schedule: [] }, navigation }) => {
               style={{ flexDirection: 'row', justifyContent: 'space-between' }}
             >
               <View style={{ flex: 4 }}>
-                <Text style={{ fontWeight: 'bold' }}>{sche.session}</Text>
-                <Text>{sche.time}</Text>
+                <Text style={{ fontWeight: 'bold' }}>{sche.title}</Text>
+                <Text>{getTalkDateRange(sche.startTime, sche.endTime)}</Text>
               </View>
-              {sche.talkId ? (
-                <Text style={{ flex: 1 }} onPress={navigateToAddNote}>
+              {sche.type === 'session' ? (
+                <Text
+                  style={{ flex: 1 }}
+                  onPress={() => navigateToAddNote(sche.id)}
+                >
                   Add note
                 </Text>
               ) : null}
@@ -52,11 +57,15 @@ const Schedule = ({ navigation }) => {
       { key: 'day2', title: 'Day 2' },
     ],
   });
-  const [schedule, setSchedule] = useState([]);
+  const [dayZero, setDayZero] = useState([]);
+  const [dayOne, setDayOne] = useState([]);
 
   useEffect(() => {
     getProgramSchedule().then(scheduleData => {
-      setSchedule(scheduleData);
+      const day0 = getDaySchedule(scheduleData, '2019/09/20');
+      const day1 = getDaySchedule(scheduleData, '2019/09/21');
+      setDayZero(day0);
+      setDayOne(day1);
     });
   }, []);
 
@@ -76,12 +85,8 @@ const Schedule = ({ navigation }) => {
       <TabView
         navigationState={navigationState}
         renderScene={SceneMap({
-          day0: () => (
-            <DayZeroRoute data={schedule[0]} navigation={navigation} />
-          ),
-          day1: () => (
-            <DayZeroRoute data={schedule[1]} navigation={navigation} />
-          ),
+          day0: () => <DayZeroRoute data={dayZero} navigation={navigation} />,
+          day1: () => <DayZeroRoute data={dayOne} navigation={navigation} />,
           day2: DayTwoRoute,
         })}
         renderTabBar={renderTabBar}

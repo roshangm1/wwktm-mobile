@@ -21,6 +21,7 @@ export async function getMyNotesFor(talkId) {
   let notesData = await fireStoreRef
     .collection('notes')
     .where('uid', '==', user.uid)
+    .where('talkId', '==', talkId)
     .get();
   return notesData.docs.map(d => d.data());
 }

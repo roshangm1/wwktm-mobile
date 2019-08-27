@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
-import MainLayout from './../MainLayout';
+import MainLayout from '../MainLayout';
 import { TextInput, Button } from 'react-native-paper';
-import { addNoteForTalk } from './../../firebase/notes';
+import { addNoteForTalk } from '../../firebase/notes';
 import { View, StyleSheet, ScrollView } from 'react-native';
 
-const AddNote = () => {
-  const [description, setDescription] = useState('');
+const AddNote = props => {
+  const [note, setNote] = useState('');
 
   const onSubmitPress = () => {
-    addNoteForTalk(description);
+    const { talkId } = props.navigation.state.params;
+    addNoteForTalk(talkId, note);
   };
 
   return (
@@ -18,8 +19,8 @@ const AddNote = () => {
         <TextInput
           label="Add a note"
           placeholder="Add some description.."
-          value={description}
-          onChangeText={() => setDescription(description)}
+          value={note}
+          onChangeText={text => setNote(text)}
           mode="outlined"
           multiline
           style={styles.descriptionTextStyle}

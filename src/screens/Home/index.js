@@ -3,11 +3,15 @@ import { Text, View } from 'react-native';
 import { logout } from '../../firebase/auth';
 import MainLayout from '../MainLayout';
 
-const Home = ({ params }) => {
+const Home = ({ navigation }) => {
+  const logoutUser = () => {
+    logout();
+    navigation.navigate('AuthStack');
+  };
   return (
     <MainLayout title="Home">
       <View>
-        <Text onPress={logout}>Logout</Text>
+        <Text onPress={logoutUser}>Logout</Text>
       </View>
     </MainLayout>
   );
