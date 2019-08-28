@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Text, FlatList } from 'react-native';
 import { getMyQuestions } from '../../firebase/question';
 import { Card } from 'react-native-paper';
-import MainLayout from '../MainLayout';
+import MainLayout from '../../layouts/MainLayout';
 
 const MyQuestions = ({ params }) => {
   const [myQuestions, setMyQuestions] = useState(null);

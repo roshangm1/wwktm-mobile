@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Text, View, FlatList } from 'react-native';
-import MainLayout from '../MainLayout';
+import MainLayout from '../../layouts/MainLayout';
 import { getMyNotesFor } from './../../firebase/notes';
 import { Button } from 'react-native-paper';
 

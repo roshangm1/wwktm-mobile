@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Text, View, FlatList } from 'react-native';
 import { getAllQuestions, upvoteAQuestion } from '../../firebase/question';
 import { Card, Button } from 'react-native-paper';
-import MainLayout from '../MainLayout';
+import MainLayout from '../../layouts/MainLayout';
 import { auth } from '../../firebase';
 
 const Questions = ({ params }) => {
