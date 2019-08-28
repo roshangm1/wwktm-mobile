@@ -66,6 +66,16 @@ const Register = ({ navigation }) => {
           >
             Sign Up
           </Button>
+          <Text
+            onPress={() => navigation.navigate('Login')}
+            style={{
+              textAlign: 'center',
+              marginTop: 16,
+              textDecorationLine: 'underline',
+            }}
+          >
+            Already have an account ? Sign In.
+          </Text>
         </Card.Content>
       </Card>
     </AuthLayout>

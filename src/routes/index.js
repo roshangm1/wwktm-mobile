@@ -59,6 +59,9 @@ const AppStack = createDrawerNavigator(
     Home: {
       screen: screens.Home,
     },
+    Feed: {
+      screen: screens.Feed,
+    },
     Speakers: {
       screen: SpeakerNavigator,
     },
