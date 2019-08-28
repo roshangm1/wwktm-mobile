@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import MainLayout from '../MainLayout';
+import MainLayout from '../../layouts/MainLayout';
 import { TextInput, Button } from 'react-native-paper';
 import { View, StyleSheet, ScrollView } from 'react-native';
 import { addQuestionForTalk } from '../../firebase/question';

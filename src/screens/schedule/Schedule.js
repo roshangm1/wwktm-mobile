@@ -3,7 +3,7 @@ import { Card, TouchableRipple } from 'react-native-paper';
 import { SceneMap, TabBar, TabView } from 'react-native-tab-view';
 import { Dimensions, StyleSheet, View, ScrollView, Text } from 'react-native';
 
-import MainLayout from '../MainLayout';
+import MainLayout from '../../layouts/MainLayout';
 import { getDaySchedule } from '../../utils/array';
 import { getTalkDateRange } from '../../utils/date';
 import { getProgramSchedule } from '../../firebase/schedule';

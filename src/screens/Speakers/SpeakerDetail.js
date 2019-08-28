@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Text, StyleSheet } from 'react-native';
-import MainLayout from '../MainLayout';
+import MainLayout from '../../layouts/MainLayout';
 
 export default class SpeakerDetail extends Component {
   render() {
