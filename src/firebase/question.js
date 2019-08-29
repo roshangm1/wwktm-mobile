@@ -1,5 +1,4 @@
-import { fireStoreRef, auth } from '.';
-import firebase from 'react-native-firebase';
+import { fireStoreRef, auth, fireStore } from '.';
 
 export async function addQuestionForTalk(talkId, question) {
   let user = auth().currentUser;
@@ -13,7 +12,6 @@ export async function addQuestionForTalk(talkId, question) {
     uid: user.uid,
     imageUrl: user.photoURL,
     date: new Date().getTime(),
-    upvotes: 0,
     voters: [],
   });
 }
@@ -51,8 +49,15 @@ export async function getMyQuestions() {
     .get()).docs.map(d => d.data());
 }
 
-export async function upvoteAQuestion(questionId) {
-  await firebase.functions().httpsCallable('upvoteAQuestion')({
-    questionId,
-  });
+export async function upvoteAQuestion(question) {
+  let user = auth().currentUser;
+  const voters = question.voters || [];
+  fireStoreRef
+    .collection('questions')
+    .doc(question.id)
+    .update({
+      voters: voters.includes(user.uid)
+        ? fireStore.FieldValue.arrayRemove(user.uid)
+        : fireStore.FieldValue.arrayUnion(user.uid),
+    });
 }
