@@ -1,5 +1,4 @@
 import { fireStoreRef, auth, fireStore } from '.';
-import firebase from 'react-native-firebase';
 
 export async function addQuestionForTalk(talkId, question) {
   let user = auth().currentUser;
@@ -13,7 +12,6 @@ export async function addQuestionForTalk(talkId, question) {
     uid: user.uid,
     imageUrl: user.photoURL,
     date: new Date().getTime(),
-    upvotes: 0,
     voters: [],
   });
 }
