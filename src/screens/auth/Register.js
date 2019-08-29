@@ -3,6 +3,7 @@ import { Text } from 'react-native';
 import AuthLayout from '../../layouts/AuthLayout';
 import { Button, TextInput, Card } from 'react-native-paper';
 import { signupWithEmail } from '../../firebase/auth';
+import Toast from 'react-native-simple-toast';
 
 const Register = ({ navigation }) => {
   const [signupData, setSignupData] = useState({
@@ -16,10 +17,15 @@ const Register = ({ navigation }) => {
   };
 
   const signupUser = async () => {
-    setLoading(true);
-    await signupWithEmail(signupData);
-    setLoading(false);
-    navigation.navigate('Home');
+    try {
+      setLoading(true);
+      await signupWithEmail(signupData);
+      navigation.navigate('Activity');
+    } catch (error) {
+      Toast.show(error.message);
+    } finally {
+      setLoading(false);
+    }
   };
   return (
     <AuthLayout>

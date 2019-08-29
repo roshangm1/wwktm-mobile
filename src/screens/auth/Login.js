@@ -1,5 +1,6 @@
 import { Text } from 'react-native';
 import React, { useState } from 'react';
+import Toast from 'react-native-simple-toast';
 import { Card, TextInput, Button } from 'react-native-paper';
 
 import AuthLayout from '../../layouts/AuthLayout';
@@ -11,10 +12,16 @@ const Login = ({ navigation }) => {
   const [password, setPassword] = useState('');
 
   const loginWithEmail = async () => {
-    setLoading(true);
-    await loginWithEmailAsync(email, password);
-    setLoading(false);
-    navigation.navigate('Activity');
+    try {
+      setLoading(true);
+
+      await loginWithEmailAsync(email, password);
+      navigation.navigate('Activity');
+    } catch (error) {
+      Toast.show(error.message);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
