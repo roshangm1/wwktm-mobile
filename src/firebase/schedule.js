@@ -1,6 +1,6 @@
 import { auth } from 'react-native-firebase';
 
-import { fireStoreRef } from '.';
+import { fireStoreRef, fireStore } from '.';
 
 export async function getProgramSchedule() {
   const scheduleData = await fireStoreRef
@@ -12,18 +12,17 @@ export async function getProgramSchedule() {
 
 export async function addNewSchedule(scheduleDetail) {
   let ref = fireStoreRef.collection('schedule').doc();
-
   scheduleDetail.id = ref.id;
   scheduleDetail.rating = 0;
   scheduleDetail.reviewCount = 0;
   await ref.set(scheduleDetail);
 }
 
-export async function rateATalk(talkId, rating, review) {
+export async function rateATalk(id, rating, review) {
   let user = auth().currentUser;
   await fireStoreRef
     .collection('schedule')
-    .doc(talkId)
+    .doc(id)
     .collection('reviews')
     .doc(user.uid)
     .set({
@@ -33,5 +32,18 @@ export async function rateATalk(talkId, rating, review) {
       rating,
       review,
       date: new Date().getTime(),
+    });
+}
+
+export async function likeASession(session) {
+  let user = auth().currentUser;
+  var likedBy = session.likedBy || [];
+  await fireStoreRef
+    .collection('schedule')
+    .doc(session.id)
+    .update({
+      likedBy: likedBy.includes(user.uid)
+        ? fireStore.FieldValue.arrayRemove(user.uid)
+        : fireStore.FieldValue.arrayUnion(user.uid),
     });
 }
