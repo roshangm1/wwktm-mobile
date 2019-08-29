@@ -3,7 +3,11 @@ import { StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
 
 const Container = props => {
-  return <SafeAreaView style={styles.container}>{props.children}</SafeAreaView>;
+  return (
+    <SafeAreaView forceInset={{ top: 'never' }} style={styles.container}>
+      {props.children}
+    </SafeAreaView>
+  );
 };
 
 const styles = StyleSheet.create({

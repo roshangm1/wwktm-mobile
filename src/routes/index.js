@@ -56,8 +56,8 @@ const AuthStack = createStackNavigator(
 
 const AppStack = createDrawerNavigator(
   {
-    Home: {
-      screen: screens.Home,
+    Activity: {
+      screen: screens.Activity,
     },
     Speakers: {
       screen: SpeakerNavigator,

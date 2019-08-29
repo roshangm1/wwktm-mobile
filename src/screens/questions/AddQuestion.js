@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import MainLayout from '../../layouts/MainLayout';
 import { TextInput, Button } from 'react-native-paper';
-import { View, StyleSheet, ScrollView } from 'react-native';
+import { StyleSheet, ScrollView } from 'react-native';
 import { addQuestionForTalk } from '../../firebase/question';
 
 const AddQuestion = props => {
@@ -13,8 +13,7 @@ const AddQuestion = props => {
   };
 
   return (
-    <View style={styles.rootContainerStyle}>
-      <MainLayout title="Add Question" icon="arrow-back" />
+    <MainLayout title="Add Question" icon="arrow-back">
       <ScrollView contentContainerStyle={styles.mainContainerStyle}>
         <TextInput
           label="Add a question"
@@ -33,7 +32,7 @@ const AddQuestion = props => {
           Submit
         </Button>
       </ScrollView>
-    </View>
+    </MainLayout>
   );
 };
 

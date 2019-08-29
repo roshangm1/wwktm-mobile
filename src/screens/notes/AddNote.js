@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import MainLayout from '../../layouts/MainLayout';
 import { TextInput, Button } from 'react-native-paper';
 import { addNoteForTalk } from '../../firebase/notes';
-import { View, StyleSheet, ScrollView } from 'react-native';
+import { StyleSheet, ScrollView } from 'react-native';
 
 const AddNote = props => {
   const [note, setNote] = useState('');
@@ -13,8 +13,7 @@ const AddNote = props => {
   };
 
   return (
-    <View style={styles.rootContainerStyle}>
-      <MainLayout title="Add Note" icon="arrow-back" />
+    <MainLayout title="Add Note" icon="arrow-back">
       <ScrollView contentContainerStyle={styles.mainContainerStyle}>
         <TextInput
           label="Add a note"
@@ -33,7 +32,7 @@ const AddNote = props => {
           Submit
         </Button>
       </ScrollView>
-    </View>
+    </MainLayout>
   );
 };
 

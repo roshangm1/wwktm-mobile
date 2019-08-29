@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { FlatList } from 'react-native-gesture-handler';
-import { getAllSpeakers } from '../../firebase/speakers';
-import MainLayout from '../../layouts/MainLayout';
+
 import SpeakerItem from './SpeakerItem';
+import MainLayout from '../../layouts/MainLayout';
+import { getAllSpeakers } from '../../firebase/speakers';
 
 const Speakers = ({ navigation }) => {
   const [speakers, setSpeakers] = useState(null);

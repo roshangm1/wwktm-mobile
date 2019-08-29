@@ -1,9 +1,10 @@
+import { Card, Button } from 'react-native-paper';
 import React, { useEffect, useState } from 'react';
 import { Text, View, FlatList } from 'react-native';
-import { getAllQuestions, upvoteAQuestion } from '../../firebase/question';
-import { Card, Button } from 'react-native-paper';
-import MainLayout from '../../layouts/MainLayout';
+
 import { auth } from '../../firebase';
+import MainLayout from '../../layouts/MainLayout';
+import { getAllQuestions, upvoteAQuestion } from '../../firebase/question';
 
 const Questions = ({ params }) => {
   const [questions, setQuestions] = useState(null);
@@ -20,7 +21,7 @@ const Questions = ({ params }) => {
     const user = auth().currentUser;
 
     return (
-      <Card>
+      <Card elevation={2}>
         <Card.Content
           style={{ flexDirection: 'row', justifyContent: 'space-between' }}
         >
