@@ -14,7 +14,7 @@ const Login = ({ navigation }) => {
     setLoading(true);
     await loginWithEmailAsync(email, password);
     setLoading(false);
-    navigation.navigate('Home');
+    navigation.navigate('Activity');
   };
 
   return (

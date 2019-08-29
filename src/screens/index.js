@@ -16,4 +16,4 @@ export { default as Register } from './auth/Register';
 // admin part
 export { default as AddSchedule } from './admin/AddSchedule';
 
-export { default as Feed } from './feed/Feed';
+export { default as Activity } from './activity/Activity';

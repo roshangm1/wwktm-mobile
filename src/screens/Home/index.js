@@ -1,5 +1,6 @@
 import React from 'react';
 import { Text, View } from 'react-native';
+
 import { logout } from '../../firebase/auth';
 import MainLayout from '../../layouts/MainLayout';
 
