@@ -26,10 +26,12 @@ export async function getMyNotesFor(talkId) {
   return notesData.docs.map(d => d.data());
 }
 
-export async function getAllNotes(talkId) {
-  const notesData = await fireStoreRef
+export function getAllNotes(updateNotes) {
+  let user = firebase.auth().currentUser;
+  fireStoreRef
     .collection('notes')
-    .where('talkId', '==', talkId)
-    .get();
-  return notesData.docs.map(d => d.data());
+    .where('uid', '==', user.uid)
+    .onSnapshot(data => {
+      updateNotes(data.docs.map(d => d.data()));
+    });
 }

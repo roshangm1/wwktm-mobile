@@ -21,7 +21,7 @@ const ScheduleDetail = ({ navigation }) => {
     return <Text>{item.note}</Text>;
   };
   return (
-    <MainLayout title="Detail" icon="arrow-back">
+    <MainLayout title="Detail" icon="arrow-left">
       <Button onPress={navigateToAddQuestion}>Add Question</Button>
       <View style={{ padding: 16 }}>
         <Text>Notes</Text>

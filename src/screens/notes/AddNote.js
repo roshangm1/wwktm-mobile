@@ -13,7 +13,7 @@ const AddNote = props => {
   };
 
   return (
-    <MainLayout title="Add Note" icon="arrow-back">
+    <MainLayout title="Add Note" icon="arrow-left">
       <ScrollView contentContainerStyle={styles.mainContainerStyle}>
         <TextInput
           label="Add a note"

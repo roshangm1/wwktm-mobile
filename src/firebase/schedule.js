@@ -48,3 +48,11 @@ export async function likeASession(session) {
         : fireStore.FieldValue.arrayUnion(user.uid),
     });
 }
+
+export async function getTalkDetail(talkId) {
+  let talk = await fireStoreRef
+    .collection('schedule')
+    .doc(talkId)
+    .get();
+  return talk.data();
+}

@@ -13,7 +13,7 @@ const AddQuestion = props => {
   };
 
   return (
-    <MainLayout title="Add Question" icon="arrow-back">
+    <MainLayout title="Add Question" icon="arrow-left">
       <ScrollView contentContainerStyle={styles.mainContainerStyle}>
         <TextInput
           label="Add a question"
