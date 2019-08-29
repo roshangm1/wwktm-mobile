@@ -51,7 +51,7 @@ export async function getMyQuestions() {
 
 export async function upvoteAQuestion(question) {
   let user = auth().currentUser;
-  var voters = question.voters || [];
+  const voters = question.voters || [];
   fireStoreRef
     .collection('questions')
     .doc(question.id)
