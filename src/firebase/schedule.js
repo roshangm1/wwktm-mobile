@@ -39,7 +39,7 @@ export async function rateATalk(id, rating, review) {
 export async function likeASession(session) {
   let user = auth().currentUser;
   var likedBy = session.likedBy || [];
-  await fireStoreRef
+  fireStoreRef
     .collection('schedule')
     .doc(session.id)
     .update({

@@ -14,7 +14,7 @@ const Questions = ({ params }) => {
   }, []);
 
   const upvoteQuestion = question => {
-    upvoteAQuestion(question.id);
+    upvoteAQuestion(question);
   };
 
   const renderItem = ({ item }) => {
