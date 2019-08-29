@@ -69,8 +69,17 @@ const AppStack = createDrawerNavigator(
     Questions: {
       screen: screens.Questions,
     },
+    Notes: {
+      screen: screens.Notes,
+    },
+    Favourites: {
+      screen: screens.Favourites,
+    },
     Settings: {
       screen: screens.Settings,
+    },
+    About: {
+      screen: screens.About,
     },
   },
   {
