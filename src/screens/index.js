@@ -1,4 +1,4 @@
-export { default as Home } from './home/index';
+export { default as Settings } from './settings/Settings';
 export { default as Speakers } from './speakers';
 export { default as SpeakerDetail } from './speakers/SpeakerDetail';
 
