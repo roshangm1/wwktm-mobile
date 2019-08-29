@@ -65,11 +65,12 @@ const AppStack = createDrawerNavigator(
     Schedule: {
       screen: ScheduleNavigator,
     },
-    AddSchedule: {
-      screen: screens.AddSchedule,
-    },
+
     Questions: {
       screen: screens.Questions,
+    },
+    Settings: {
+      screen: screens.Settings,
     },
   },
   {

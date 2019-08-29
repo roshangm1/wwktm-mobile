@@ -1,9 +1,12 @@
 import { fireStoreRef, auth } from '.';
 
 export function getFeedData(updateFeed) {
-  fireStoreRef.collection('feed').onSnapshot(data => {
-    updateFeed(data.docs.map(d => d.data()));
-  });
+  fireStoreRef
+    .collection('feed')
+    .orderBy('date', 'desc')
+    .onSnapshot(data => {
+      updateFeed(data.docs.map(d => d.data()));
+    });
 }
 
 export async function addNewPost(content) {

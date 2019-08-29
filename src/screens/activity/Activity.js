@@ -2,13 +2,14 @@ import { FlatList, View } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { Button, TextInput } from 'react-native-paper';
 
-import FeedItem from './FeedItem';
+import PostItem from './PostItem';
 import MainLayout from '../../layouts/MainLayout';
-import { getFeedData, addNewPost } from '../../firebase/feed';
+import { getFeedData, addNewPost } from '../../firebase/activity';
 
 const Activity = ({ params }) => {
   const [feed, setFeed] = useState([]);
   const [newFeedData, setNewFeedData] = useState('');
+  const textInputRef = React.useRef();
   const updateFeed = response => {
     setFeed(response);
   };
@@ -21,8 +22,12 @@ const Activity = ({ params }) => {
     setNewFeedData(text);
   };
 
+  const addNew = () => {
+    addNewPost(newFeedData);
+    textInputRef.current.clear();
+  };
   const renderItem = ({ item }) => {
-    return <FeedItem feed={item} />;
+    return <PostItem feed={item} />;
   };
   return (
     <MainLayout title="Activity">
@@ -39,13 +44,14 @@ const Activity = ({ params }) => {
         }}
       >
         <TextInput
+          ref={textInputRef}
           mode="outlined"
           multiline
           underlineColor="transparent"
           onChangeText={handleTextChange}
           style={{ flex: 1 }}
         />
-        <Button onPress={() => addNewPost(newFeedData)}>Post</Button>
+        <Button onPress={addNew}>Post</Button>
       </View>
     </MainLayout>
   );
