@@ -14,6 +14,7 @@ export async function addNewSchedule(scheduleDetail) {
   let ref = fireStoreRef.collection('schedule').doc();
   scheduleDetail.id = ref.id;
   scheduleDetail.rating = 0;
+  scheduleDetail.likedBy = [];
   scheduleDetail.reviewCount = 0;
   await ref.set(scheduleDetail);
 }
