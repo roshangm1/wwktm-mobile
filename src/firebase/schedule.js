@@ -35,3 +35,11 @@ export async function rateATalk(talkId, rating, review) {
       date: new Date().getTime(),
     });
 }
+
+export async function getTalkDetail(talkId) {
+  let talk = await fireStoreRef
+    .collection('schedule')
+    .doc(talkId)
+    .get();
+  return talk.data();
+}

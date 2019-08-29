@@ -5,7 +5,7 @@ import MainLayout from '../../layouts/MainLayout';
 export default class SpeakerDetail extends Component {
   render() {
     return (
-      <MainLayout title="Details" icon="arrow-back">
+      <MainLayout title="Details" icon="arrow-left">
         <Text> SpeakerDetail </Text>
       </MainLayout>
     );
