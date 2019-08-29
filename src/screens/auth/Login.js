@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { Text, View } from 'react-native';
+import { Text } from 'react-native';
+import React, { useState } from 'react';
 import { Card, TextInput, Button } from 'react-native-paper';
+
+import AuthLayout from '../../layouts/AuthLayout';
 import { loginWithEmailAsync } from '../../firebase/auth';
 
 const Login = ({ navigation }) => {
@@ -12,11 +14,11 @@ const Login = ({ navigation }) => {
     setLoading(true);
     await loginWithEmailAsync(email, password);
     setLoading(false);
-    navigation.navigate('Home');
+    navigation.navigate('Activity');
   };
 
   return (
-    <View style={{ flex: 1, justifyContent: 'center' }}>
+    <AuthLayout>
       <Card elevation={2} style={{ margin: 16 }}>
         <Card.Content>
           <Text
@@ -49,9 +51,19 @@ const Login = ({ navigation }) => {
           >
             Log In
           </Button>
+          <Text
+            onPress={() => navigation.navigate('Register')}
+            style={{
+              textAlign: 'center',
+              marginTop: 16,
+              textDecorationLine: 'underline',
+            }}
+          >
+            Don't have an account ? Sign Up.
+          </Text>
         </Card.Content>
       </Card>
-    </View>
+    </AuthLayout>
   );
 };
 

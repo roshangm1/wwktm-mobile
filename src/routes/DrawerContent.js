@@ -1,8 +1,7 @@
 import React from 'react';
-import { ScrollView, StyleSheet, View, Text } from 'react-native';
-import { SafeAreaView, DrawerItems } from 'react-navigation';
 import { Avatar } from 'react-native-paper';
-
+import { SafeAreaView, DrawerItems } from 'react-navigation';
+import { ScrollView, StyleSheet, View, Text } from 'react-native';
 import { auth } from '../firebase';
 import { logout } from '../firebase/auth';
 
@@ -16,7 +15,7 @@ const DrawerContent = props => {
     <ScrollView contentContainerStyle={styles.rootContainer}>
       <SafeAreaView
         style={styles.container}
-        forceInset={{ top: 'always', horizontal: 'never' }}
+        forceInset={{ top: 0, horizontal: 'never' }}
       >
         <View>
           <View style={styles.topContainer}>
