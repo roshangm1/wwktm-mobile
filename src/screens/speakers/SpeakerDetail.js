@@ -10,45 +10,54 @@ import {
   Paragraph,
 } from 'react-native-paper';
 import MainLayout from '../../layouts/MainLayout';
+import { getTalkDetail } from '../../firebase/schedule';
+import { getTalkDateRange } from './../../utils/date';
 
 export default class SpeakerDetail extends Component {
+  state = {
+    scheduleInfo: {},
+  };
+  componentDidMount() {
+    getTalkDetail(this.props.navigation.state.params.speakerDetail.talkId).then(
+      response => {
+        this.setState({ scheduleInfo: response });
+      },
+    );
+  }
+
   render() {
+    const {
+      profilePicture,
+      name,
+      designation,
+      organization,
+      description,
+      talk,
+    } = this.props.navigation.state.params.speakerDetail;
+    const { startTime, endTime } = this.state.scheduleInfo;
+    console.log(startTime, endTime);
     return (
       <MainLayout title="Details" icon="arrow-left">
-        <ScrollView contentContaierStyle={{ flexGrow: 1, paddingVertical: 15 }}>
-          <View style={{ alignItems: 'center' }}>
+        <ScrollView contentContaierStyle={{ flexGrow: 1 }}>
+          <View style={{ alignItems: 'center', paddingVertical: 15 }}>
             <Avatar.Image
               source={{
-                uri:
-                  'https://www.crockerriverside.org/sites/main/files/imagecache/carousel/main-images/camera_lense_0.jpeg',
+                uri: profilePicture,
               }}
             />
-            <Title>Rashila Pandey</Title>
-            <Caption style={styles.speakerLabelText}>Cofounder and CEO</Caption>
-            <Caption style={styles.speakerLabelText}>Pandey Nibas</Caption>
+            <Title>{name}</Title>
+            <Caption style={styles.speakerLabelText}>{designation}</Caption>
+            <Caption style={styles.speakerLabelText}>{organization}</Caption>
           </View>
           <Subheading style={styles.sectionHeader}>DESCRIPTION</Subheading>
-          <Paragraph style={styles.paragraphStyle}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
-          </Paragraph>
+          <Paragraph style={styles.paragraphStyle}>{description}</Paragraph>
           <Subheading style={styles.sectionHeader}>SCHEDULE</Subheading>
-          <List.Subheader>June 29</List.Subheader>
+          <List.Subheader>September 21</List.Subheader>
           <View style={styles.cardStyle}>
-            <Paragraph>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur.
-            </Paragraph>
-            <Text style={styles.timeText}>13:43 - 34:09</Text>
+            <Paragraph>{talk}</Paragraph>
+            <Text style={styles.timeText}>
+              {startTime && getTalkDateRange(startTime, endTime)}
+            </Text>
           </View>
         </ScrollView>
       </MainLayout>
@@ -75,7 +84,7 @@ const styles = StyleSheet.create({
   cardStyle: {
     backgroundColor: '#D6D6D6',
     marginHorizontal: 15,
-    marginVertical: 8,
+    marginBottom: 8,
     borderRadius: 4,
     padding: 15,
   },
