@@ -14,7 +14,7 @@ const theme = {
   roundness: 2,
   colors: {
     ...DefaultTheme.colors,
-    primary: 'tomato',
+    primary: '#FF7D4A',
     accent: 'yellow',
   },
 };
