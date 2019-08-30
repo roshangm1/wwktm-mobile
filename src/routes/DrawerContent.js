@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { Avatar, Drawer, Divider } from 'react-native-paper';
-import { SafeAreaView, DrawerItems } from 'react-navigation';
+import { SafeAreaView } from 'react-navigation';
 import { ScrollView, StyleSheet, View, Text } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import { auth } from '../firebase';
 
