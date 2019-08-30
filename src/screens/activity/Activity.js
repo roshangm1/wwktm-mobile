@@ -1,4 +1,4 @@
-import { FlatList, View } from 'react-native';
+import { FlatList, View, Alert } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { Button, TextInput } from 'react-native-paper';
 import ImagePicker from 'react-native-image-picker';
@@ -27,11 +27,14 @@ const Activity = ({ params }) => {
       console.log('Response = ', response);
 
       if (response.didCancel) {
-        console.log('User cancelled image picker');
+        Alert.alert('Error', 'User cancelled image picker');
       } else if (response.error) {
-        console.log('ImagePicker Error: ', response.error);
+        Alert.alert('Error', 'ImagePicker Error: ' + response.error);
       } else if (response.customButton) {
-        console.log('User tapped custom button: ', response.customButton);
+        Alert.alert(
+          'Error',
+          'User tapped custom button: ' + response.customButton,
+        );
       } else {
         const source = { uri: response.uri };
         setImagePath(source.uri);
