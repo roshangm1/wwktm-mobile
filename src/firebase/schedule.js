@@ -2,12 +2,13 @@ import { auth } from 'react-native-firebase';
 
 import { fireStoreRef, fireStore } from '.';
 
-export async function getProgramSchedule() {
-  const scheduleData = await fireStoreRef
+export async function getProgramSchedule(updateProgramSchedule) {
+  fireStoreRef
     .collection('schedule')
     .orderBy('endTime', 'asc')
-    .get();
-  return scheduleData.docs.map(schedule => schedule.data());
+    .onSnapshot(data => {
+      updateProgramSchedule(data.docs.map(d => d.data()));
+    });
 }
 
 export async function addNewSchedule(scheduleDetail) {
@@ -20,7 +21,7 @@ export async function addNewSchedule(scheduleDetail) {
 }
 
 export async function rateATalk(id, rating, review) {
-  let user = auth().currentUser;
+  const user = auth().currentUser;
   await fireStoreRef
     .collection('schedule')
     .doc(id)
@@ -37,7 +38,7 @@ export async function rateATalk(id, rating, review) {
 }
 
 export async function likeASession(session) {
-  let user = auth().currentUser;
+  const user = auth().currentUser;
   const likedBy = session.likedBy || [];
   fireStoreRef
     .collection('schedule')
@@ -49,6 +50,15 @@ export async function likeASession(session) {
     });
 }
 
+export async function getFavouriteSessions(updateFavouriteSessions) {
+  const user = auth().currentUser;
+  fireStoreRef
+    .collection('schedule')
+    .where('likedBy', 'array-contains', user.uid)
+    .onSnapshot(data => {
+      updateFavouriteSessions(data.docs.map(d => d.data()));
+    });
+}
 export async function getTalkDetail(talkId) {
   let talk = await fireStoreRef
     .collection('schedule')

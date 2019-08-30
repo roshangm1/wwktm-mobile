@@ -1,46 +1,30 @@
 import React, { useState, useEffect } from 'react';
-import { Card, TouchableRipple } from 'react-native-paper';
 import { SceneMap, TabBar, TabView } from 'react-native-tab-view';
-import { Dimensions, StyleSheet, View, ScrollView, Text } from 'react-native';
+import { Dimensions, View, ScrollView } from 'react-native';
 
 import MainLayout from '../../layouts/MainLayout';
 import { getDaySchedule } from '../../utils/array';
-import { getTalkDateRange } from '../../utils/date';
-import { getProgramSchedule } from '../../firebase/schedule';
+import { getProgramSchedule, likeASession } from '../../firebase/schedule';
+import ScheduleItem from './ScheduleItem';
 
-const DayZeroRoute = ({ data, navigation }) => {
+export const DayZeroRoute = ({ data, navigation }) => {
   const navigateToAddNote = id => {
     navigation.navigate('AddNote', { talkId: id });
   };
+  const favouriteSession = session => {
+    likeASession(session);
+  };
+
   return (
     <ScrollView>
       {data.map((sche, index) => (
-        <TouchableRipple
-          key={index.toString()}
-          onPress={() =>
-            navigation.navigate('ScheduleDetail', { schedule: sche })
-          }
-          style={{ padding: 4 }}
-        >
-          <Card>
-            <Card.Content
-              style={{ flexDirection: 'row', justifyContent: 'space-between' }}
-            >
-              <View style={{ flex: 4 }}>
-                <Text style={{ fontWeight: 'bold' }}>{sche.title}</Text>
-                <Text>{getTalkDateRange(sche.startTime, sche.endTime)}</Text>
-              </View>
-              {sche.type === 'session' ? (
-                <Text
-                  style={{ flex: 1 }}
-                  onPress={() => navigateToAddNote(sche.id)}
-                >
-                  Add note
-                </Text>
-              ) : null}
-            </Card.Content>
-          </Card>
-        </TouchableRipple>
+        <ScheduleItem
+          key={sche.id}
+          session={sche}
+          navigation={navigation}
+          onAddNotePress={() => navigateToAddNote(sche.id)}
+          onLikeSessionPress={() => favouriteSession(sche)}
+        />
       ))}
     </ScrollView>
   );
@@ -61,7 +45,7 @@ const Schedule = ({ navigation }) => {
   const [dayOne, setDayOne] = useState([]);
 
   useEffect(() => {
-    getProgramSchedule().then(scheduleData => {
+    getProgramSchedule(scheduleData => {
       const day0 = getDaySchedule(scheduleData, '2019/09/20');
       const day1 = getDaySchedule(scheduleData, '2019/09/21');
       setDayZero(day0);
@@ -100,17 +84,3 @@ const Schedule = ({ navigation }) => {
 };
 
 export default Schedule;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  tabBar: {
-    flexDirection: 'row',
-  },
-  tabItem: {
-    flex: 1,
-    alignItems: 'center',
-    padding: 16,
-  },
-});
