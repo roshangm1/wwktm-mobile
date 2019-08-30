@@ -1,21 +1,22 @@
-import React, { useState } from 'react';
-import { Text, FlatList } from 'react-native';
-import MainLayout from '../../layouts/MainLayout';
+import React, { useState, useEffect } from 'react';
 
-const Favourites = ({ params }) => {
+import MainLayout from '../../layouts/MainLayout';
+import { getFavouriteSessions } from '../../firebase/schedule';
+import { DayZeroRoute as FavouriteSchedule } from './Schedule';
+
+const Favourites = ({ navigation }) => {
   const [favourites, setFavourites] = useState([]);
 
-  const renderItem = ({ item }) => {
-    <Text>Favourite item</Text>;
+  const updateFavouriteSessions = response => {
+    setFavourites(response);
   };
+  useEffect(() => {
+    getFavouriteSessions(updateFavouriteSessions);
+  }, []);
 
   return (
     <MainLayout title="Favourite Talks">
-      <FlatList
-        data={favourites}
-        keyExtractor={item => item.id}
-        renderItem={renderItem}
-      />
+      <FavouriteSchedule data={favourites} navigation={navigation} />
     </MainLayout>
   );
 };
