@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { Text, Image } from 'react-native';
 import { Card } from 'react-native-paper';
 
 const PostItem = ({ feed }) => (
@@ -7,6 +7,14 @@ const PostItem = ({ feed }) => (
     <Card.Content>
       <Text style={{ fontWeight: 'bold' }}>{feed.name}</Text>
       <Text>{feed.content}</Text>
+      {feed.postImage && (
+        <Image
+          source={{ uri: feed.postImage }}
+          style={{
+            height: 200,
+          }}
+        />
+      )}
     </Card.Content>
   </Card>
 );

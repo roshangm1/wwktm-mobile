@@ -18,16 +18,15 @@ export async function addNewPost(content, image) {
       id: feedRef.id,
       content,
       name: user.displayName,
-      imageUrl: imageUrl,
       uid: user.uid,
       profileImageUrl: user.photoURL,
-      postImage: null,
+      postImage: imageUrl,
       date: new Date().getTime(),
     });
   }
   if (image) {
-    uploadImage(image, imageUrl => {
-      setPost(imageUrl);
+    uploadImage(image, url => {
+      setPost(url);
     });
   } else {
     await setPost();
