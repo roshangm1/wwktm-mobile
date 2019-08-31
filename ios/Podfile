@@ -31,6 +31,7 @@ target 'wwktmMobile' do
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
   pod 'Firebase/Functions'
+  pod 'Firebase/Storage'
 
 
   target 'wwktmMobileTests' do
