@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, ScrollView } from 'react-native';
 import {
   Avatar,
@@ -13,57 +13,51 @@ import MainLayout from '../../layouts/MainLayout';
 import { getTalkDetail } from '../../firebase/schedule';
 import { getTalkDateRange } from './../../utils/date';
 
-export default class SpeakerDetail extends Component {
-  state = {
-    scheduleInfo: {},
-  };
-  componentDidMount() {
-    getTalkDetail(this.props.navigation.state.params.speakerDetail.talkId).then(
-      response => {
-        this.setState({ scheduleInfo: response });
-      },
-    );
-  }
+const SpeakerDetail = ({ navigation }) => {
+  const [scheduleInfo, setScheduleInfo] = useState({});
+  const { talkId } = navigation.state.params.speakerDetail;
+  useEffect(() => {
+    getTalkDetail(talkId).then(response => {
+      setScheduleInfo(response);
+    });
+  }, [navigation.state.params.speakerDetail.talkId, talkId]);
+  const { startTime, endTime } = scheduleInfo;
+  const {
+    profilePicture,
+    name,
+    designation,
+    organization,
+    description,
+    talk,
+  } = navigation.state.params.speakerDetail;
 
-  render() {
-    const {
-      profilePicture,
-      name,
-      designation,
-      organization,
-      description,
-      talk,
-    } = this.props.navigation.state.params.speakerDetail;
-    const { startTime, endTime } = this.state.scheduleInfo;
-    console.log(startTime, endTime);
-    return (
-      <MainLayout title="Details" icon="arrow-left">
-        <ScrollView contentContaierStyle={{ flexGrow: 1 }}>
-          <View style={{ alignItems: 'center', paddingVertical: 15 }}>
-            <Avatar.Image
-              source={{
-                uri: profilePicture,
-              }}
-            />
-            <Title>{name}</Title>
-            <Caption style={styles.speakerLabelText}>{designation}</Caption>
-            <Caption style={styles.speakerLabelText}>{organization}</Caption>
-          </View>
-          <Subheading style={styles.sectionHeader}>DESCRIPTION</Subheading>
-          <Paragraph style={styles.paragraphStyle}>{description}</Paragraph>
-          <Subheading style={styles.sectionHeader}>SCHEDULE</Subheading>
-          <List.Subheader>September 21</List.Subheader>
-          <View style={styles.cardStyle}>
-            <Paragraph>{talk}</Paragraph>
-            <Text style={styles.timeText}>
-              {startTime && getTalkDateRange(startTime, endTime)}
-            </Text>
-          </View>
-        </ScrollView>
-      </MainLayout>
-    );
-  }
-}
+  return (
+    <MainLayout title="Details" icon="arrow-left">
+      <ScrollView contentContaierStyle={{ flexGrow: 1 }}>
+        <View style={{ alignItems: 'center', paddingVertical: 15 }}>
+          <Avatar.Image
+            source={{
+              uri: profilePicture,
+            }}
+          />
+          <Title>{name}</Title>
+          <Caption style={styles.speakerLabelText}>{designation}</Caption>
+          <Caption style={styles.speakerLabelText}>{organization}</Caption>
+        </View>
+        <Subheading style={styles.sectionHeader}>DESCRIPTION</Subheading>
+        <Paragraph style={styles.paragraphStyle}>{description}</Paragraph>
+        <Subheading style={styles.sectionHeader}>SCHEDULE</Subheading>
+        <List.Subheader>September 21</List.Subheader>
+        <View style={styles.cardStyle}>
+          <Paragraph>{talk}</Paragraph>
+          <Text style={styles.timeText}>
+            {startTime && getTalkDateRange(startTime, endTime)}
+          </Text>
+        </View>
+      </ScrollView>
+    </MainLayout>
+  );
+};
 
 const styles = StyleSheet.create({
   nameText: {
@@ -93,9 +87,12 @@ const styles = StyleSheet.create({
   },
   paragraphStyle: {
     paddingHorizontal: 15,
+    textAlign: 'justify',
   },
   timeText: {
     marginTop: 7,
     fontWeight: 'bold',
   },
 });
+
+export default SpeakerDetail;
