@@ -46,6 +46,14 @@ export async function upvoteFeed(feed) {
     });
 }
 
+export async function getCommentsForPost(postId) {
+  return (await fireStoreRef
+    .collection('feed')
+    .doc(postId)
+    .collection('comments')
+    .get()).docs.map(d => d.data());
+}
+
 export async function addCommentToPost(postId, content) {
   let user = auth().currentUser;
   const comment = {
