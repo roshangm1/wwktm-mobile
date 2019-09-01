@@ -4,12 +4,9 @@ import Row from '../../components/Row';
 import ActionButton from '../../components/ActionButton';
 import { Avatar } from 'react-native-paper';
 import { getPostTime } from '../../utils/date';
+import { getNameInitials } from './../../utils/string';
 
 const PostItem = ({ feed }) => {
-  const getNameInitials = name => {
-    var nameInitials = name.match(/\b(\w)/g).join(' ');
-    return nameInitials;
-  };
   const {
     profileImageUrl,
     postImage,
@@ -48,8 +45,8 @@ const PostItem = ({ feed }) => {
         />
       )}
       <Row style={styles.bottomRowContainer}>
-        {likesCount && <Text style={styles.countText}>5 Likes</Text>}
-        {commentsCount && <Text style={styles.countText}>10 Comment</Text>}
+        <Text style={styles.countText}>5 Likes</Text>
+        <Text style={styles.countText}>10 Comment</Text>
       </Row>
       <Row style={styles.bottomRowContainer}>
         <ActionButton
@@ -83,7 +80,7 @@ const styles = StyleSheet.create({
     paddingTop: 10,
   },
   bottomRowContainer: {
-    paddingTop: 7,
+    paddingTop: 10,
   },
   countText: {
     fontSize: 14,
