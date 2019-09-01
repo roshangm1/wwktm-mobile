@@ -6,6 +6,8 @@ import PostItem from './PostItem';
 import MainLayout from '../../layouts/MainLayout';
 import { getFeedData } from '../../firebase/activity';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import Colors from '../../configs/colors';
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
 const Activity = ({ navigation }) => {
   const [feed, setFeed] = useState([]);
@@ -28,19 +30,21 @@ const Activity = ({ navigation }) => {
         renderItem={renderItem}
         keyExtractor={item => item.id}
       />
-      <View
+      <TouchableWithoutFeedback
+        onPress={() => navigation.navigate('CreatePost')}
         style={{
           flexDirection: 'row',
-          marginHorizontal: 15,
-          marginVertical: 5,
-          borderColor: 'black',
+          marginHorizontal: 16,
+          marginVertical: 8,
+          borderColor: Colors.grey,
           borderWidth: 1,
+          padding: 8,
           borderRadius: 6,
         }}
       >
         <TextInput
           placeholder="What's on your mind?"
-          style={{ flex: 1, paddingVertical: 7 }}
+          style={{ flex: 1, paddingVertical: 8 }}
           onFocus={() => navigation.navigate('CreatePost')}
         />
         <TouchableRipple
@@ -49,9 +53,9 @@ const Activity = ({ navigation }) => {
             justifyContent: 'center',
           }}
         >
-          <Icon name="camera" size={20} color="black" />
+          <Icon name="camera" size={20} color={Colors.black} />
         </TouchableRipple>
-      </View>
+      </TouchableWithoutFeedback>
     </MainLayout>
   );
 };

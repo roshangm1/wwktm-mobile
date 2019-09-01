@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, TextInput, ScrollView, StyleSheet } from 'react-native';
+import { View, TextInput, Image } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Toolbar from './../../components/Toolbar';
 import Container from './../../components/Container';
@@ -12,8 +12,8 @@ const CreatePost = ({ navigation }) => {
   const [postDetail, setPostDetail] = useState('');
   const [imagePath, setImagePath] = useState('');
 
-  const handleTextChange = () => {
-    setPostDetail(postDetail);
+  const handleTextChange = text => {
+    setPostDetail(text);
   };
 
   function openPicker() {
@@ -46,9 +46,7 @@ const CreatePost = ({ navigation }) => {
           </TouchableRipple>
         }
       />
-      <ScrollView
-        contentContainerStyle={{ flexGrow: 1, paddingHorizontal: 15 }}
-      >
+      <View style={{ padding: 16 }}>
         <TextInput
           ref={textInputRef}
           placeholder="What's on your mind?"
@@ -56,10 +54,11 @@ const CreatePost = ({ navigation }) => {
           onChangeText={handleTextChange}
           style={{
             backgroundColor: 'white',
-            paddingVertical: 30,
+            marginBottom: 30,
             fontSize: 15,
           }}
           multiline
+          numberOfLines={5}
         />
         <TouchableRipple
           onPress={openPicker}
@@ -73,7 +72,13 @@ const CreatePost = ({ navigation }) => {
         >
           <Icon name="camera" size={20} color="black" />
         </TouchableRipple>
-      </ScrollView>
+        {imagePath ? (
+          <Image
+            source={{ uri: imagePath }}
+            style={{ height: 80, width: 80, marginTop: 10 }}
+          />
+        ) : null}
+      </View>
     </Container>
   );
 };
