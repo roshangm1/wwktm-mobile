@@ -51,6 +51,7 @@ export async function getCommentsForPost(postId) {
     .collection('feed')
     .doc(postId)
     .collection('comments')
+    .orderBy('date', 'DESC')
     .get()).docs.map(d => d.data());
 }
 
