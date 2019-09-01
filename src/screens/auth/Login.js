@@ -1,10 +1,15 @@
-import { Text, StyleSheet } from 'react-native';
 import React, { useState } from 'react';
+import firebase from 'react-native-firebase';
 import Toast from 'react-native-simple-toast';
-import { Card, TextInput, Button } from 'react-native-paper';
+import { Text, StyleSheet, View } from 'react-native';
+import { GoogleSignin } from 'react-native-google-signin';
+import { AccessToken, LoginManager } from 'react-native-fbsdk';
+import { Card, TextInput, Button, IconButton } from 'react-native-paper';
 
 import AuthLayout from '../../layouts/AuthLayout';
 import { loginWithEmailAsync } from '../../firebase/auth';
+import Row from '../../components/Row';
+import Colors from '../../configs/colors';
 
 const Login = ({ navigation }) => {
   const [loading, setLoading] = useState(false);
@@ -22,6 +27,51 @@ const Login = ({ navigation }) => {
       Toast.show(error.message);
     } finally {
       setLoading(false);
+    }
+  };
+  const loginWithFacebook = async () => {
+    try {
+      const result = await LoginManager.logInWithPermissions([
+        'public_profile',
+      ]);
+
+      if (result.isCancelled) {
+        throw new Error('User cancelled request');
+      }
+
+      const data = await AccessToken.getCurrentAccessToken();
+
+      if (!data) {
+        throw new Error(
+          'Something went wrong obtaining the users access token',
+        );
+      }
+
+      const credential = firebase.auth.FacebookAuthProvider.credential(
+        data.accessToken,
+      );
+
+      await firebase.auth().signInWithCredential(credential);
+      navigation.navigate('Activity');
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  const loginWithGoogle = async () => {
+    try {
+      await GoogleSignin.configure();
+
+      const data = await GoogleSignin.signIn();
+
+      const credential = firebase.auth.GoogleAuthProvider.credential(
+        data.idToken,
+        data.accessToken,
+      );
+      await firebase.auth().signInWithCredential(credential);
+      navigation.navigate('Activity');
+    } catch (e) {
+      console.error(e);
     }
   };
 
@@ -59,12 +109,31 @@ const Login = ({ navigation }) => {
           >
             Log In
           </Button>
-          <Text
-            onPress={() => navigation.navigate('Register')}
-            style={styles.clickableText}
-          >
-            Don't have an account ? Sign Up.
-          </Text>
+          <View style={styles.socialContainer}>
+            <Text>OR</Text>
+            <Text
+              onPress={() => navigation.navigate('Register')}
+              style={styles.clickableText}
+            >
+              Don't have an account ? Sign Up.
+            </Text>
+            <Row style={{ marginTop: 16 }}>
+              <IconButton
+                icon="facebook"
+                size={24}
+                color={Colors.white}
+                style={{ backgroundColor: Colors.facebook }}
+                onPress={loginWithFacebook}
+              />
+              <IconButton
+                icon="google"
+                size={24}
+                color={Colors.white}
+                style={{ backgroundColor: Colors.google }}
+                onPress={loginWithGoogle}
+              />
+            </Row>
+          </View>
         </Card.Content>
       </Card>
     </AuthLayout>
@@ -89,9 +158,13 @@ const styles = StyleSheet.create({
     marginTop: 8,
   },
   clickableText: {
-    textAlign: 'center',
     marginTop: 16,
     textDecorationLine: 'underline',
+  },
+  socialContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 16,
   },
 });
 
