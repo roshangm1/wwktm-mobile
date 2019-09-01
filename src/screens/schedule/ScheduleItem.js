@@ -4,6 +4,7 @@ import { TouchableRipple, Card, IconButton } from 'react-native-paper';
 
 import { auth } from '../../firebase';
 import { getTalkDateRange } from '../../utils/date';
+import Colors from '../../configs/colors';
 
 const ScheduleItem = ({
   session,
@@ -34,6 +35,7 @@ const ScheduleItem = ({
                 Add note
               </Text>
               <IconButton
+                color={Colors.primary}
                 icon={
                   session.likedBy && session.likedBy.includes(user.uid)
                     ? 'star'

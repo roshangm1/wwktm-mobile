@@ -8,13 +8,14 @@ import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
 
 import App from './App';
 import { name as appName } from './app.json';
+import Colors from './src/configs/colors';
 
 const theme = {
   ...DefaultTheme,
   roundness: 2,
   colors: {
     ...DefaultTheme.colors,
-    primary: '#FF7D4A',
+    primary: Colors.primary,
     accent: 'yellow',
   },
 };
