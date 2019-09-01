@@ -14,7 +14,9 @@ const Speakers = ({ navigation }) => {
   const renderSpeaker = ({ item }) => (
     <SpeakerItem
       item={item}
-      onPress={() => navigation.navigate('SpeakerDetail')}
+      onPress={() =>
+        navigation.navigate('SpeakerDetail', { speakerDetail: item })
+      }
     />
   );
   return (

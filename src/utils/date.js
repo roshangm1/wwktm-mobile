@@ -6,3 +6,7 @@ export function getTalkDateRange(startDate, endDate) {
 
   return `${timeStart} - ${timeEnd}`;
 }
+
+export function getPostTime(date) {
+  return moment(date).fromNow();
+}
