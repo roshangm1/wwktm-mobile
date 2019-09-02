@@ -20,7 +20,7 @@ export async function addQuestionForTalk(talkId, question) {
 export async function getTopVotedQuestions(count = 10) {
   return (await fireStoreRef
     .collection('questions')
-    .orderBy('upvotes', 'desc')
+    .orderBy('upvoteCount', 'desc')
     .limit(count)
     .get()).docs.map(d => d.data());
 }
@@ -29,14 +29,14 @@ export async function getQuestionsForTalk(talkId) {
   return (await fireStoreRef
     .collection('questions')
     .where('talkId', '==', talkId)
-    .orderBy('upvotes', 'desc')
+    .orderBy('upvoteCount', 'desc')
     .get()).docs.map(d => d.data());
 }
 
 export async function getAllQuestions(updateQuestions) {
   fireStoreRef
     .collection('questions')
-    .orderBy('voters', 'desc')
+    .orderBy('upvoteCount', 'desc')
     .onSnapshot(data => {
       updateQuestions(data.docs.map(d => d.data()));
     });
