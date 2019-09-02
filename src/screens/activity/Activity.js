@@ -1,46 +1,16 @@
-import { FlatList, View, Alert } from 'react-native';
+import { FlatList, TextInput, StyleSheet } from 'react-native';
 import React, { useEffect, useState } from 'react';
-import { Button, TextInput } from 'react-native-paper';
-import ImagePicker from 'react-native-image-picker';
+import { TouchableRipple } from 'react-native-paper';
 
 import PostItem from './PostItem';
 import MainLayout from '../../layouts/MainLayout';
-import { getFeedData, addNewPost } from '../../firebase/activity';
+import { getFeedData } from '../../firebase/activity';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import Colors from '../../configs/colors';
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
-const Activity = ({ params }) => {
+const Activity = ({ navigation }) => {
   const [feed, setFeed] = useState([]);
-  const [imagePath, setImagePath] = useState('');
-  const [newFeedData, setNewFeedData] = useState('');
-  const textInputRef = React.useRef();
-
-  const options = {
-    title: 'Select Avatar',
-    customButtons: [{ name: 'fb', title: 'Choose Photo from Facebook' }],
-    storageOptions: {
-      skipBackup: true,
-      path: 'images',
-    },
-  };
-
-  function openPicker() {
-    ImagePicker.showImagePicker(options, response => {
-      console.log('Response = ', response);
-
-      if (response.didCancel) {
-        Alert.alert('Error', 'User cancelled image picker');
-      } else if (response.error) {
-        Alert.alert('Error', 'ImagePicker Error: ' + response.error);
-      } else if (response.customButton) {
-        Alert.alert(
-          'Error',
-          'User tapped custom button: ' + response.customButton,
-        );
-      } else {
-        const source = { uri: response.uri };
-        setImagePath(source.uri);
-      }
-    });
-  }
 
   const updateFeed = response => {
     setFeed(response);
@@ -50,15 +20,6 @@ const Activity = ({ params }) => {
     getFeedData(updateFeed);
   }, []);
 
-  const handleTextChange = text => {
-    setNewFeedData(text);
-  };
-
-  const addNew = () => {
-    addNewPost(newFeedData, imagePath);
-    setImagePath('');
-    textInputRef.current.clear();
-  };
   const renderItem = ({ item }) => {
     return <PostItem feed={item} />;
   };
@@ -69,26 +30,40 @@ const Activity = ({ params }) => {
         renderItem={renderItem}
         keyExtractor={item => item.id}
       />
-      <View
-        style={{
-          flexDirection: 'row',
-          paddingHorizontal: 8,
-          alignItems: 'center',
-        }}
+      <TouchableWithoutFeedback
+        onPress={() => navigation.navigate('CreatePost')}
+        style={styles.inputTextContainer}
       >
-        <Button icon="camera" onPress={openPicker} />
         <TextInput
-          ref={textInputRef}
-          mode="outlined"
-          multiline
-          underlineColor="transparent"
-          onChangeText={handleTextChange}
-          style={{ flex: 1 }}
+          placeholder="What's on your mind?"
+          style={styles.inputText}
+          onFocus={() => navigation.navigate('CreatePost')}
         />
-        <Button onPress={addNew}>Post</Button>
-      </View>
+        <TouchableRipple style={styles.iconStyle}>
+          <Icon name="camera" size={20} color={Colors.black} />
+        </TouchableRipple>
+      </TouchableWithoutFeedback>
     </MainLayout>
   );
 };
 
+const styles = StyleSheet.create({
+  inputTextContainer: {
+    flexDirection: 'row',
+    marginHorizontal: 16,
+    marginVertical: 8,
+    borderColor: Colors.grey,
+    borderWidth: 1,
+    padding: 8,
+    borderRadius: 6,
+  },
+  inputText: {
+    flex: 1,
+    paddingVertical: 8,
+  },
+  iconStyle: {
+    paddingHorizontal: 15,
+    justifyContent: 'center',
+  },
+});
 export default Activity;

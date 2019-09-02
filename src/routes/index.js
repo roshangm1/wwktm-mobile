@@ -42,6 +42,18 @@ const ScheduleNavigator = createStackNavigator(
   { headerMode: 'none' },
 );
 
+const ActivityNavigator = createStackNavigator(
+  {
+    Activity: {
+      screen: screens.Activity,
+    },
+    CreatePost: {
+      screen: screens.CreatePost,
+    },
+  },
+  { headerMode: 'none' },
+);
+
 const AuthStack = createStackNavigator(
   {
     Login: {
@@ -57,7 +69,7 @@ const AuthStack = createStackNavigator(
 const AppStack = createDrawerNavigator(
   {
     Activity: {
-      screen: screens.Activity,
+      screen: ActivityNavigator,
     },
     Speakers: {
       screen: SpeakerNavigator,

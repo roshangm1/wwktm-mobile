@@ -164,6 +164,7 @@ dependencies {
     implementation "com.google.firebase:firebase-auth:17.0.0"
     implementation "com.google.firebase:firebase-functions:17.0.0"
     implementation "com.google.firebase:firebase-storage:17.0.0"
+    implementation 'com.facebook.android:facebook-android-sdk:[5,6)'
 
 
     // JSC from node_modules

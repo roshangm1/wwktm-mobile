@@ -2,9 +2,10 @@ import React from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 import Row from '../../components/Row';
 import ActionButton from '../../components/ActionButton';
-import { Avatar } from 'react-native-paper';
+import { Avatar, Divider, Card } from 'react-native-paper';
 import { getPostTime } from '../../utils/date';
 import { getNameInitials } from './../../utils/string';
+import Colors from '../../configs/colors';
 
 const PostItem = ({ feed }) => {
   const {
@@ -27,7 +28,11 @@ const PostItem = ({ feed }) => {
             }}
           />
         ) : (
-          <Avatar.Text size={36} label={getNameInitials(name)} />
+          <Avatar.Text
+            size={36}
+            color={Colors.white}
+            label={getNameInitials(name)}
+          />
         )}
 
         <View style={{ paddingHorizontal: 5 }}>
@@ -35,7 +40,7 @@ const PostItem = ({ feed }) => {
           <Text style={styles.dateText}>{getPostTime(date)}</Text>
         </View>
       </Row>
-      <Text style={styles.descriptionText}>{content}</Text>
+      {content ? <Text style={styles.descriptionText}>{content}</Text> : null}
       {postImage && (
         <Image
           style={styles.imageStyle}
@@ -60,17 +65,15 @@ const PostItem = ({ feed }) => {
           onPress={() => alert('Comment Pressed')}
         />
       </Row>
+      <Divider style={{ marginTop: 8 }} />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   rootContainer: {
-    paddingHorizontal: 15,
-    paddingVertical: 10,
+    padding: 16,
     borderColor: '#808080',
-    borderWidth: 1,
-    marginTop: 10,
   },
   dateText: {
     color: '#808080',
