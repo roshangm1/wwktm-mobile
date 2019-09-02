@@ -13,6 +13,8 @@ const Activity = ({ navigation }) => {
   const [feed, setFeed] = useState([]);
 
   const updateFeed = response => {
+    console.log(response);
+
     setFeed(response);
   };
 

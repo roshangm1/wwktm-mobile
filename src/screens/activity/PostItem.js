@@ -9,7 +9,17 @@ import Colors from '../../configs/colors';
 import { auth } from '../../firebase';
 
 const PostItem = ({ post, onLikePress, onCommentPress }) => {
-  const { profileImageUrl, postImage, content, name, date, voters = [] } = post;
+  const {
+    profileImageUrl,
+    postImage,
+    content,
+    name,
+    date,
+    voters = [],
+    comments = [],
+  } = post;
+  console.log(post);
+
   const { currentUser } = auth();
   const isLikedByUser = voters.includes(currentUser.uid);
   return (
@@ -46,7 +56,7 @@ const PostItem = ({ post, onLikePress, onCommentPress }) => {
       )}
       <Row style={styles.bottomRowContainer}>
         <Text style={styles.countText}>{voters.length} Likes</Text>
-        <Text style={styles.countText}>10 Comment</Text>
+        <Text style={styles.countText}>{comments.length} Comments</Text>
       </Row>
       <Row style={styles.bottomRowContainer}>
         <ActionButton

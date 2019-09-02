@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import firebase from 'react-native-firebase';
 import Toast from 'react-native-simple-toast';
-import { Text, StyleSheet, View } from 'react-native';
 import { GoogleSignin } from 'react-native-google-signin';
 import { AccessToken, LoginManager } from 'react-native-fbsdk';
+import { Text, StyleSheet, View, ScrollView } from 'react-native';
 import { Card, TextInput, Button, IconButton } from 'react-native-paper';
 
 import AuthLayout from '../../layouts/AuthLayout';
@@ -77,74 +77,74 @@ const Login = ({ navigation }) => {
 
   return (
     <AuthLayout>
-      <Card elevation={2} style={{ margin: 16 }}>
-        <Card.Content>
-          <Text style={styles.titleText}>Login</Text>
-          <TextInput
-            label="Email"
-            mode="outlined"
-            returnKeyType="next"
-            style={styles.inputText}
-            value={email}
-            autoCapitalize="none"
-            onChangeText={text => setEmail(text)}
-            onSubmitEditing={() => enterPassword.current.focus()}
-          />
-          <TextInput
-            ref={enterPassword}
-            label="Password"
-            mode="outlined"
-            value={password}
-            secureTextEntry
-            onChangeText={text => setPassword(text)}
-            style={styles.inputText}
-            onSubmitEditing={loginWithEmail}
-          />
-          <Button
-            dark
-            mode="contained"
-            loading={loading}
-            onPress={loginWithEmail}
-            style={styles.button}
-          >
-            Log In
-          </Button>
-          <View style={styles.socialContainer}>
-            <Text>OR</Text>
-            <Text
-              onPress={() => navigation.navigate('Register')}
-              style={styles.clickableText}
+      <ScrollView
+        contentContainerStyle={{ flexGrow: 1, justifyContent: 'center' }}
+      >
+        <Card elevation={2} style={{ margin: 16 }}>
+          <Card.Content>
+            <Text style={styles.titleText}>Login</Text>
+            <TextInput
+              label="Email"
+              mode="outlined"
+              returnKeyType="next"
+              style={styles.inputText}
+              value={email}
+              autoCapitalize="none"
+              onChangeText={text => setEmail(text)}
+              onSubmitEditing={() => enterPassword.current.focus()}
+            />
+            <TextInput
+              ref={enterPassword}
+              label="Password"
+              mode="outlined"
+              value={password}
+              secureTextEntry
+              onChangeText={text => setPassword(text)}
+              style={styles.inputText}
+              onSubmitEditing={loginWithEmail}
+            />
+            <Button
+              dark
+              mode="contained"
+              loading={loading}
+              onPress={loginWithEmail}
+              style={styles.button}
             >
-              Don't have an account ? Sign Up.
-            </Text>
-            <Row style={{ marginTop: 16 }}>
-              <IconButton
-                icon="facebook"
-                size={24}
-                color={Colors.white}
-                style={{ backgroundColor: Colors.facebook }}
-                onPress={loginWithFacebook}
-              />
-              <IconButton
-                icon="google"
-                size={24}
-                color={Colors.white}
-                style={{ backgroundColor: Colors.google }}
-                onPress={loginWithGoogle}
-              />
-            </Row>
-          </View>
-        </Card.Content>
-      </Card>
+              Log In
+            </Button>
+            <View style={styles.socialContainer}>
+              <Text>OR</Text>
+              <Text
+                onPress={() => navigation.navigate('Register')}
+                style={styles.clickableText}
+              >
+                Don't have an account ? Sign Up.
+              </Text>
+              <Row style={{ marginTop: 16 }}>
+                <IconButton
+                  icon="facebook"
+                  size={24}
+                  color={Colors.white}
+                  style={{ backgroundColor: Colors.facebook }}
+                  onPress={loginWithFacebook}
+                />
+                <IconButton
+                  icon="google"
+                  size={24}
+                  color={Colors.white}
+                  style={{ backgroundColor: Colors.google }}
+                  onPress={loginWithGoogle}
+                />
+              </Row>
+            </View>
+          </Card.Content>
+        </Card>
+      </ScrollView>
     </AuthLayout>
   );
 };
 
 const styles = StyleSheet.create({
-  rootContainer: {
-    flex: 1,
-    justifyContent: 'center',
-  },
   titleText: {
     fontWeight: 'bold',
     fontSize: 18,

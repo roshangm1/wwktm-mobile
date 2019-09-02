@@ -35,7 +35,7 @@ export async function getQuestionsForTalk(talkId) {
 export async function getAllQuestions(updateQuestions) {
   fireStoreRef
     .collection('questions')
-    .orderBy('upvotes', 'desc')
+    .orderBy('voters', 'desc')
     .onSnapshot(data => {
       updateQuestions(data.docs.map(d => d.data()));
     });
