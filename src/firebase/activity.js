@@ -18,6 +18,7 @@ export async function addNewPost(content, image) {
       id: feedRef.id,
       content,
       name: user.displayName,
+      commentCount: 0,
       uid: user.uid,
       profileImageUrl: user.photoURL,
       voters: [],
