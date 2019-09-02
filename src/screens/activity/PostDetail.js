@@ -1,5 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Text, View, StyleSheet, TextInput, ScrollView } from 'react-native';
+import {
+  Text,
+  View,
+  StyleSheet,
+  TextInput,
+  ScrollView,
+  KeyboardAvoidingView,
+} from 'react-native';
 import MainLayout from '../../layouts/MainLayout';
 import PostItem from './PostItem';
 import {
@@ -60,44 +67,47 @@ const PostDetail = ({ navigation }) => {
   return (
     <MainLayout title="Details" icon="arrow-left">
       <ScrollView>
-        <PostItem
-          post={post}
-          onLikePress={likePost}
-          onCommentPress={() => console.log('comments')}
-        />
-        <View style={styles.commentsContainer}>
-          <Text style={styles.commentsTitle}>Comments</Text>
-          {renderAllComments()}
-        </View>
+        <KeyboardAvoidingView behavior="padding">
+          <PostItem
+            post={post}
+            onLikePress={likePost}
+            onCommentPress={() => console.log('comments')}
+          />
+          <View style={styles.commentsContainer}>
+            <Text style={styles.commentsTitle}>Comments</Text>
+            {renderAllComments()}
+          </View>
+
+          <View
+            style={{
+              flexDirection: 'row',
+              marginVertical: 8,
+              borderColor: Colors.grey,
+              borderWidth: 1,
+              borderRadius: 6,
+              padding: 4,
+              marginHorizontal: 16,
+            }}
+          >
+            <TextInput
+              ref={inputRef}
+              placeholder="What's on your mind?"
+              style={{ flex: 1 }}
+              value={comment}
+              onChangeText={handleInputChange}
+            />
+            <TouchableRipple
+              style={{
+                paddingHorizontal: 15,
+                justifyContent: 'center',
+              }}
+              onPress={onComment}
+            >
+              <Icon name="send" size={20} color={Colors.black} />
+            </TouchableRipple>
+          </View>
+        </KeyboardAvoidingView>
       </ScrollView>
-      <View
-        style={{
-          flexDirection: 'row',
-          marginVertical: 8,
-          borderColor: Colors.grey,
-          borderWidth: 1,
-          borderRadius: 6,
-          padding: 4,
-          marginHorizontal: 16,
-        }}
-      >
-        <TextInput
-          ref={inputRef}
-          placeholder="What's on your mind?"
-          style={{ flex: 1 }}
-          value={comment}
-          onChangeText={handleInputChange}
-        />
-        <TouchableRipple
-          style={{
-            paddingHorizontal: 15,
-            justifyContent: 'center',
-          }}
-          onPress={onComment}
-        >
-          <Icon name="send" size={20} color={Colors.black} />
-        </TouchableRipple>
-      </View>
     </MainLayout>
   );
 };

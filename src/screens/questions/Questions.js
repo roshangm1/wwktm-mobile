@@ -27,7 +27,7 @@ const Questions = ({ params }) => {
         >
           <View>
             <Text>{item.question}</Text>
-            <Text>Upvotes: {item.voters.length}</Text>
+            <Text>Upvotes: {item.upvoteCount || 0}</Text>
           </View>
           <Button onPress={() => upvoteQuestion(item)}>
             {item.voters.includes(user.uid) ? 'DownVote' : 'Upvote'}

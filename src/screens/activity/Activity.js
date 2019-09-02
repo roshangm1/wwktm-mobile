@@ -14,6 +14,7 @@ const Activity = ({ navigation }) => {
 
   const updateFeed = response => {
     setFeed(response);
+    console.log(response);
   };
 
   const likePost = post => {

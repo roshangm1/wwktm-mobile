@@ -16,7 +16,7 @@ const PostItem = ({ post, onLikePress, onCommentPress }) => {
     name,
     date,
     voters = [],
-    comments = [],
+    commentCount = 0,
   } = post;
 
   const { currentUser } = auth();
@@ -55,7 +55,7 @@ const PostItem = ({ post, onLikePress, onCommentPress }) => {
       )}
       <Row style={styles.bottomRowContainer}>
         <Text style={styles.countText}>{voters.length} Likes</Text>
-        <Text style={styles.countText}>{comments.length} Comments</Text>
+        <Text style={styles.countText}>{commentCount} Comments</Text>
       </Row>
       <Row style={styles.bottomRowContainer}>
         <ActionButton
