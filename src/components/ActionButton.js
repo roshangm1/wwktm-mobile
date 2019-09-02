@@ -3,13 +3,16 @@ import { Text, StyleSheet } from 'react-native';
 import { TouchableRipple } from 'react-native-paper';
 import Row from './Row';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import Colors from '../configs/colors';
 
-const ActionButton = ({ iconName, title, onPress, style }) => {
+const ActionButton = ({ iconName, title, onPress, color, style }) => {
   return (
     <TouchableRipple style={[styles.touchableStyle, style]} onPress={onPress}>
       <Row>
-        <Icon name={iconName} size={20} color="#6B6767" />
-        <Text style={styles.titleText}>{title}</Text>
+        <Icon name={iconName} size={16} color={color || Colors.lightBlack} />
+        <Text style={[styles.titleText, { color: color || Colors.lightBlack }]}>
+          {title}
+        </Text>
       </Row>
     </TouchableRipple>
   );
@@ -22,7 +25,6 @@ const styles = StyleSheet.create({
   titleText: {
     paddingLeft: 5,
     fontSize: 16,
-    color: '#6B6767',
     fontWeight: 'bold',
   },
 });

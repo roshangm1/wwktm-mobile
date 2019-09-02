@@ -2,21 +2,25 @@ import React from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 import Row from '../../components/Row';
 import ActionButton from '../../components/ActionButton';
-import { Avatar, Divider, Card } from 'react-native-paper';
+import { Avatar, Divider } from 'react-native-paper';
 import { getPostTime } from '../../utils/date';
 import { getNameInitials } from './../../utils/string';
 import Colors from '../../configs/colors';
+import { auth } from '../../firebase';
 
-const PostItem = ({ feed }) => {
+const PostItem = ({ post, onLikePress, onCommentPress }) => {
   const {
     profileImageUrl,
     postImage,
     content,
     name,
-    likesCount,
-    commentsCount,
     date,
-  } = feed;
+    voters = [],
+    comments = [],
+  } = post;
+
+  const { currentUser } = auth();
+  const isLikedByUser = voters.includes(currentUser.uid);
   return (
     <View style={styles.rootContainer}>
       <Row>
@@ -50,19 +54,20 @@ const PostItem = ({ feed }) => {
         />
       )}
       <Row style={styles.bottomRowContainer}>
-        <Text style={styles.countText}>5 Likes</Text>
-        <Text style={styles.countText}>10 Comment</Text>
+        <Text style={styles.countText}>{voters.length} Likes</Text>
+        <Text style={styles.countText}>{comments.length} Comments</Text>
       </Row>
       <Row style={styles.bottomRowContainer}>
         <ActionButton
           iconName="heart"
-          title="Like"
-          onPress={() => alert('Like Pressed')}
+          title={isLikedByUser ? 'Unlike' : 'Like'}
+          onPress={onLikePress}
+          color={isLikedByUser && Colors.primary}
         />
         <ActionButton
           iconName="comment"
           title="Comment"
-          onPress={() => alert('Comment Pressed')}
+          onPress={onCommentPress}
         />
       </Row>
       <Divider style={{ marginTop: 8 }} />
@@ -77,13 +82,13 @@ const styles = StyleSheet.create({
   },
   dateText: {
     color: '#808080',
-    paddingTop: 3,
+    marginTop: 4,
   },
   descriptionText: {
-    paddingTop: 10,
+    marginTop: 8,
   },
   bottomRowContainer: {
-    paddingTop: 10,
+    marginTop: 16,
   },
   countText: {
     fontSize: 14,

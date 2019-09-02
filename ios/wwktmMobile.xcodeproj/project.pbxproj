@@ -688,6 +688,8 @@
 			baseConfigurationReference = 93FD6BB7D411058C5DF8A886 /* Pods-wwktmMobile.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = FL2UZ75BM6;
@@ -700,6 +702,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = info.roshan.wwktm;
 				PRODUCT_NAME = wwktmMobile;
+				PROVISIONING_PROFILE_SPECIFIER = "wwktm-development";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -709,6 +712,8 @@
 			baseConfigurationReference = 5687794DEC008116BB462E30 /* Pods-wwktmMobile.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FL2UZ75BM6;
 				INFOPLIST_FILE = wwktmMobile/Info.plist;
@@ -720,6 +725,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = info.roshan.wwktm;
 				PRODUCT_NAME = wwktmMobile;
+				PROVISIONING_PROFILE_SPECIFIER = wwktm;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
