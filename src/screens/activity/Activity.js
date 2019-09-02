@@ -1,4 +1,4 @@
-import { FlatList, View, TextInput } from 'react-native';
+import { FlatList, TextInput, StyleSheet } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { TouchableRipple } from 'react-native-paper';
 
@@ -32,27 +32,14 @@ const Activity = ({ navigation }) => {
       />
       <TouchableWithoutFeedback
         onPress={() => navigation.navigate('CreatePost')}
-        style={{
-          flexDirection: 'row',
-          marginHorizontal: 16,
-          marginVertical: 8,
-          borderColor: Colors.grey,
-          borderWidth: 1,
-          padding: 8,
-          borderRadius: 6,
-        }}
+        style={styles.inputTextContainer}
       >
         <TextInput
           placeholder="What's on your mind?"
-          style={{ flex: 1, paddingVertical: 8 }}
+          style={styles.inputText}
           onFocus={() => navigation.navigate('CreatePost')}
         />
-        <TouchableRipple
-          style={{
-            paddingHorizontal: 15,
-            justifyContent: 'center',
-          }}
-        >
+        <TouchableRipple style={styles.iconStyle}>
           <Icon name="camera" size={20} color={Colors.black} />
         </TouchableRipple>
       </TouchableWithoutFeedback>
@@ -60,4 +47,23 @@ const Activity = ({ navigation }) => {
   );
 };
 
+const styles = StyleSheet.create({
+  inputTextContainer: {
+    flexDirection: 'row',
+    marginHorizontal: 16,
+    marginVertical: 8,
+    borderColor: Colors.grey,
+    borderWidth: 1,
+    padding: 8,
+    borderRadius: 6,
+  },
+  inputText: {
+    flex: 1,
+    paddingVertical: 8,
+  },
+  iconStyle: {
+    paddingHorizontal: 15,
+    justifyContent: 'center',
+  },
+});
 export default Activity;

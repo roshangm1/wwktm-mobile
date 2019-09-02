@@ -40,7 +40,7 @@ const PostItem = ({ feed }) => {
           <Text style={styles.dateText}>{getPostTime(date)}</Text>
         </View>
       </Row>
-      <Text style={styles.descriptionText}>{content}</Text>
+      {content ? <Text style={styles.descriptionText}>{content}</Text> : null}
       {postImage && (
         <Image
           style={styles.imageStyle}
@@ -73,7 +73,6 @@ const PostItem = ({ feed }) => {
 const styles = StyleSheet.create({
   rootContainer: {
     padding: 16,
-
     borderColor: '#808080',
   },
   dateText: {
