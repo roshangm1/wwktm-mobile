@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 import Row from '../../components/Row';
 import ActionButton from '../../components/ActionButton';
-import { Avatar, Divider, Card } from 'react-native-paper';
+import { Avatar, Divider } from 'react-native-paper';
 import { getPostTime } from '../../utils/date';
 import { getNameInitials } from './../../utils/string';
 import Colors from '../../configs/colors';
@@ -18,7 +18,6 @@ const PostItem = ({ post, onLikePress, onCommentPress }) => {
     voters = [],
     comments = [],
   } = post;
-  console.log(post);
 
   const { currentUser } = auth();
   const isLikedByUser = voters.includes(currentUser.uid);

@@ -297,7 +297,6 @@
 					};
 					13B07F861A680F5B00A75B9A = {
 						DevelopmentTeam = FL2UZ75BM6;
-						ProvisioningStyle = Manual;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
