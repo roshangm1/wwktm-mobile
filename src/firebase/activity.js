@@ -46,13 +46,15 @@ export async function upvoteFeed(feed) {
     });
 }
 
-export async function getCommentsForPost(postId) {
-  return (await fireStoreRef
+export function getCommentsForPost(postId, updateComments) {
+  fireStoreRef
     .collection('feed')
     .doc(postId)
     .collection('comments')
-    .orderBy('date', 'DESC')
-    .get()).docs.map(d => d.data());
+    .orderBy('date', 'ASC')
+    .onSnapshot(data => {
+      updateComments(data.docs.map(d => d.data()));
+    });
 }
 
 export async function addCommentToPost(postId, content) {
@@ -63,12 +65,11 @@ export async function addCommentToPost(postId, content) {
     name: user.displayName,
     profileImageUrl: user.photoURL,
     date: new Date().getTime(),
-    id: commentRef.id,
   };
-  const commentRef = fireStoreRef
+  const commentRef = await fireStoreRef
     .collection('feed')
     .doc(postId)
     .collection('comments')
     .doc();
-  commentRef.set(comment);
+  commentRef.set(Object.assign({}, comment, { id: commentRef.id }));
 }

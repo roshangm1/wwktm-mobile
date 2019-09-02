@@ -50,6 +50,9 @@ const ActivityNavigator = createStackNavigator(
     CreatePost: {
       screen: screens.CreatePost,
     },
+    PostDetail: {
+      screen: screens.PostDetail,
+    },
   },
   { headerMode: 'none' },
 );

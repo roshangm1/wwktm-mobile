@@ -4,7 +4,7 @@ import { TouchableRipple } from 'react-native-paper';
 
 import PostItem from './PostItem';
 import MainLayout from '../../layouts/MainLayout';
-import { getFeedData } from '../../firebase/activity';
+import { getFeedData, upvoteFeed } from '../../firebase/activity';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Colors from '../../configs/colors';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
@@ -16,14 +16,25 @@ const Activity = ({ navigation }) => {
     setFeed(response);
   };
 
-  const likePost = () => {};
+  const likePost = post => {
+    upvoteFeed(post);
+  };
+  const commentPress = post => {
+    navigation.navigate('PostDetail', { post });
+  };
 
   useEffect(() => {
     getFeedData(updateFeed);
   }, []);
 
   const renderItem = ({ item }) => {
-    return <PostItem feed={item} onLikePress={() => likePost()} />;
+    return (
+      <PostItem
+        post={item}
+        onLikePress={() => likePost(item)}
+        onCommentPress={() => commentPress(item)}
+      />
+    );
   };
   return (
     <MainLayout title="Activity">

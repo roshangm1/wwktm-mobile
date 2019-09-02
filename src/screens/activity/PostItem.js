@@ -6,9 +6,12 @@ import { Avatar, Divider, Card } from 'react-native-paper';
 import { getPostTime } from '../../utils/date';
 import { getNameInitials } from './../../utils/string';
 import Colors from '../../configs/colors';
+import { auth } from '../../firebase';
 
-const PostItem = ({ feed, onLikePress, onCommentPress }) => {
-  const { profileImageUrl, postImage, content, name, date } = feed;
+const PostItem = ({ post, onLikePress, onCommentPress }) => {
+  const { profileImageUrl, postImage, content, name, date, voters = [] } = post;
+  const { currentUser } = auth();
+  const isLikedByUser = voters.includes(currentUser.uid);
   return (
     <View style={styles.rootContainer}>
       <Row>
@@ -42,11 +45,16 @@ const PostItem = ({ feed, onLikePress, onCommentPress }) => {
         />
       )}
       <Row style={styles.bottomRowContainer}>
-        <Text style={styles.countText}>5 Likes</Text>
+        <Text style={styles.countText}>{voters.length} Likes</Text>
         <Text style={styles.countText}>10 Comment</Text>
       </Row>
       <Row style={styles.bottomRowContainer}>
-        <ActionButton iconName="heart" title="Like" onPress={onLikePress} />
+        <ActionButton
+          iconName="heart"
+          title={isLikedByUser ? 'Unlike' : 'Like'}
+          onPress={onLikePress}
+          color={isLikedByUser && Colors.primary}
+        />
         <ActionButton
           iconName="comment"
           title="Comment"
@@ -66,13 +74,13 @@ const styles = StyleSheet.create({
   },
   dateText: {
     color: '#808080',
-    paddingTop: 3,
+    marginTop: 4,
   },
   descriptionText: {
-    paddingTop: 10,
+    marginTop: 8,
   },
   bottomRowContainer: {
-    paddingTop: 10,
+    marginTop: 16,
   },
   countText: {
     fontSize: 14,

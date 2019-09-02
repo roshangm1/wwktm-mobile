@@ -21,5 +21,6 @@ export { default as AddSchedule } from './admin/AddSchedule';
 
 export { default as Activity } from './activity/Activity';
 export { default as CreatePost } from './activity/CreatePost';
+export { default as PostDetail } from './activity/PostDetail';
 
 export { default as About } from './about/About';
