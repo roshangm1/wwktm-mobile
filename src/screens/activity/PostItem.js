@@ -7,16 +7,8 @@ import { getPostTime } from '../../utils/date';
 import { getNameInitials } from './../../utils/string';
 import Colors from '../../configs/colors';
 
-const PostItem = ({ feed }) => {
-  const {
-    profileImageUrl,
-    postImage,
-    content,
-    name,
-    likesCount,
-    commentsCount,
-    date,
-  } = feed;
+const PostItem = ({ feed, onLikePress, onCommentPress }) => {
+  const { profileImageUrl, postImage, content, name, date } = feed;
   return (
     <View style={styles.rootContainer}>
       <Row>
@@ -54,15 +46,11 @@ const PostItem = ({ feed }) => {
         <Text style={styles.countText}>10 Comment</Text>
       </Row>
       <Row style={styles.bottomRowContainer}>
-        <ActionButton
-          iconName="heart"
-          title="Like"
-          onPress={() => alert('Like Pressed')}
-        />
+        <ActionButton iconName="heart" title="Like" onPress={onLikePress} />
         <ActionButton
           iconName="comment"
           title="Comment"
-          onPress={() => alert('Comment Pressed')}
+          onPress={onCommentPress}
         />
       </Row>
       <Divider style={{ marginTop: 8 }} />

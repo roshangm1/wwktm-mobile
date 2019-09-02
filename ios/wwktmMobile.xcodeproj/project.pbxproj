@@ -295,6 +295,10 @@
 						CreatedOnToolsVersion = 6.2;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
+					13B07F861A680F5B00A75B9A = {
+						DevelopmentTeam = FL2UZ75BM6;
+						ProvisioningStyle = Manual;
+					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
 						ProvisioningStyle = Automatic;
@@ -685,8 +689,11 @@
 			baseConfigurationReference = 93FD6BB7D411058C5DF8A886 /* Pods-wwktmMobile.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
+				DEVELOPMENT_TEAM = FL2UZ75BM6;
 				INFOPLIST_FILE = wwktmMobile/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -696,6 +703,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = info.roshan.wwktm;
 				PRODUCT_NAME = wwktmMobile;
+				PROVISIONING_PROFILE_SPECIFIER = "wwktm-development";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -705,7 +713,10 @@
 			baseConfigurationReference = 5687794DEC008116BB462E30 /* Pods-wwktmMobile.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = FL2UZ75BM6;
 				INFOPLIST_FILE = wwktmMobile/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -715,6 +726,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = info.roshan.wwktm;
 				PRODUCT_NAME = wwktmMobile;
+				PROVISIONING_PROFILE_SPECIFIER = wwktm;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;

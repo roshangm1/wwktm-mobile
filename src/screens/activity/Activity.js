@@ -16,12 +16,14 @@ const Activity = ({ navigation }) => {
     setFeed(response);
   };
 
+  const likePost = () => {};
+
   useEffect(() => {
     getFeedData(updateFeed);
   }, []);
 
   const renderItem = ({ item }) => {
-    return <PostItem feed={item} />;
+    return <PostItem feed={item} onLikePress={() => likePost()} />;
   };
   return (
     <MainLayout title="Activity">
