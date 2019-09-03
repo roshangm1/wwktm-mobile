@@ -114,7 +114,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "info.roshan.wwktm"
+    applicationId "info.roshan.wwktm"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

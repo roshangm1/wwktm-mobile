@@ -61,12 +61,12 @@ const Login = ({ navigation }) => {
   const loginWithGoogle = async () => {
     try {
       await GoogleSignin.configure();
-
-      const data = await GoogleSignin.signIn();
+      await GoogleSignin.signIn();
+      const tokenData = await GoogleSignin.getTokens();
 
       const credential = firebase.auth.GoogleAuthProvider.credential(
-        data.idToken,
-        data.accessToken,
+        tokenData.idToken,
+        tokenData.accessToken,
       );
       await firebase.auth().signInWithCredential(credential);
       navigation.navigate('Activity');
