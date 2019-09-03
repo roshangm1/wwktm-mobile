@@ -21,7 +21,11 @@ const DrawerContent = props => {
       >
         <View>
           <View style={styles.topContainer}>
-            <Avatar.Image size={80} style={{ marginBottom: 8 }} />
+            <Avatar.Image
+              size={80}
+              source={{ uri: user.photoURL }}
+              style={{ marginBottom: 8 }}
+            />
             <Text>{user.displayName || 'Roshan Gautam'}</Text>
             <Text>{user.email}</Text>
           </View>
