@@ -22,7 +22,7 @@ export const DayZeroRoute = ({ data, navigation }) => {
           key={sche.id}
           session={sche}
           navigation={navigation}
-          onAddNotePress={() => navigateToAddNote(sche.id)}
+          // onAddNotePress={() => navigateToAddNote(sche.id)}
           onLikeSessionPress={() => favouriteSession(sche)}
         />
       ))}

@@ -31,9 +31,9 @@ const ScheduleItem = ({
           </View>
           {session.type === 'session' ? (
             <>
-              <Text style={{ flex: 1 }} onPress={onAddNotePress}>
+              {/* <Text style={{ flex: 1 }} onPress={onAddNotePress}>
                 Add note
-              </Text>
+              </Text> */}
               <IconButton
                 color={Colors.primary}
                 icon={

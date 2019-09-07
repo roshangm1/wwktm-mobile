@@ -22,7 +22,7 @@ const AddNote = props => {
           onChangeText={text => setNote(text)}
           mode="outlined"
           multiline
-          style={styles.descriptionTextStyle}
+          style={styles.inputTextStyle}
         />
         <Button
           mode="contained"
@@ -43,12 +43,9 @@ const styles = StyleSheet.create({
   mainContainerStyle: {
     flex: 1,
     padding: 15,
+    justifyContent: 'center',
   },
-  descriptionTextStyle: {
-    height: 250,
-    paddingTop: 10,
-    marginTop: 20,
-  },
+  inputTextStyle: {},
   buttonStyle: {
     paddingVertical: 7,
     marginTop: 20,
