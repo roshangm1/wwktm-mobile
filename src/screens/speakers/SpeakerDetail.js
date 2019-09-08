@@ -4,7 +4,6 @@ import {
   Avatar,
   List,
   Title,
-  Subheading,
   Caption,
   Text,
   Paragraph,
@@ -12,6 +11,7 @@ import {
 import MainLayout from '../../layouts/MainLayout';
 import { getTalkDetail } from '../../firebase/schedule';
 import { getTalkDateRange } from './../../utils/date';
+import SectionHeader from './../../components/SectionHeader';
 
 const SpeakerDetail = ({ navigation }) => {
   const [scheduleInfo, setScheduleInfo] = useState({});
@@ -34,7 +34,7 @@ const SpeakerDetail = ({ navigation }) => {
   return (
     <MainLayout title="Details" icon="arrow-left">
       <ScrollView contentContaierStyle={{ flexGrow: 1 }}>
-        <View style={{ alignItems: 'center', paddingVertical: 15 }}>
+        <View style={{ alignItems: 'center', paddingVertical: 16 }}>
           <Avatar.Image
             source={{
               uri: profilePicture,
@@ -44,9 +44,9 @@ const SpeakerDetail = ({ navigation }) => {
           <Caption style={styles.speakerLabelText}>{designation}</Caption>
           <Caption style={styles.speakerLabelText}>{organization}</Caption>
         </View>
-        <Subheading style={styles.sectionHeader}>DESCRIPTION</Subheading>
+        <SectionHeader title="DESCRIPTION" />
         <Paragraph style={styles.paragraphStyle}>{description}</Paragraph>
-        <Subheading style={styles.sectionHeader}>SCHEDULE</Subheading>
+        <SectionHeader title="SCHEDULE" />
         <List.Subheader>September 21</List.Subheader>
         <View style={styles.cardStyle}>
           <Paragraph>{talk}</Paragraph>
@@ -68,16 +68,10 @@ const styles = StyleSheet.create({
   infoText: {
     color: 'gray',
   },
-  sectionHeader: {
-    backgroundColor: '#ECECEC',
-    paddingVertical: 5,
-    color: '#555353',
-    paddingHorizontal: 15,
-    marginTop: 10,
-  },
+
   cardStyle: {
     backgroundColor: '#D6D6D6',
-    marginHorizontal: 15,
+    marginHorizontal: 16,
     marginBottom: 8,
     borderRadius: 4,
     padding: 15,
@@ -86,7 +80,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
   paragraphStyle: {
-    paddingHorizontal: 15,
+    paddingHorizontal: 16,
     textAlign: 'justify',
   },
   timeText: {
