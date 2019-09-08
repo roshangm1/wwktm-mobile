@@ -19,6 +19,7 @@ const Speakers = ({ navigation }) => {
       }
     />
   );
+
   return (
     <MainLayout title="Speakers">
       <FlatList

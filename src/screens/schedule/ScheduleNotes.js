@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import NoteItem from './NoteItem';
 import { View, FlatList } from 'react-native';
 import MainLayout from '../../layouts/MainLayout';
-import { Subheading } from 'react-native-paper';
+import React, { useEffect, useState } from 'react';
 import { getMyNotesFor } from './../../firebase/notes';
-import NoteItem from './NoteItem';
+import { Subheading } from 'react-native-paper';
 
 const ScheduleNotes = ({ navigation }) => {
   const [notes, setNotes] = useState([]);
