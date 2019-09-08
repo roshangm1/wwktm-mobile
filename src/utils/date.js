@@ -10,3 +10,7 @@ export function getTalkDateRange(startDate, endDate) {
 export function getPostTime(date) {
   return moment(date).fromNow();
 }
+
+export function getNotesTime(date) {
+  return moment(date).format('MMM D, h:mm a');
+}

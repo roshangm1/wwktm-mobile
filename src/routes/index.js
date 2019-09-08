@@ -38,6 +38,9 @@ const ScheduleNavigator = createStackNavigator(
     AddQuestion: {
       screen: screens.AddQuestion,
     },
+    ScheduleNotes: {
+      screen: screens.ScheduleNotes,
+    },
   },
   { headerMode: 'none' },
 );

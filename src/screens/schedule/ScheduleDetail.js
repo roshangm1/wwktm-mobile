@@ -8,6 +8,7 @@ import {
   IconButton,
   FAB,
   Portal,
+  Button,
 } from 'react-native-paper';
 import Row from './../../components/Row';
 import Colors from './../../configs/colors';
@@ -37,7 +38,7 @@ const ScheduleDetail = ({ navigation }) => {
   }, [speakerId]);
 
   const navigateToAddNote = sessionId => {
-    navigation.navigate('AddNote', { talkId: sessionId });
+    navigation.navigate('AddNote', { talkId: sessionId, title });
   };
 
   const { profilePicture, name, designation, organization } = speakerDetail;
@@ -49,6 +50,13 @@ const ScheduleDetail = ({ navigation }) => {
           <Subheading style={styles.dateText}>
             {getTalkDateRange(startTime, endTime)}
           </Subheading>
+          <Button
+            mode="outlined"
+            onPress={() => navigation.navigate('ScheduleNotes', { talkId: id })}
+            style={{ marginVertical: 10 }}
+          >
+            My Notes
+          </Button>
           <Divider style={styles.sectionHeaderStyle} />
           <Row>
             <IconButton

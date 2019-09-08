@@ -4,6 +4,7 @@ export { default as SpeakerDetail } from './speakers/SpeakerDetail';
 
 export { default as Schedule } from './schedule/Schedule';
 export { default as ScheduleDetail } from './schedule/ScheduleDetail';
+export { default as ScheduleNotes } from './schedule/ScheduleNotes';
 
 export { default as AddNote } from './notes/AddNote';
 export { default as Notes } from './notes/Notes';
