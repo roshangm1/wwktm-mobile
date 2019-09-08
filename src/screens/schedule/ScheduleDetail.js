@@ -1,11 +1,9 @@
 import {
   Title,
   Avatar,
-  Divider,
   Caption,
   Paragraph,
   Subheading,
-  IconButton,
   FAB,
   Portal,
   Button,
@@ -16,6 +14,7 @@ import MainLayout from '../../layouts/MainLayout';
 import React, { useEffect, useState } from 'react';
 import { getSpeaker } from '../../firebase/speakers';
 import { getTalkDateRange } from './../../utils/date';
+import { getNameInitials } from './../../utils/string';
 import { View, StyleSheet, ScrollView } from 'react-native';
 import SectionHeader from './../../components/SectionHeader';
 
@@ -42,6 +41,7 @@ const ScheduleDetail = ({ navigation }) => {
   };
 
   const { profilePicture, name, designation, organization } = speakerDetail;
+  console.log('name', name);
   return (
     <MainLayout title="Schedule Details" icon="arrow-left">
       <ScrollView contentContianerStyle={styles.rootContainer}>
@@ -66,13 +66,24 @@ const ScheduleDetail = ({ navigation }) => {
           <View>
             <SectionHeader style={styles.sectionHeaderStyle} title="SPEAKERS" />
             <Row style={{ marginHorizontal: 16 }}>
-              <Avatar.Image
-                style={styles.avatarStyle}
-                source={{
-                  uri: profilePicture,
-                }}
-                size={80}
-              />
+              {profilePicture ? (
+                <Avatar.Image
+                  style={styles.avatarStyle}
+                  source={{
+                    uri: profilePicture,
+                  }}
+                  size={80}
+                />
+              ) : null
+              // (
+              //   <Avatar.Text
+              //     size={80}
+              //     color={Colors.white}
+              //     label={getNameInitials(name)}
+              //     style={styles.avatarStyle}
+              //   />
+              // )
+              }
               <View style={{ flex: 1 }}>
                 <Title>{name}</Title>
                 <Caption
