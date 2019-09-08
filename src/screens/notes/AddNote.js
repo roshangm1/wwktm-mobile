@@ -9,7 +9,9 @@ const AddNote = props => {
 
   const onSubmitPress = () => {
     const { talkId } = props.navigation.state.params;
-    addNoteForTalk(talkId, note);
+    addNoteForTalk(talkId, note).then(() => {
+      props.navigation.navigate('Notes');
+    });
   };
 
   return (
