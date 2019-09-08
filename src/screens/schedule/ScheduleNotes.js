@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { View, FlatList } from 'react-native';
 import MainLayout from '../../layouts/MainLayout';
-import { Subheading, Divider } from 'react-native-paper';
+import { Subheading } from 'react-native-paper';
 import { getMyNotesFor } from './../../firebase/notes';
 import NoteItem from './NoteItem';
 
@@ -20,7 +20,6 @@ const ScheduleNotes = ({ navigation }) => {
     <MainLayout title="Notes" icon="arrow-left">
       <View style={{ paddingHorizontal: 16, paddingVertical: 10 }}>
         <Subheading>{title}</Subheading>
-        <Divider />
 
         <FlatList
           data={notes}

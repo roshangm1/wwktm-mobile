@@ -43,7 +43,7 @@ const ScheduleDetail = ({ navigation }) => {
 
   const { profilePicture, name, designation, organization } = speakerDetail;
   return (
-    <MainLayout title="Session Details" icon="arrow-left">
+    <MainLayout title="Schedule Details" icon="arrow-left">
       <ScrollView contentContianerStyle={styles.rootContainer}>
         <View style={styles.titleContainer}>
           <Title>{title}</Title>
@@ -52,41 +52,13 @@ const ScheduleDetail = ({ navigation }) => {
           </Subheading>
           <Button
             mode="outlined"
-            onPress={() => navigation.navigate('ScheduleNotes', { talkId: id })}
+            onPress={() =>
+              navigation.navigate('ScheduleNotes', { talkId: id, title })
+            }
             style={{ marginVertical: 10 }}
           >
             My Notes
           </Button>
-          <Divider style={styles.sectionHeaderStyle} />
-          <Row>
-            <IconButton
-              color={Colors.primary}
-              icon={'star'}
-              style={styles.starsIcon}
-            />
-            <IconButton
-              color={Colors.primary}
-              icon={'star'}
-              style={styles.starsIcon}
-            />
-            <IconButton
-              color={Colors.primary}
-              icon={'star'}
-              style={styles.starsIcon}
-            />
-            <IconButton
-              color={Colors.primary}
-              icon={'star'}
-              style={styles.starsIcon}
-            />
-            <IconButton
-              color={Colors.primary}
-              icon={'star'}
-              style={styles.starsIcon}
-            />
-
-            {/* <Caption style={{ fontSize: 14 }}>No ratings</Caption> */}
-          </Row>
         </View>
         <SectionHeader style={styles.sectionHeaderStyle} title="DESCRIPTION" />
         <Paragraph style={styles.descriptionText}>{longDescription}</Paragraph>
@@ -117,31 +89,30 @@ const ScheduleDetail = ({ navigation }) => {
             </Row>
           </View>
         )}
-
-        <Portal>
-          <FAB.Group
-            open={isOpen}
-            icon={isOpen ? 'close' : 'plus'}
-            color={Colors.white}
-            actions={[
-              {
-                icon: 'star-outline',
-                color: Colors.primary,
-                label: 'Add to Favourites',
-                onPress: () => alert('Add to Favourites'),
-              },
-              {
-                icon: 'pencil',
-                color: Colors.primary,
-                label: 'Add Note',
-                onPress: () => navigateToAddNote(id),
-              },
-            ]}
-            onStateChange={({ open }) => setIsOpen(open)}
-            fabStyle={{ backgroundColor: Colors.primary }}
-          />
-        </Portal>
       </ScrollView>
+      <Portal>
+        <FAB.Group
+          open={isOpen}
+          icon={isOpen ? 'close' : 'plus'}
+          color={Colors.white}
+          actions={[
+            {
+              icon: 'pencil',
+              color: Colors.primary,
+              label: 'Add Note',
+              onPress: () => navigateToAddNote(id),
+            },
+            {
+              icon: 'comment-question',
+              color: Colors.primary,
+              label: 'Add a question',
+              onPress: () => navigation.navigate('AddQuestion', { talkId: id }),
+            },
+          ]}
+          onStateChange={({ open }) => setIsOpen(open)}
+          fabStyle={{ backgroundColor: Colors.primary }}
+        />
+      </Portal>
     </MainLayout>
   );
 };

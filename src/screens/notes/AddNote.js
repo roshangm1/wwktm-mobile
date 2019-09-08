@@ -10,7 +10,7 @@ const AddNote = props => {
   const onSubmitPress = () => {
     const { talkId } = props.navigation.state.params;
     addNoteForTalk(talkId, note).then(() => {
-      props.navigation.navigate('Notes');
+      props.navigation.goBack();
     });
   };
 
@@ -18,16 +18,17 @@ const AddNote = props => {
     <MainLayout title="Add Note" icon="arrow-left">
       <ScrollView contentContainerStyle={styles.mainContainerStyle}>
         <TextInput
-          label="Add a note"
           placeholder="Add some description.."
           value={note}
           onChangeText={text => setNote(text)}
           mode="outlined"
           multiline
+          numberOfLines={8}
           style={styles.inputTextStyle}
         />
         <Button
           mode="contained"
+          dark
           style={styles.buttonStyle}
           onPress={onSubmitPress}
         >
@@ -43,11 +44,9 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   mainContainerStyle: {
-    flex: 1,
     padding: 15,
-    justifyContent: 'center',
   },
-  inputTextStyle: {},
+  inputTextStyle: { justifyContent: 'flex-start', height: 200 },
   buttonStyle: {
     paddingVertical: 7,
     marginTop: 20,
