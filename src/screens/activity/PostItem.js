@@ -1,12 +1,12 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
-import Row from '../../components/Row';
-import ActionButton from '../../components/ActionButton';
-import { Avatar, Divider } from 'react-native-paper';
-import { getPostTime } from '../../utils/date';
-import { getNameInitials } from './../../utils/string';
-import Colors from '../../configs/colors';
 import { auth } from '../../firebase';
+import Row from '../../components/Row';
+import Colors from '../../configs/colors';
+import { getPostTime } from '../../utils/date';
+import { Avatar, Divider } from 'react-native-paper';
+import { getNameInitials } from './../../utils/string';
+import ActionButton from '../../components/ActionButton';
+import { View, Text, StyleSheet, Image } from 'react-native';
 
 const PostItem = ({ post, onLikePress, onCommentPress }) => {
   const {
@@ -20,6 +20,7 @@ const PostItem = ({ post, onLikePress, onCommentPress }) => {
   } = post;
 
   const { currentUser } = auth();
+
   const isLikedByUser = voters.includes(currentUser.uid);
   return (
     <View style={styles.rootContainer}>
