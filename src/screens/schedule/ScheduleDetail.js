@@ -41,7 +41,6 @@ const ScheduleDetail = ({ navigation }) => {
   };
 
   const { profilePicture, name, designation, organization } = speakerDetail;
-  console.log('name', name);
   return (
     <MainLayout title="Schedule Details" icon="arrow-left">
       <ScrollView contentContianerStyle={styles.rootContainer}>

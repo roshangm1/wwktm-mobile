@@ -1,14 +1,15 @@
 import { fireStoreRef, auth, fireStore } from '.';
 
-export async function addQuestionForTalk(talkId, question) {
+export async function addQuestionForTalk(talkId, question, anonymous) {
   let user = auth().currentUser;
 
   let ref = fireStoreRef.collection('questions').doc();
   await ref.set({
     id: ref.id,
     question,
+    anonymous,
     talkId,
-    name: user.displayName,
+    name: !anonymous ? user.displayName : 'WWKTM User',
     uid: user.uid,
     imageUrl: user.photoURL,
     date: new Date().getTime(),
