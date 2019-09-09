@@ -99,6 +99,9 @@ const AppStack = createDrawerNavigator(
     About: {
       screen: screens.About,
     },
+    Map: {
+      screen: screens.Map,
+    },
   },
   {
     drawerWidth: 300,
