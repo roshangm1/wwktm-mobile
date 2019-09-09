@@ -5,8 +5,8 @@ import { getNotesTime } from './../../utils/date';
 
 const NoteItem = ({ note, date }) => {
   return (
-    <Card elevation={2} style={{ marginVertical: 8 }}>
-      <Card.Content style={{ flex: 1 }}>
+    <Card style={{ marginVertical: 8, marginLeft: 12 }}>
+      <Card.Content>
         <Text style={{ textAlign: 'justify' }} numberOfLines={2}>
           {note}
         </Text>

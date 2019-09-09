@@ -35,6 +35,7 @@ const DrawerContent = props => {
                 size={80}
                 color={Colors.white}
                 label={getNameInitials(user.displayName)}
+                style={{ marginBottom: 8 }}
               />
             )}
             <Text>{user.displayName || 'Roshan Gautam'}</Text>

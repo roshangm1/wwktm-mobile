@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
   mainContainerStyle: {
     padding: 15,
   },
-  inputTextStyle: { justifyContent: 'flex-start' },
+  inputTextStyle: {},
   buttonStyle: {
     paddingVertical: 7,
     marginTop: 20,

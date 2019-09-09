@@ -18,12 +18,13 @@ const ScheduleNotes = ({ navigation }) => {
   };
   return (
     <MainLayout title="Notes" icon="arrow-left">
-      <View style={{ paddingHorizontal: 16, paddingVertical: 10 }}>
+      <View style={{ flex: 1, paddingHorizontal: 16, paddingVertical: 10 }}>
         <Subheading>{title}</Subheading>
 
         <FlatList
           data={notes}
           keyExtractor={item => item.id}
+          showsVerticalScrollIndicator={false}
           renderItem={renderItem}
         />
       </View>
