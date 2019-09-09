@@ -32,6 +32,8 @@ export function getAllNotes(updateNotes) {
     .collection('notes')
     .where('uid', '==', user.uid)
     .onSnapshot(data => {
-      updateNotes(data.docs.map(d => d.data()));
+      const allNotes = data.docs.map(d => d.data());
+
+      updateNotes(allNotes);
     });
 }

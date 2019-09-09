@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
-import { Avatar, Drawer, Divider } from 'react-native-paper';
-import { SafeAreaView } from 'react-navigation';
-import { ScrollView, StyleSheet, View, Text } from 'react-native';
 import { auth } from '../firebase';
+import React, { useState } from 'react';
+import Colors from './../configs/colors';
+import { SafeAreaView } from 'react-navigation';
+import { getNameInitials } from './../utils/string';
+import { Avatar, Drawer, Divider } from 'react-native-paper';
+import { ScrollView, StyleSheet, View, Text } from 'react-native';
 
 const DrawerContent = props => {
   const user = auth().currentUser;
+
   const [active, setActive] = useState('activity');
 
   const handleDrawerItemPress = route => {
@@ -21,11 +24,20 @@ const DrawerContent = props => {
       >
         <View>
           <View style={styles.topContainer}>
-            <Avatar.Image
-              size={80}
-              source={{ uri: user.photoURL }}
-              style={{ marginBottom: 8 }}
-            />
+            {user.photoURL ? (
+              <Avatar.Image
+                size={80}
+                source={{ uri: user.photoURL }}
+                style={{ marginBottom: 8 }}
+              />
+            ) : (
+              <Avatar.Text
+                size={80}
+                color={Colors.white}
+                label={getNameInitials(user.displayName)}
+                style={{ marginBottom: 8 }}
+              />
+            )}
             <Text>{user.displayName || 'Roshan Gautam'}</Text>
             <Text>{user.email}</Text>
           </View>

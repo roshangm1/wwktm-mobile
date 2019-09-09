@@ -4,12 +4,12 @@ import { TextInput, Button } from 'react-native-paper';
 import { StyleSheet, ScrollView } from 'react-native';
 import { addQuestionForTalk } from '../../firebase/question';
 
-const AddQuestion = props => {
+const AddQuestion = ({ navigation }) => {
   const [question, setQuestion] = useState('');
 
   const onSubmitPress = () => {
-    const { talkId } = props.navigation.state.params;
-    addQuestionForTalk(talkId, question);
+    const { talkId } = navigation.state.params;
+    addQuestionForTalk(talkId, question).then(() => navigation.goBack());
   };
 
   return (
@@ -26,6 +26,7 @@ const AddQuestion = props => {
         />
         <Button
           mode="contained"
+          dark
           style={styles.buttonStyle}
           onPress={onSubmitPress}
         >
@@ -45,7 +46,7 @@ const styles = StyleSheet.create({
     padding: 15,
   },
   descriptionTextStyle: {
-    height: 250,
+    height: 200,
     paddingTop: 10,
     marginTop: 20,
   },

@@ -1,27 +1,32 @@
-import React, { useState, useEffect } from 'react';
-import { View, StyleSheet, ScrollView } from 'react-native';
 import {
-  Avatar,
-  List,
   Title,
+  Avatar,
   Caption,
-  Text,
   Paragraph,
+  List,
+  Text,
 } from 'react-native-paper';
+import Colors from './../../configs/colors';
 import MainLayout from '../../layouts/MainLayout';
-import { getTalkDetail } from '../../firebase/schedule';
+import React, { useState, useEffect } from 'react';
 import { getTalkDateRange } from './../../utils/date';
+import { getNameInitials } from './../../utils/string';
+import { getTalkDetail } from '../../firebase/schedule';
+import { View, StyleSheet, ScrollView } from 'react-native';
 import SectionHeader from './../../components/SectionHeader';
 
 const SpeakerDetail = ({ navigation }) => {
   const [scheduleInfo, setScheduleInfo] = useState({});
+
   const { talkId } = navigation.state.params.speakerDetail;
   useEffect(() => {
     getTalkDetail(talkId).then(response => {
       setScheduleInfo(response);
     });
   }, [navigation.state.params.speakerDetail.talkId, talkId]);
+
   const { startTime, endTime } = scheduleInfo;
+
   const {
     profilePicture,
     name,
@@ -35,11 +40,15 @@ const SpeakerDetail = ({ navigation }) => {
     <MainLayout title="Details" icon="arrow-left">
       <ScrollView contentContaierStyle={{ flexGrow: 1 }}>
         <View style={{ alignItems: 'center', paddingVertical: 16 }}>
-          <Avatar.Image
-            source={{
-              uri: profilePicture,
-            }}
-          />
+          {profilePicture ? (
+            <Avatar.Image
+              source={{
+                uri: profilePicture,
+              }}
+            />
+          ) : (
+            <Avatar.Text color={Colors.white} label={getNameInitials(name)} />
+          )}
           <Title>{name}</Title>
           <Caption style={styles.speakerLabelText}>{designation}</Caption>
           <Caption style={styles.speakerLabelText}>{organization}</Caption>

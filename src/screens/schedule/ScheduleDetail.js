@@ -1,13 +1,12 @@
 import {
   Title,
   Avatar,
-  Divider,
   Caption,
   Paragraph,
   Subheading,
-  IconButton,
   FAB,
   Portal,
+  Button,
 } from 'react-native-paper';
 import Row from './../../components/Row';
 import Colors from './../../configs/colors';
@@ -15,6 +14,7 @@ import MainLayout from '../../layouts/MainLayout';
 import React, { useEffect, useState } from 'react';
 import { getSpeaker } from '../../firebase/speakers';
 import { getTalkDateRange } from './../../utils/date';
+import { getNameInitials } from './../../utils/string';
 import { View, StyleSheet, ScrollView } from 'react-native';
 import SectionHeader from './../../components/SectionHeader';
 
@@ -37,48 +37,28 @@ const ScheduleDetail = ({ navigation }) => {
   }, [speakerId]);
 
   const navigateToAddNote = sessionId => {
-    navigation.navigate('AddNote', { talkId: sessionId });
+    navigation.navigate('AddNote', { talkId: sessionId, title });
   };
 
   const { profilePicture, name, designation, organization } = speakerDetail;
+  console.log('name', name);
   return (
-    <MainLayout title="Session Details" icon="arrow-left">
+    <MainLayout title="Schedule Details" icon="arrow-left">
       <ScrollView contentContianerStyle={styles.rootContainer}>
         <View style={styles.titleContainer}>
           <Title>{title}</Title>
           <Subheading style={styles.dateText}>
             {getTalkDateRange(startTime, endTime)}
           </Subheading>
-          <Divider style={styles.sectionHeaderStyle} />
-          <Row>
-            <IconButton
-              color={Colors.primary}
-              icon={'star'}
-              style={styles.starsIcon}
-            />
-            <IconButton
-              color={Colors.primary}
-              icon={'star'}
-              style={styles.starsIcon}
-            />
-            <IconButton
-              color={Colors.primary}
-              icon={'star'}
-              style={styles.starsIcon}
-            />
-            <IconButton
-              color={Colors.primary}
-              icon={'star'}
-              style={styles.starsIcon}
-            />
-            <IconButton
-              color={Colors.primary}
-              icon={'star'}
-              style={styles.starsIcon}
-            />
-
-            {/* <Caption style={{ fontSize: 14 }}>No ratings</Caption> */}
-          </Row>
+          <Button
+            mode="outlined"
+            onPress={() =>
+              navigation.navigate('ScheduleNotes', { talkId: id, title })
+            }
+            style={{ marginVertical: 10 }}
+          >
+            My Notes
+          </Button>
         </View>
         <SectionHeader style={styles.sectionHeaderStyle} title="DESCRIPTION" />
         <Paragraph style={styles.descriptionText}>{longDescription}</Paragraph>
@@ -86,13 +66,24 @@ const ScheduleDetail = ({ navigation }) => {
           <View>
             <SectionHeader style={styles.sectionHeaderStyle} title="SPEAKERS" />
             <Row style={{ marginHorizontal: 16 }}>
-              <Avatar.Image
-                style={styles.avatarStyle}
-                source={{
-                  uri: profilePicture,
-                }}
-                size={80}
-              />
+              {profilePicture ? (
+                <Avatar.Image
+                  style={styles.avatarStyle}
+                  source={{
+                    uri: profilePicture,
+                  }}
+                  size={80}
+                />
+              ) : null
+              // (
+              //   <Avatar.Text
+              //     size={80}
+              //     color={Colors.white}
+              //     label={getNameInitials(name)}
+              //     style={styles.avatarStyle}
+              //   />
+              // )
+              }
               <View style={{ flex: 1 }}>
                 <Title>{name}</Title>
                 <Caption
@@ -109,31 +100,30 @@ const ScheduleDetail = ({ navigation }) => {
             </Row>
           </View>
         )}
-
-        <Portal>
-          <FAB.Group
-            open={isOpen}
-            icon={isOpen ? 'close' : 'plus'}
-            color={Colors.white}
-            actions={[
-              {
-                icon: 'star-outline',
-                color: Colors.primary,
-                label: 'Add to Favourites',
-                onPress: () => alert('Add to Favourites'),
-              },
-              {
-                icon: 'pencil',
-                color: Colors.primary,
-                label: 'Add Note',
-                onPress: () => navigateToAddNote(id),
-              },
-            ]}
-            onStateChange={({ open }) => setIsOpen(open)}
-            fabStyle={{ backgroundColor: Colors.primary }}
-          />
-        </Portal>
       </ScrollView>
+      <Portal>
+        <FAB.Group
+          open={isOpen}
+          icon={isOpen ? 'close' : 'plus'}
+          color={Colors.white}
+          actions={[
+            {
+              icon: 'pencil',
+              color: Colors.primary,
+              label: 'Add Note',
+              onPress: () => navigateToAddNote(id),
+            },
+            {
+              icon: 'comment-question',
+              color: Colors.primary,
+              label: 'Add a question',
+              onPress: () => navigation.navigate('AddQuestion', { talkId: id }),
+            },
+          ]}
+          onStateChange={({ open }) => setIsOpen(open)}
+          fabStyle={{ backgroundColor: Colors.primary }}
+        />
+      </Portal>
     </MainLayout>
   );
 };
