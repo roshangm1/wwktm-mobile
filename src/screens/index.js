@@ -13,6 +13,7 @@ export { default as Favourites } from './schedule/Favourites';
 export { default as Questions } from './questions/Questions';
 export { default as MyQuestions } from './questions/MyQuestions';
 export { default as AddQuestion } from './questions/AddQuestion';
+export { default as Map } from './map/Map';
 
 export { default as Login } from './auth/Login';
 export { default as Register } from './auth/Register';

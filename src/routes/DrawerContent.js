@@ -81,15 +81,21 @@ const DrawerContent = props => {
           />
           <Divider style={{ height: 1 }} />
           <Drawer.Item
+            label="Map"
+            icon="map"
+            active={active === 'map'}
+            onPress={() => handleDrawerItemPress('Map')}
+          />
+          <Drawer.Item
             label="About"
             icon="information"
-            active={active === 'About'}
+            active={active === 'about'}
             onPress={() => handleDrawerItemPress('About')}
           />
           <Drawer.Item
             label="Settings"
             icon="settings"
-            active={active === 'Settings'}
+            active={active === 'settings'}
             onPress={() => handleDrawerItemPress('Settings')}
           />
         </View>
