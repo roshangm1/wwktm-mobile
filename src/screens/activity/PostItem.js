@@ -7,8 +7,9 @@ import { Avatar, Divider } from 'react-native-paper';
 import { getNameInitials } from './../../utils/string';
 import ActionButton from '../../components/ActionButton';
 import { View, Text, StyleSheet, Image } from 'react-native';
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
-const PostItem = ({ post, onLikePress, onCommentPress }) => {
+const PostItem = ({ post, onPress, onLikePress, onCommentPress }) => {
   const {
     profileImageUrl,
     postImage,
@@ -23,7 +24,7 @@ const PostItem = ({ post, onLikePress, onCommentPress }) => {
 
   const isLikedByUser = voters.includes(currentUser.uid);
   return (
-    <View style={styles.rootContainer}>
+    <View onPress={onPress} style={styles.rootContainer}>
       <Row>
         {profileImageUrl ? (
           <Avatar.Image
@@ -54,23 +55,28 @@ const PostItem = ({ post, onLikePress, onCommentPress }) => {
           }}
         />
       )}
-      <Row style={styles.bottomRowContainer}>
-        <Text style={styles.countText}>{voters.length} Likes</Text>
-        <Text style={styles.countText}>{commentCount} Comments</Text>
-      </Row>
-      <Row style={styles.bottomRowContainer}>
-        <ActionButton
-          iconName="heart"
-          title={isLikedByUser ? 'Unlike' : 'Like'}
-          onPress={onLikePress}
-          color={isLikedByUser && Colors.primary}
-        />
-        <ActionButton
-          iconName="comment"
-          title="Comment"
-          onPress={onCommentPress}
-        />
-      </Row>
+
+      <TouchableWithoutFeedback onPress={onPress}>
+        <Row style={styles.bottomRowContainer}>
+          <Text style={styles.countText}>{voters.length} Likes</Text>
+          <Text style={styles.countText}>{commentCount} Comments</Text>
+        </Row>
+      </TouchableWithoutFeedback>
+      {onLikePress && onCommentPress ? (
+        <Row style={styles.bottomRowContainer}>
+          <ActionButton
+            iconName="heart"
+            title={isLikedByUser ? 'Unlike' : 'Like'}
+            onPress={onLikePress}
+            color={isLikedByUser && Colors.primary}
+          />
+          <ActionButton
+            iconName="comment"
+            title="Comment"
+            onPress={onCommentPress}
+          />
+        </Row>
+      ) : null}
       <Divider style={{ marginTop: 8 }} />
     </View>
   );

@@ -16,14 +16,17 @@ export async function addNoteForTalk(talkId, note = 'hello world') {
   });
 }
 
-export async function getMyNotesFor(talkId) {
+export function getMyNotesFor(talkId, updateNotes) {
   let user = firebase.auth().currentUser;
-  let notesData = await fireStoreRef
+  fireStoreRef
     .collection('notes')
     .where('uid', '==', user.uid)
     .where('talkId', '==', talkId)
-    .get();
-  return notesData.docs.map(d => d.data());
+    .onSnapshot(data => {
+      const allNotes = data.docs.map(d => d.data());
+
+      updateNotes(allNotes);
+    });
 }
 
 export function getAllNotes(updateNotes) {

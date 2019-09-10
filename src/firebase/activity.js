@@ -27,12 +27,11 @@ export async function addNewPost(content, image) {
     });
   }
   if (image) {
-    uploadImage(image, url => {
-      setPost(url);
+    uploadImage(image, async url => {
+      return await setPost(url);
     });
-  } else {
-    await setPost();
   }
+  return await setPost();
 }
 export async function upvoteFeed(feed) {
   let user = auth().currentUser;

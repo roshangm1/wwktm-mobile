@@ -10,15 +10,15 @@ PODS:
     - Fabric (~> 1.10.2)
   - DoubleConversion (1.1.6)
   - Fabric (1.10.2)
-  - FBSDKCoreKit (5.2.3):
-    - FBSDKCoreKit/Basics (= 5.2.3)
-    - FBSDKCoreKit/Core (= 5.2.3)
-  - FBSDKCoreKit/Basics (5.2.3)
-  - FBSDKCoreKit/Core (5.2.3):
+  - FBSDKCoreKit (5.3.0):
+    - FBSDKCoreKit/Basics (= 5.3.0)
+    - FBSDKCoreKit/Core (= 5.3.0)
+  - FBSDKCoreKit/Basics (5.3.0)
+  - FBSDKCoreKit/Core (5.3.0):
     - FBSDKCoreKit/Basics
-  - FBSDKLoginKit (5.2.3):
+  - FBSDKLoginKit (5.3.0):
     - FBSDKCoreKit (~> 5.0)
-  - FBSDKShareKit (5.2.3):
+  - FBSDKShareKit (5.3.0):
     - FBSDKCoreKit (~> 5.0)
   - Firebase/Auth (6.5.0):
     - Firebase/CoreOnly
@@ -281,10 +281,10 @@ DEPENDENCIES:
   - React-jsi (from `../node_modules/react-native/ReactCommon/jsi`)
   - React-jsiexecutor (from `../node_modules/react-native/ReactCommon/jsiexecutor`)
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
-  - react-native-date-picker (from `/Users/awazgyawali/Projects/Personal/wwktm-mobile/node_modules/react-native-date-picker`)
-  - react-native-fbsdk (from `/Users/awazgyawali/Projects/Personal/wwktm-mobile/node_modules/react-native-fbsdk`)
-  - react-native-image-picker (from `/Users/awazgyawali/Projects/Personal/wwktm-mobile/node_modules/react-native-image-picker`)
-  - react-native-simple-toast (from `/Users/awazgyawali/Projects/Personal/wwktm-mobile/node_modules/react-native-simple-toast`)
+  - react-native-date-picker (from `/Users/penguin/open-source/wwktmMobile/node_modules/react-native-date-picker`)
+  - react-native-fbsdk (from `/Users/penguin/open-source/wwktmMobile/node_modules/react-native-fbsdk`)
+  - react-native-image-picker (from `/Users/penguin/open-source/wwktmMobile/node_modules/react-native-image-picker`)
+  - react-native-simple-toast (from `/Users/penguin/open-source/wwktmMobile/node_modules/react-native-simple-toast`)
   - React-RCTActionSheet (from `../node_modules/react-native/Libraries/ActionSheetIOS`)
   - React-RCTAnimation (from `../node_modules/react-native/Libraries/NativeAnimation`)
   - React-RCTBlob (from `../node_modules/react-native/Libraries/Blob`)
@@ -295,12 +295,12 @@ DEPENDENCIES:
   - React-RCTText (from `../node_modules/react-native/Libraries/Text`)
   - React-RCTVibration (from `../node_modules/react-native/Libraries/Vibration`)
   - React-RCTWebSocket (from `../node_modules/react-native/Libraries/WebSocket`)
-  - RNFirebase (from `/Users/awazgyawali/Projects/Personal/wwktm-mobile/node_modules/react-native-firebase/ios`)
-  - RNGestureHandler (from `/Users/awazgyawali/Projects/Personal/wwktm-mobile/node_modules/react-native-gesture-handler`)
-  - RNGoogleSignin (from `/Users/awazgyawali/Projects/Personal/wwktm-mobile/node_modules/react-native-google-signin`)
-  - RNReanimated (from `/Users/awazgyawali/Projects/Personal/wwktm-mobile/node_modules/react-native-reanimated`)
-  - RNScreens (from `/Users/awazgyawali/Projects/Personal/wwktm-mobile/node_modules/react-native-screens`)
-  - RNVectorIcons (from `/Users/awazgyawali/Projects/Personal/wwktm-mobile/node_modules/react-native-vector-icons`)
+  - RNFirebase (from `/Users/penguin/open-source/wwktmMobile/node_modules/react-native-firebase/ios`)
+  - RNGestureHandler (from `/Users/penguin/open-source/wwktmMobile/node_modules/react-native-gesture-handler`)
+  - RNGoogleSignin (from `/Users/penguin/open-source/wwktmMobile/node_modules/react-native-google-signin`)
+  - RNReanimated (from `/Users/penguin/open-source/wwktmMobile/node_modules/react-native-reanimated`)
+  - RNScreens (from `/Users/penguin/open-source/wwktmMobile/node_modules/react-native-screens`)
+  - RNVectorIcons (from `/Users/penguin/open-source/wwktmMobile/node_modules/react-native-vector-icons`)
   - yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -356,13 +356,13 @@ EXTERNAL SOURCES:
   React-jsinspector:
     :path: "../node_modules/react-native/ReactCommon/jsinspector"
   react-native-date-picker:
-    :path: "/Users/awazgyawali/Projects/Personal/wwktm-mobile/node_modules/react-native-date-picker"
+    :path: "/Users/penguin/open-source/wwktmMobile/node_modules/react-native-date-picker"
   react-native-fbsdk:
-    :path: "/Users/awazgyawali/Projects/Personal/wwktm-mobile/node_modules/react-native-fbsdk"
+    :path: "/Users/penguin/open-source/wwktmMobile/node_modules/react-native-fbsdk"
   react-native-image-picker:
-    :path: "/Users/awazgyawali/Projects/Personal/wwktm-mobile/node_modules/react-native-image-picker"
+    :path: "/Users/penguin/open-source/wwktmMobile/node_modules/react-native-image-picker"
   react-native-simple-toast:
-    :path: "/Users/awazgyawali/Projects/Personal/wwktm-mobile/node_modules/react-native-simple-toast"
+    :path: "/Users/penguin/open-source/wwktmMobile/node_modules/react-native-simple-toast"
   React-RCTActionSheet:
     :path: "../node_modules/react-native/Libraries/ActionSheetIOS"
   React-RCTAnimation:
@@ -384,17 +384,17 @@ EXTERNAL SOURCES:
   React-RCTWebSocket:
     :path: "../node_modules/react-native/Libraries/WebSocket"
   RNFirebase:
-    :path: "/Users/awazgyawali/Projects/Personal/wwktm-mobile/node_modules/react-native-firebase/ios"
+    :path: "/Users/penguin/open-source/wwktmMobile/node_modules/react-native-firebase/ios"
   RNGestureHandler:
-    :path: "/Users/awazgyawali/Projects/Personal/wwktm-mobile/node_modules/react-native-gesture-handler"
+    :path: "/Users/penguin/open-source/wwktmMobile/node_modules/react-native-gesture-handler"
   RNGoogleSignin:
-    :path: "/Users/awazgyawali/Projects/Personal/wwktm-mobile/node_modules/react-native-google-signin"
+    :path: "/Users/penguin/open-source/wwktmMobile/node_modules/react-native-google-signin"
   RNReanimated:
-    :path: "/Users/awazgyawali/Projects/Personal/wwktm-mobile/node_modules/react-native-reanimated"
+    :path: "/Users/penguin/open-source/wwktmMobile/node_modules/react-native-reanimated"
   RNScreens:
-    :path: "/Users/awazgyawali/Projects/Personal/wwktm-mobile/node_modules/react-native-screens"
+    :path: "/Users/penguin/open-source/wwktmMobile/node_modules/react-native-screens"
   RNVectorIcons:
-    :path: "/Users/awazgyawali/Projects/Personal/wwktm-mobile/node_modules/react-native-vector-icons"
+    :path: "/Users/penguin/open-source/wwktmMobile/node_modules/react-native-vector-icons"
   yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -404,9 +404,9 @@ SPEC CHECKSUMS:
   Crashlytics: 2dfd686bcb918dc10ee0e76f7f853fe42c7bd552
   DoubleConversion: 5805e889d232975c086db112ece9ed034df7a0b2
   Fabric: 706c8b8098fff96c33c0db69cbf81f9c551d0d74
-  FBSDKCoreKit: 5154c35d9058fd7dfa0445ba19e194c4b172fc32
-  FBSDKLoginKit: dc98b6bf12334f1a42f28d0457fffc9aa3d1eca5
-  FBSDKShareKit: 6f9c622f9a5d051f43f2dab6f753d5198422b89c
+  FBSDKCoreKit: 39748deefe37a005f983722e433be2ddcdd83ae7
+  FBSDKLoginKit: bc0329e10045789e8d40b12d4f15ddbd07a898e2
+  FBSDKShareKit: f61d03f36ce4f1b379c7de7dbfe173662e68be44
   Firebase: dedc9e48ea3f3649ad5f6b982f8a0c73508a14b5
   FirebaseAnalytics: 3fb375bc9d13779add4039716f868d233a473fad
   FirebaseAuth: a06ad63e9bf4c86165b54cceb1c14d4f4c38d419
