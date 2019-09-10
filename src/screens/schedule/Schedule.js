@@ -1,34 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { SceneMap, TabBar, TabView } from 'react-native-tab-view';
-import { Dimensions, View, ScrollView } from 'react-native';
+import { Dimensions, View } from 'react-native';
 
 import MainLayout from '../../layouts/MainLayout';
 import { getDaySchedule } from '../../utils/array';
-import { getProgramSchedule, likeASession } from '../../firebase/schedule';
-import ScheduleItem from './ScheduleItem';
+import { getProgramSchedule } from '../../firebase/schedule';
 
-export const DayZeroRoute = ({ data, navigation }) => {
-  const navigateToAddNote = id => {
-    navigation.navigate('AddNote', { talkId: id });
-  };
-  const favouriteSession = session => {
-    likeASession(session);
-  };
-
-  return (
-    <ScrollView>
-      {data.map((sche, index) => (
-        <ScheduleItem
-          key={sche.id}
-          session={sche}
-          navigation={navigation}
-          // onAddNotePress={() => navigateToAddNote(sche.id)}
-          onLikeSessionPress={() => favouriteSession(sche)}
-        />
-      ))}
-    </ScrollView>
-  );
-};
+import SchdeuleList from './ScheduleList';
+import Colors from '../../configs/colors';
 
 const DayTwoRoute = () => <View style={{ backgroundColor: '#673ac4' }} />;
 
@@ -41,8 +20,8 @@ const Schedule = ({ navigation }) => {
       { key: 'day2', title: 'Day 2' },
     ],
   });
-  const [dayZero, setDayZero] = useState([]);
-  const [dayOne, setDayOne] = useState([]);
+  const [dayZero, setDayZero] = useState(null);
+  const [dayOne, setDayOne] = useState(null);
 
   useEffect(() => {
     getProgramSchedule(scheduleData => {
@@ -57,10 +36,10 @@ const Schedule = ({ navigation }) => {
     return (
       <TabBar
         {...tabBarProps}
-        inactiveColor="black"
-        activeColor="tomato"
-        indicatorStyle={{ backgroundColor: 'tomato' }}
-        style={{ backgroundColor: '#ffffff', color: 'tomato' }}
+        inactiveColor={Colors.black}
+        activeColor={Colors.primary}
+        indicatorStyle={{ backgroundColor: Colors.primary }}
+        style={{ backgroundColor: Colors.white, color: Colors.primary }}
       />
     );
   };
@@ -69,8 +48,8 @@ const Schedule = ({ navigation }) => {
       <TabView
         navigationState={navigationState}
         renderScene={SceneMap({
-          day0: () => <DayZeroRoute data={dayZero} navigation={navigation} />,
-          day1: () => <DayZeroRoute data={dayOne} navigation={navigation} />,
+          day0: () => <SchdeuleList data={dayZero} navigation={navigation} />,
+          day1: () => <SchdeuleList data={dayOne} navigation={navigation} />,
           day2: DayTwoRoute,
         })}
         renderTabBar={renderTabBar}

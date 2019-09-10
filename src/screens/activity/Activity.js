@@ -8,9 +8,10 @@ import { getFeedData, upvoteFeed } from '../../firebase/activity';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Colors from '../../configs/colors';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
+import Spinner from '../../components/Spinner';
 
 const Activity = ({ navigation }) => {
-  const [feed, setFeed] = useState([]);
+  const [feed, setFeed] = useState(null);
 
   const updateFeed = response => {
     setFeed(response);
@@ -19,7 +20,7 @@ const Activity = ({ navigation }) => {
   const likePost = post => {
     upvoteFeed(post);
   };
-  const commentPress = post => {
+  const navigateToPostDetail = post => {
     navigation.navigate('PostDetail', { post });
   };
 
@@ -31,11 +32,20 @@ const Activity = ({ navigation }) => {
     return (
       <PostItem
         post={item}
+        onPress={() => navigateToPostDetail(item)}
         onLikePress={() => likePost(item)}
-        onCommentPress={() => commentPress(item)}
+        onCommentPress={() => navigateToPostDetail(item)}
       />
     );
   };
+
+  if (!feed) {
+    return (
+      <MainLayout title="Activity">
+        <Spinner />
+      </MainLayout>
+    );
+  }
   return (
     <MainLayout title="Activity">
       <FlatList

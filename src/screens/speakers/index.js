@@ -4,6 +4,7 @@ import { FlatList } from 'react-native-gesture-handler';
 import SpeakerItem from './SpeakerItem';
 import MainLayout from '../../layouts/MainLayout';
 import { getAllSpeakers } from '../../firebase/speakers';
+import Spinner from '../../components/Spinner';
 
 const Speakers = ({ navigation }) => {
   const [speakers, setSpeakers] = useState(null);
@@ -19,7 +20,13 @@ const Speakers = ({ navigation }) => {
       }
     />
   );
-
+  if (!speakers) {
+    return (
+      <MainLayout title="Speakers">
+        <Spinner />
+      </MainLayout>
+    );
+  }
   return (
     <MainLayout title="Speakers">
       <FlatList

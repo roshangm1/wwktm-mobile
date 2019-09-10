@@ -10,7 +10,7 @@ const ScheduleNotes = ({ navigation }) => {
 
   const { talkId, title } = navigation.state.params;
   useEffect(() => {
-    getMyNotesFor(talkId).then(response => setNotes(response));
+    getMyNotesFor(talkId, response => setNotes(response));
   }, [talkId]);
 
   const renderItem = ({ item }) => {

@@ -41,6 +41,9 @@ const ScheduleNavigator = createStackNavigator(
     ScheduleNotes: {
       screen: screens.ScheduleNotes,
     },
+    Favourites: {
+      screen: screens.Favourites,
+    },
   },
   { headerMode: 'none' },
 );
@@ -90,9 +93,7 @@ const AppStack = createDrawerNavigator(
     Notes: {
       screen: screens.Notes,
     },
-    Favourites: {
-      screen: screens.Favourites,
-    },
+
     Settings: {
       screen: screens.Settings,
     },

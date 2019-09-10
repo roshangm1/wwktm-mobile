@@ -2,21 +2,30 @@ import React, { useState, useEffect } from 'react';
 
 import MainLayout from '../../layouts/MainLayout';
 import { getFavouriteSessions } from '../../firebase/schedule';
-import { DayZeroRoute as FavouriteSchedule } from './Schedule';
+import Spinner from '../../components/Spinner';
+import SchdeuleList from './ScheduleList';
 
 const Favourites = ({ navigation }) => {
-  const [favourites, setFavourites] = useState([]);
+  const [favourites, setFavourites] = useState(null);
 
   const updateFavouriteSessions = response => {
     setFavourites(response);
   };
+
   useEffect(() => {
     getFavouriteSessions(updateFavouriteSessions);
   }, []);
 
+  if (!favourites) {
+    return (
+      <MainLayout title="Favourite Talks">
+        <Spinner />
+      </MainLayout>
+    );
+  }
   return (
     <MainLayout title="Favourite Talks">
-      <FavouriteSchedule data={favourites} navigation={navigation} />
+      <SchdeuleList data={favourites} navigation={navigation} />
     </MainLayout>
   );
 };

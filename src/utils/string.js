@@ -1,4 +1,4 @@
-export function getNameInitials(name) {
-  var nameInitials = name.match(/\b(\w)/g).join('');
+export function getNameInitials(name = '') {
+  const nameInitials = name.match(/\b(\w)/g).join('');
   return nameInitials;
 }

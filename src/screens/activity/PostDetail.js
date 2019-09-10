@@ -68,11 +68,7 @@ const PostDetail = ({ navigation }) => {
     <MainLayout title="Details" icon="arrow-left">
       <ScrollView>
         <KeyboardAvoidingView behavior="padding">
-          <PostItem
-            post={post}
-            onLikePress={likePost}
-            onCommentPress={() => console.log('comments')}
-          />
+          <PostItem post={post} />
           <View style={styles.commentsContainer}>
             <Text style={styles.commentsTitle}>Comments</Text>
             {renderAllComments()}

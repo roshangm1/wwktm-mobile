@@ -5,10 +5,11 @@ import MainLayout from '../../layouts/MainLayout';
 import { getAllNotes } from '../../firebase/notes';
 import NoteItem from '../schedule/NoteItem';
 import NoteHeader from './NoteHeader';
+import Spinner from '../../components/Spinner';
 
 const Notes = ({ params }) => {
-  const [notes, setNotes] = useState([]);
-  const [categorizedNotes, setCategorizedNotes] = useState([]);
+  const [notes, setNotes] = useState(notes);
+  const [categorizedNotes, setCategorizedNotes] = useState(null);
 
   const updateNotes = response => {
     setNotes(response);
@@ -19,24 +20,33 @@ const Notes = ({ params }) => {
   }, []);
 
   useEffect(() => {
-    const notesData = prepareData();
-    const sectionListData = Object.keys(notesData).map(key => {
-      return { title: key, data: notesData[key] };
-    });
-    setCategorizedNotes(sectionListData);
+    if (notes) {
+      const notesData = prepareData();
+      const sectionListData = Object.keys(notesData).map(key => {
+        return { title: key, data: notesData[key] };
+      });
+      setCategorizedNotes(sectionListData);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [notes]);
 
   const prepareData = () => {
     return notes.reduce((acc, obj) => {
       (acc[obj.talkId] = acc[obj.talkId] || []).push(obj);
-
       return acc;
     }, {});
   };
   const renderItem = ({ item, index, section }) => {
     return <NoteItem key={index} note={item.note} date={item.date} />;
   };
+
+  if (!notes) {
+    return (
+      <MainLayout title="Notes">
+        <Spinner />
+      </MainLayout>
+    );
+  }
   return (
     <MainLayout title="Notes">
       <View style={{ flex: 1, paddingHorizontal: 16, paddingVertical: 8 }}>

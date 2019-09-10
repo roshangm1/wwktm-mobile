@@ -7,6 +7,7 @@ import {
   FAB,
   Portal,
   Button,
+  ActivityIndicator,
 } from 'react-native-paper';
 import Row from './../../components/Row';
 import Colors from './../../configs/colors';
@@ -17,9 +18,11 @@ import { getTalkDateRange } from './../../utils/date';
 import { getNameInitials } from './../../utils/string';
 import { View, StyleSheet, ScrollView } from 'react-native';
 import SectionHeader from './../../components/SectionHeader';
+import { getMyNotesFor } from '../../firebase/notes';
 
 const ScheduleDetail = ({ navigation }) => {
-  const [speakerDetail, setSpeakerDetail] = useState({});
+  const [speakerDetail, setSpeakerDetail] = useState(null);
+  const [notes, setNotes] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
   const {
     title,
@@ -36,11 +39,58 @@ const ScheduleDetail = ({ navigation }) => {
     }
   }, [speakerId]);
 
+  useEffect(() => {
+    getMyNotesFor(id, response => setNotes(response));
+  }, [id]);
+
   const navigateToAddNote = sessionId => {
     navigation.navigate('AddNote', { talkId: sessionId, title });
   };
 
-  const { profilePicture, name, designation, organization } = speakerDetail;
+  const renderSpeakerSection = () => {
+    if (!speakerDetail) {
+      return (
+        <View>
+          <ActivityIndicator size={30} />
+        </View>
+      );
+    }
+    const { profilePicture, name, designation, organization } = speakerDetail;
+    return (
+      <View>
+        <SectionHeader style={styles.sectionHeaderStyle} title="SPEAKERS" />
+        <Row style={{ marginHorizontal: 16 }}>
+          {profilePicture ? (
+            <Avatar.Image
+              style={styles.avatarStyle}
+              source={{
+                uri: profilePicture,
+              }}
+              size={80}
+            />
+          ) : (
+            <Avatar.Text
+              size={80}
+              color={Colors.white}
+              label={getNameInitials(name)}
+              style={styles.avatarStyle}
+            />
+          )}
+          <View style={{ flex: 1 }}>
+            <Title>{name}</Title>
+            <Caption
+              numberOfLines={2}
+              ellipsizeMode="tail"
+              style={styles.speakerLabelText}
+            >
+              {designation}
+            </Caption>
+            <Caption style={styles.speakerLabelText}>{organization}</Caption>
+          </View>
+        </Row>
+      </View>
+    );
+  };
   return (
     <MainLayout title="Schedule Details" icon="arrow-left">
       <ScrollView contentContianerStyle={styles.rootContainer}>
@@ -56,73 +106,34 @@ const ScheduleDetail = ({ navigation }) => {
             }
             style={{ marginVertical: 10 }}
           >
-            My Notes
+            {`My Notes (${notes.length})`}
           </Button>
         </View>
         <SectionHeader style={styles.sectionHeaderStyle} title="DESCRIPTION" />
         <Paragraph style={styles.descriptionText}>{longDescription}</Paragraph>
-        {speakerId !== '' && (
-          <View>
-            <SectionHeader style={styles.sectionHeaderStyle} title="SPEAKERS" />
-            <Row style={{ marginHorizontal: 16 }}>
-              {profilePicture ? (
-                <Avatar.Image
-                  style={styles.avatarStyle}
-                  source={{
-                    uri: profilePicture,
-                  }}
-                  size={80}
-                />
-              ) : null
-              // (
-              //   <Avatar.Text
-              //     size={80}
-              //     color={Colors.white}
-              //     label={getNameInitials(name)}
-              //     style={styles.avatarStyle}
-              //   />
-              // )
-              }
-              <View style={{ flex: 1 }}>
-                <Title>{name}</Title>
-                <Caption
-                  numberOfLines={2}
-                  ellipsizeMode="tail"
-                  style={styles.speakerLabelText}
-                >
-                  {designation}
-                </Caption>
-                <Caption style={styles.speakerLabelText}>
-                  {organization}
-                </Caption>
-              </View>
-            </Row>
-          </View>
-        )}
+        {renderSpeakerSection()}
       </ScrollView>
-      <Portal>
-        <FAB.Group
-          open={isOpen}
-          icon={isOpen ? 'close' : 'plus'}
-          color={Colors.white}
-          actions={[
-            {
-              icon: 'pencil',
-              color: Colors.primary,
-              label: 'Add Note',
-              onPress: () => navigateToAddNote(id),
-            },
-            {
-              icon: 'comment-question',
-              color: Colors.primary,
-              label: 'Add a question',
-              onPress: () => navigation.navigate('AddQuestion', { talkId: id }),
-            },
-          ]}
-          onStateChange={({ open }) => setIsOpen(open)}
-          fabStyle={{ backgroundColor: Colors.primary }}
-        />
-      </Portal>
+      <FAB.Group
+        open={isOpen}
+        icon={isOpen ? 'close' : 'plus'}
+        color={Colors.white}
+        actions={[
+          {
+            icon: 'pencil',
+            color: Colors.primary,
+            label: 'Add Note',
+            onPress: () => navigateToAddNote(id),
+          },
+          {
+            icon: 'comment-question',
+            color: Colors.primary,
+            label: 'Add a question',
+            onPress: () => navigation.navigate('AddQuestion', { talkId: id }),
+          },
+        ]}
+        onStateChange={({ open }) => setIsOpen(open)}
+        fabStyle={{ backgroundColor: Colors.primary }}
+      />
     </MainLayout>
   );
 };

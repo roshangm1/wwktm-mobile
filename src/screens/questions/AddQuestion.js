@@ -8,18 +8,25 @@ import Row from '../../components/Row';
 
 const AddQuestion = ({ navigation }) => {
   const [question, setQuestion] = useState('');
+  const [loading, setLoading] = useState(false);
   const [anonymous, setAnonymous] = useState(false);
 
   const onSubmitPress = () => {
     const { talkId } = navigation.state.params;
-    addQuestionForTalk(talkId, question, anonymous).then(() =>
-      navigation.goBack(),
-    );
+    setLoading(true);
+    addQuestionForTalk(talkId, question, anonymous)
+      .then(() => navigation.goBack())
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   return (
     <MainLayout title="Add Question" icon="arrow-left">
-      <ScrollView contentContainerStyle={styles.mainContainerStyle}>
+      <ScrollView
+        contentContainerStyle={styles.mainContainerStyle}
+        keyboardShouldPersistTaps="always"
+      >
         <TextInput
           placeholder="Add a question.."
           value={question}
@@ -46,7 +53,9 @@ const AddQuestion = ({ navigation }) => {
         </Row>
         <Button
           mode="contained"
+          loading={loading}
           dark
+          disabled={loading}
           style={styles.buttonStyle}
           onPress={onSubmitPress}
         >
