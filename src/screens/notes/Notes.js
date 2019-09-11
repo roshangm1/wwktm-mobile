@@ -6,6 +6,7 @@ import { getAllNotes } from '../../firebase/notes';
 import NoteItem from '../schedule/NoteItem';
 import NoteHeader from './NoteHeader';
 import Spinner from '../../components/Spinner';
+import EmptyComponent from './../../components/EmptyComponent';
 
 const Notes = ({ params }) => {
   const [notes, setNotes] = useState(notes);
@@ -46,6 +47,8 @@ const Notes = ({ params }) => {
         <Spinner />
       </MainLayout>
     );
+  } else if (notes.length === 0) {
+    <EmptyComponent />;
   }
   return (
     <MainLayout title="Notes">

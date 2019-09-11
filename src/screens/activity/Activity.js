@@ -9,6 +9,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Colors from '../../configs/colors';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import Spinner from '../../components/Spinner';
+import EmptyComponent from './../../components/EmptyComponent';
 
 const Activity = ({ navigation }) => {
   const [feed, setFeed] = useState(null);
@@ -45,6 +46,8 @@ const Activity = ({ navigation }) => {
         <Spinner />
       </MainLayout>
     );
+  } else if (feed.length === 0) {
+    <EmptyComponent />;
   }
   return (
     <MainLayout title="Activity">

@@ -51,16 +51,18 @@ const AddQuestion = ({ navigation }) => {
             }}
           />
         </Row>
-        <Button
-          mode="contained"
-          loading={loading}
-          dark
-          disabled={loading}
-          style={styles.buttonStyle}
-          onPress={onSubmitPress}
-        >
-          Submit
-        </Button>
+        {question !== '' && (
+          <Button
+            mode="contained"
+            loading={loading}
+            dark
+            disabled={loading}
+            style={styles.buttonStyle}
+            onPress={onSubmitPress}
+          >
+            Submit
+          </Button>
+        )}
       </ScrollView>
     </MainLayout>
   );
