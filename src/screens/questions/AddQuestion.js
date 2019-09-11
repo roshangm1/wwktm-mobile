@@ -1,10 +1,10 @@
+import Row from '../../components/Row';
 import React, { useState } from 'react';
+import Colors from '../../configs/colors';
 import MainLayout from '../../layouts/MainLayout';
-import { TextInput, Button, Switch } from 'react-native-paper';
 import { StyleSheet, ScrollView, Text } from 'react-native';
 import { addQuestionForTalk } from '../../firebase/question';
-import Colors from '../../configs/colors';
-import Row from '../../components/Row';
+import { TextInput, Button, Switch } from 'react-native-paper';
 
 const AddQuestion = ({ navigation }) => {
   const [question, setQuestion] = useState('');
@@ -51,7 +51,7 @@ const AddQuestion = ({ navigation }) => {
             }}
           />
         </Row>
-        {question !== '' && (
+        {question && (
           <Button
             mode="contained"
             loading={loading}

@@ -6,6 +6,7 @@ import {
   TextInput,
   ScrollView,
   KeyboardAvoidingView,
+  Platform,
 } from 'react-native';
 import MainLayout from '../../layouts/MainLayout';
 import PostItem from './PostItem';
@@ -73,7 +74,7 @@ const PostDetail = ({ navigation }) => {
           {renderAllComments()}
         </View>
       </ScrollView>
-      <KeyboardAvoidingView behavior="padding">
+      <KeyboardAvoidingView behavior={Platform.OS === 'iOS' ? 'padding' : null}>
         <View
           style={{
             flexDirection: 'row',
@@ -92,15 +93,17 @@ const PostDetail = ({ navigation }) => {
             value={comment}
             onChangeText={handleInputChange}
           />
-          <TouchableRipple
-            style={{
-              paddingHorizontal: 15,
-              justifyContent: 'center',
-            }}
-            onPress={onComment}
-          >
-            <Icon name="send" size={20} color={Colors.black} />
-          </TouchableRipple>
+          {comment && (
+            <TouchableRipple
+              style={{
+                paddingHorizontal: 15,
+                justifyContent: 'center',
+              }}
+              onPress={onComment}
+            >
+              <Icon name="send" size={20} color={Colors.black} />
+            </TouchableRipple>
+          )}
         </View>
       </KeyboardAvoidingView>
     </MainLayout>
