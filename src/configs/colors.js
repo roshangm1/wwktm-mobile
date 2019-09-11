@@ -1,5 +1,6 @@
 const Colors = {
   primary: '#45bef4',
+  secondary: '#FF7D4A',
   facebook: '#3B5998',
   google: '#EA4335',
   twitter: '#1DA1F2',

@@ -67,43 +67,42 @@ const PostDetail = ({ navigation }) => {
   return (
     <MainLayout title="Details" icon="arrow-left">
       <ScrollView>
-        <KeyboardAvoidingView behavior="padding">
-          <PostItem post={post} />
-          <View style={styles.commentsContainer}>
-            <Text style={styles.commentsTitle}>Comments</Text>
-            {renderAllComments()}
-          </View>
-
-          <View
-            style={{
-              flexDirection: 'row',
-              marginVertical: 8,
-              borderColor: Colors.grey,
-              borderWidth: 1,
-              borderRadius: 6,
-              padding: 4,
-              marginHorizontal: 16,
-            }}
-          >
-            <TextInput
-              ref={inputRef}
-              placeholder="What's on your mind?"
-              style={{ flex: 1 }}
-              value={comment}
-              onChangeText={handleInputChange}
-            />
-            <TouchableRipple
-              style={{
-                paddingHorizontal: 15,
-                justifyContent: 'center',
-              }}
-              onPress={onComment}
-            >
-              <Icon name="send" size={20} color={Colors.black} />
-            </TouchableRipple>
-          </View>
-        </KeyboardAvoidingView>
+        <PostItem post={post} />
+        <View style={styles.commentsContainer}>
+          <Text style={styles.commentsTitle}>Comments</Text>
+          {renderAllComments()}
+        </View>
       </ScrollView>
+      <KeyboardAvoidingView behavior="padding">
+        <View
+          style={{
+            flexDirection: 'row',
+            marginVertical: 8,
+            borderColor: Colors.grey,
+            borderWidth: 1,
+            borderRadius: 6,
+            padding: 8,
+            marginHorizontal: 16,
+          }}
+        >
+          <TextInput
+            ref={inputRef}
+            placeholder="Write a comment..."
+            style={{ flex: 1 }}
+            value={comment}
+            onChangeText={handleInputChange}
+          />
+          <TouchableRipple
+            style={{
+              paddingHorizontal: 15,
+              justifyContent: 'center',
+            }}
+            onPress={onComment}
+          >
+            <Icon name="send" size={20} color={Colors.black} />
+          </TouchableRipple>
+        </View>
+      </KeyboardAvoidingView>
     </MainLayout>
   );
 };

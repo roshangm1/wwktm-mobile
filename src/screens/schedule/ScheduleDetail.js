@@ -120,19 +120,19 @@ const ScheduleDetail = ({ navigation }) => {
         actions={[
           {
             icon: 'pencil',
-            color: Colors.primary,
+            color: Colors.secondary,
             label: 'Add Note',
             onPress: () => navigateToAddNote(id),
           },
           {
             icon: 'comment-question',
-            color: Colors.primary,
+            color: Colors.secondary,
             label: 'Add a question',
             onPress: () => navigation.navigate('AddQuestion', { talkId: id }),
           },
         ]}
         onStateChange={({ open }) => setIsOpen(open)}
-        fabStyle={{ backgroundColor: Colors.primary }}
+        fabStyle={{ backgroundColor: Colors.secondary }}
       />
     </MainLayout>
   );

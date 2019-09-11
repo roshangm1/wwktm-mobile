@@ -37,9 +37,9 @@ const Schedule = ({ navigation }) => {
       <TabBar
         {...tabBarProps}
         inactiveColor={Colors.black}
-        activeColor={Colors.primary}
-        indicatorStyle={{ backgroundColor: Colors.primary }}
-        style={{ backgroundColor: Colors.white, color: Colors.primary }}
+        activeColor={Colors.secondary}
+        indicatorStyle={{ backgroundColor: Colors.secondary }}
+        style={{ backgroundColor: Colors.white, color: Colors.secondary }}
       />
     );
   };

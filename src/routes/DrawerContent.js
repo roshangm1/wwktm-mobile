@@ -17,7 +17,7 @@ const DrawerContent = props => {
   };
 
   return (
-    <ScrollView contentContainerStyle={styles.rootContainer}>
+    <ScrollView>
       <SafeAreaView
         style={styles.container}
         forceInset={{ top: 0, horizontal: 'never' }}
@@ -28,7 +28,7 @@ const DrawerContent = props => {
               <Avatar.Image
                 size={80}
                 source={{ uri: user.photoURL }}
-                style={{ marginBottom: 8 }}
+                style={{ marginBottom: 8, backgroundColor: Colors.secondary }}
               />
             ) : (
               <Avatar.Text
@@ -109,20 +109,12 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'space-between',
   },
-  logoutText: {
-    fontSize: 15,
-    color: '#223741',
-    padding: 20,
-    fontWeight: 'bold',
-  },
+
   topContainer: {
     height: 200,
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#ecece9',
-  },
-  rootContainer: {
-    flexGrow: 1,
   },
 });
 

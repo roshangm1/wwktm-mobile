@@ -39,11 +39,11 @@ const QuestionItem = ({ item }) => {
         <Chip
           icon="thumb-up"
           mode="outlined"
-          selectedColor={Colors.primary}
+          selectedColor={Colors.secondary}
           selected={isUpvoted}
           onPress={() => upvoteAQuestion(item)}
         >
-          {item.upvoteCount || 0}
+          {item.voters.length || 0}
         </Chip>
       </Row>
       <Text style={styles.descriptionText}>{item.question}</Text>
@@ -60,10 +60,12 @@ const styles = StyleSheet.create({
   },
   dateText: {
     color: '#808080',
+    fontSize: 11,
     marginTop: 4,
   },
   descriptionText: {
     marginTop: 8,
+    fontSize: 16,
   },
 });
 

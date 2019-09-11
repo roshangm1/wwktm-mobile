@@ -1,8 +1,9 @@
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 import React, { useEffect, useState } from 'react';
 
 import { getTalkDetail } from '../../firebase/schedule';
 import { Subheading } from 'react-native-paper';
+import Colors from '../../configs/colors';
 
 const NoteHeader = ({ talkId }) => {
   const [talkTitle, setTalkTitle] = useState('Loading...');
@@ -13,7 +14,12 @@ const NoteHeader = ({ talkId }) => {
   }, [talkId]);
   return (
     <View>
-      <View style={{ backgroundColor: '#FFFFFF', paddingTop: 16 }}>
+      <View
+        style={{
+          backgroundColor: Colors.white,
+          paddingTop: 16,
+        }}
+      >
         <Subheading>{talkTitle}</Subheading>
       </View>
     </View>
