@@ -1,24 +1,23 @@
 import {
-  Title,
+  Button,
   Avatar,
   Caption,
   Paragraph,
   Subheading,
-  FAB,
-  Portal,
-  Button,
   ActivityIndicator,
+  FAB,
+  Title,
 } from 'react-native-paper';
 import Row from './../../components/Row';
 import Colors from './../../configs/colors';
 import MainLayout from '../../layouts/MainLayout';
 import React, { useEffect, useState } from 'react';
 import { getSpeaker } from '../../firebase/speakers';
+import { getMyNotesFor } from '../../firebase/notes';
 import { getTalkDateRange } from './../../utils/date';
 import { getNameInitials } from './../../utils/string';
 import { View, StyleSheet, ScrollView } from 'react-native';
 import SectionHeader from './../../components/SectionHeader';
-import { getMyNotesFor } from '../../firebase/notes';
 
 const ScheduleDetail = ({ navigation }) => {
   const [speakerDetail, setSpeakerDetail] = useState(null);

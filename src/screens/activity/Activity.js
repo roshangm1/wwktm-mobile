@@ -9,6 +9,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Colors from '../../configs/colors';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import Spinner from '../../components/Spinner';
+import EmptyComponent from './../../components/EmptyComponent';
 
 const Activity = ({ navigation }) => {
   const [feed, setFeed] = useState(null);
@@ -46,11 +47,14 @@ const Activity = ({ navigation }) => {
       </MainLayout>
     );
   }
+
   return (
     <MainLayout title="Activity">
       <FlatList
         data={feed}
         renderItem={renderItem}
+        contentContainerStyle={{ flex: 1 }}
+        ListEmptyComponent={<EmptyComponent />}
         keyExtractor={item => item.id}
       />
       <TouchableWithoutFeedback

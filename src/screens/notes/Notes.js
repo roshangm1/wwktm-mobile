@@ -6,6 +6,7 @@ import { getAllNotes } from '../../firebase/notes';
 import NoteItem from '../schedule/NoteItem';
 import NoteHeader from './NoteHeader';
 import Spinner from '../../components/Spinner';
+import EmptyComponent from './../../components/EmptyComponent';
 
 const Notes = ({ params }) => {
   const [notes, setNotes] = useState(notes);
@@ -47,17 +48,20 @@ const Notes = ({ params }) => {
       </MainLayout>
     );
   }
+
   return (
     <MainLayout title="Notes">
       <View style={{ flex: 1, paddingHorizontal: 16, paddingVertical: 8 }}>
         <SectionList
           sections={categorizedNotes}
+          contentContainerStyle={{ flex: 1 }}
           keyExtractor={(item, index) => index.toString()}
           renderItem={renderItem}
           renderSectionHeader={({ section: { title } }) => (
             <NoteHeader talkId={title} />
           )}
           showsVerticalScrollIndicator={false}
+          ListEmptyComponent={<EmptyComponent />}
         />
       </View>
     </MainLayout>

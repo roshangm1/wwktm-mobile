@@ -7,6 +7,7 @@ import Spinner from '../../components/Spinner';
 import { getScheduleConfig } from '../../firebase/config';
 import { getTalkDetail } from '../../firebase/schedule';
 import { Subheading } from 'react-native-paper';
+import EmptyComponent from './../../components/EmptyComponent';
 
 const Questions = ({ params }) => {
   const [questions, setQuestions] = useState(null);
@@ -35,14 +36,17 @@ const Questions = ({ params }) => {
       </MainLayout>
     );
   }
+
   return (
     <MainLayout title="Questions">
-      <View style={{ padding: 16 }}>
-        <Subheading>{talkDetail.title}</Subheading>
+      <View style={{ flex: 1, padding: 16 }}>
+        {questions.length > 0 && <Subheading>{talkDetail.title}</Subheading>}
         <FlatList
+          contentContainerStyle={{ flex: 1 }}
           data={questions}
           renderItem={renderItem}
           keyExtractor={item => item.id}
+          ListEmptyComponent={<EmptyComponent />}
         />
       </View>
     </MainLayout>

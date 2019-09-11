@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, TextInput, Image, ActivityIndicator } from 'react-native';
+import { View, TextInput, Image, ActivityIndicator, Alert } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Toolbar from './../../components/Toolbar';
 import Container from './../../components/Container';
@@ -35,18 +35,22 @@ const CreatePost = ({ navigation }) => {
   }
 
   const addPost = () => {
-    setLoading(true);
-    addNewPost(postDetail, imagePath)
-      .then(() => {
-        setImagePath('');
-        navigation.navigate('Activity');
-      })
-      .catch(err => {
-        console.log(err);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+    if (postDetail !== '' || imagePath !== '') {
+      setLoading(true);
+      addNewPost(postDetail, imagePath)
+        .then(() => {
+          setImagePath('');
+          navigation.navigate('Activity');
+        })
+        .catch(err => {
+          console.log(err);
+        })
+        .finally(() => {
+          setLoading(false);
+        });
+    } else {
+      Alert.alert('Alert', 'Post should not be empty.');
+    }
   };
 
   return (

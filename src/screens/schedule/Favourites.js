@@ -23,6 +23,7 @@ const Favourites = ({ navigation }) => {
       </MainLayout>
     );
   }
+
   return (
     <MainLayout title="Favourite Talks">
       <SchdeuleList data={favourites} navigation={navigation} />
