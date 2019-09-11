@@ -4,7 +4,6 @@ import MainLayout from '../../layouts/MainLayout';
 import { getFavouriteSessions } from '../../firebase/schedule';
 import Spinner from '../../components/Spinner';
 import SchdeuleList from './ScheduleList';
-import EmptyComponent from './../../components/EmptyComponent';
 
 const Favourites = ({ navigation }) => {
   const [favourites, setFavourites] = useState(null);
@@ -24,9 +23,7 @@ const Favourites = ({ navigation }) => {
       </MainLayout>
     );
   }
-  if (favourites.length === 0) {
-    return <EmptyComponent />;
-  }
+
   return (
     <MainLayout title="Favourite Talks">
       <SchdeuleList data={favourites} navigation={navigation} />

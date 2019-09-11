@@ -51,7 +51,7 @@ const AddQuestion = ({ navigation }) => {
             }}
           />
         </Row>
-        {question !== '' && (
+        {question && (
           <Button
             mode="contained"
             loading={loading}

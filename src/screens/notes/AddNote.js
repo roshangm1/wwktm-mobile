@@ -33,7 +33,7 @@ const AddNote = props => {
           numberOfLines={8}
           style={styles.inputTextStyle}
         />
-        {note !== '' && (
+        {note && (
           <Button
             mode="contained"
             loading={loading}

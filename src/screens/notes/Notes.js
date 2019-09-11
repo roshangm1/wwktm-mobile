@@ -48,20 +48,20 @@ const Notes = ({ params }) => {
       </MainLayout>
     );
   }
-  if (notes.length === 0) {
-    return <EmptyComponent />;
-  }
+
   return (
     <MainLayout title="Notes">
       <View style={{ flex: 1, paddingHorizontal: 16, paddingVertical: 8 }}>
         <SectionList
           sections={categorizedNotes}
+          contentContainerStyle={{ flex: 1 }}
           keyExtractor={(item, index) => index.toString()}
           renderItem={renderItem}
           renderSectionHeader={({ section: { title } }) => (
             <NoteHeader talkId={title} />
           )}
           showsVerticalScrollIndicator={false}
+          ListEmptyComponent={<EmptyComponent />}
         />
       </View>
     </MainLayout>

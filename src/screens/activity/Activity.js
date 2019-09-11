@@ -47,14 +47,14 @@ const Activity = ({ navigation }) => {
       </MainLayout>
     );
   }
-  if (feed.length === 0) {
-    return <EmptyComponent />;
-  }
+
   return (
     <MainLayout title="Activity">
       <FlatList
         data={feed}
         renderItem={renderItem}
+        contentContainerStyle={{ flex: 1 }}
+        ListEmptyComponent={<EmptyComponent />}
         keyExtractor={item => item.id}
       />
       <TouchableWithoutFeedback
