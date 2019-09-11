@@ -92,15 +92,17 @@ const PostDetail = ({ navigation }) => {
             value={comment}
             onChangeText={handleInputChange}
           />
-          <TouchableRipple
-            style={{
-              paddingHorizontal: 15,
-              justifyContent: 'center',
-            }}
-            onPress={onComment}
-          >
-            <Icon name="send" size={20} color={Colors.black} />
-          </TouchableRipple>
+          {comment !== '' && (
+            <TouchableRipple
+              style={{
+                paddingHorizontal: 15,
+                justifyContent: 'center',
+              }}
+              onPress={onComment}
+            >
+              <Icon name="send" size={20} color={Colors.black} />
+            </TouchableRipple>
+          )}
         </View>
       </KeyboardAvoidingView>
     </MainLayout>
