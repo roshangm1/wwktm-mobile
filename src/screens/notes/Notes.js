@@ -47,7 +47,8 @@ const Notes = ({ params }) => {
         <Spinner />
       </MainLayout>
     );
-  } else if (notes.length === 0) {
+  }
+  if (notes.length === 0) {
     <EmptyComponent />;
   }
   return (

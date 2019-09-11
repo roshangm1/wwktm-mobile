@@ -46,7 +46,8 @@ const Activity = ({ navigation }) => {
         <Spinner />
       </MainLayout>
     );
-  } else if (feed.length === 0) {
+  }
+  if (feed.length === 0) {
     <EmptyComponent />;
   }
   return (

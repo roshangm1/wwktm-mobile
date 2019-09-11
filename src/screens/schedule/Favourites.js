@@ -23,7 +23,8 @@ const Favourites = ({ navigation }) => {
         <Spinner />
       </MainLayout>
     );
-  } else if (favourites.length === 0) {
+  }
+  if (favourites.length === 0) {
     <EmptyComponent />;
   }
   return (

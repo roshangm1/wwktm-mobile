@@ -35,7 +35,8 @@ const Questions = ({ params }) => {
         <Spinner />
       </MainLayout>
     );
-  } else if (questions.length === [0]) {
+  }
+  if (questions.length === [0]) {
     <EmptyComponent />;
   }
   return (
