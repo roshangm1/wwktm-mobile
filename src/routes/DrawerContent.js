@@ -43,7 +43,7 @@ const DrawerContent = props => {
           </View>
 
           <Drawer.Item
-            label="Activity"
+            label="Activity Stream"
             icon="wifi"
             active={active === 'activity'}
             onPress={() => handleDrawerItemPress('Activity')}

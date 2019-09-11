@@ -42,14 +42,14 @@ const Activity = ({ navigation }) => {
 
   if (!feed) {
     return (
-      <MainLayout title="Activity">
+      <MainLayout title="Activity Stream">
         <Spinner />
       </MainLayout>
     );
   }
 
   return (
-    <MainLayout title="Activity">
+    <MainLayout title="Activity Stream">
       <FlatList
         data={feed}
         renderItem={renderItem}
