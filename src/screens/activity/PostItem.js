@@ -68,7 +68,7 @@ const PostItem = ({ post, onPress, onLikePress, onCommentPress }) => {
             iconName="heart"
             title={isLikedByUser ? 'Unlike' : 'Like'}
             onPress={onLikePress}
-            color={isLikedByUser && Colors.primary}
+            color={isLikedByUser && Colors.secondary}
           />
           <ActionButton
             iconName="comment"
