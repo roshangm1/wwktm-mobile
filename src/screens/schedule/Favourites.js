@@ -25,7 +25,7 @@ const Favourites = ({ navigation }) => {
     );
   }
   if (favourites.length === 0) {
-    <EmptyComponent />;
+    return <EmptyComponent />;
   }
   return (
     <MainLayout title="Favourite Talks">

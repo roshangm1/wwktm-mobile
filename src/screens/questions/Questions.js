@@ -36,8 +36,8 @@ const Questions = ({ params }) => {
       </MainLayout>
     );
   }
-  if (questions.length === [0]) {
-    <EmptyComponent />;
+  if (questions.length === 0) {
+    return <EmptyComponent />;
   }
   return (
     <MainLayout title="Questions">

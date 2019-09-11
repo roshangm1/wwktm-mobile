@@ -48,7 +48,7 @@ const Activity = ({ navigation }) => {
     );
   }
   if (feed.length === 0) {
-    <EmptyComponent />;
+    return <EmptyComponent />;
   }
   return (
     <MainLayout title="Activity">

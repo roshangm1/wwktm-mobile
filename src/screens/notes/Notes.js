@@ -49,7 +49,7 @@ const Notes = ({ params }) => {
     );
   }
   if (notes.length === 0) {
-    <EmptyComponent />;
+    return <EmptyComponent />;
   }
   return (
     <MainLayout title="Notes">
