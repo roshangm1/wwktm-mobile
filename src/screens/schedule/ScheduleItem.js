@@ -17,6 +17,7 @@ const ScheduleItem = ({
   return (
     <TouchableRipple
       onPress={() =>
+        session.type === 'session' &&
         navigation.navigate('ScheduleDetail', { schedule: session })
       }
       style={{ padding: 4 }}
@@ -30,12 +31,9 @@ const ScheduleItem = ({
             <Text>{getTalkDateRange(session.startTime, session.endTime)}</Text>
           </View>
           {session.type === 'session' ? (
-            <>
-              {/* <Text style={{ flex: 1 }} onPress={onAddNotePress}>
-                Add note
-              </Text> */}
+            <React.Fragment>
               <IconButton
-                color={Colors.primary}
+                color={Colors.secondary}
                 icon={
                   session.likedBy && session.likedBy.includes(user.uid)
                     ? 'star'
@@ -43,7 +41,7 @@ const ScheduleItem = ({
                 }
                 onPress={onLikeSessionPress}
               />
-            </>
+            </React.Fragment>
           ) : null}
         </Card.Content>
       </Card>

@@ -87,7 +87,7 @@ const PostDetail = ({ navigation }) => {
         >
           <TextInput
             ref={inputRef}
-            placeholder="What's on your mind?"
+            placeholder="Write a comment..."
             style={{ flex: 1 }}
             value={comment}
             onChangeText={handleInputChange}

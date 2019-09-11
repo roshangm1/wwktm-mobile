@@ -26,12 +26,15 @@ export async function getTopVotedQuestions(count = 10) {
     .get()).docs.map(d => d.data());
 }
 
-export async function getQuestionsForTalk(talkId) {
-  return (await fireStoreRef
+export function getQuestionsForTalk(talkId, updateQuestions) {
+  fireStoreRef
     .collection('questions')
     .where('talkId', '==', talkId)
+
     .orderBy('upvoteCount', 'desc')
-    .get()).docs.map(d => d.data());
+    .onSnapshot(data => {
+      updateQuestions(data.docs.map(d => d.data()));
+    });
 }
 
 export async function getAllQuestions(updateQuestions) {

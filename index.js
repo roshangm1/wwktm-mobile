@@ -12,11 +12,9 @@ import Colors from './src/configs/colors';
 
 const theme = {
   ...DefaultTheme,
-  roundness: 2,
   colors: {
     ...DefaultTheme.colors,
     primary: Colors.primary,
-    accent: 'yellow',
   },
 };
 export default function Main() {
