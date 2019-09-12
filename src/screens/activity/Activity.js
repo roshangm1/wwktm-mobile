@@ -113,18 +113,19 @@ const Activity = ({ navigation }) => {
 
   if (!feed) {
     return (
-      <MainLayout title="Activity">
+      <MainLayout title="Activity Stream">
         <Spinner />
       </MainLayout>
     );
-  } else if (feed.length === 0) {
-    <EmptyComponent />;
   }
+
   return (
-    <MainLayout title="Activity">
+    <MainLayout title="Activity Stream">
       <FlatList
         data={feed}
         renderItem={renderItem}
+        contentContainerStyle={{ flex: 1 }}
+        ListEmptyComponent={<EmptyComponent />}
         keyExtractor={item => item.id}
       />
       <TouchableWithoutFeedback

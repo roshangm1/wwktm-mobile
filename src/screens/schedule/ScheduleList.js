@@ -3,6 +3,7 @@ import { ScrollView } from 'react-native';
 import Spinner from '../../components/Spinner';
 import { likeASession } from '../../firebase/schedule';
 import ScheduleItem from './ScheduleItem';
+import EmptyComponent from '../../components/EmptyComponent';
 
 const SchdeuleList = ({ data, navigation }) => {
   const favouriteSession = session => {
@@ -11,6 +12,11 @@ const SchdeuleList = ({ data, navigation }) => {
   if (!data) {
     return <Spinner />;
   }
+
+  if (data.length === 0) {
+    return <EmptyComponent />;
+  }
+
   return (
     <ScrollView>
       {data.map((sche, index) => (

@@ -1,12 +1,15 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import Colors from '../configs/colors';
 
 const EmptyComponent = () => {
   return (
     <View style={styles.mainContainer}>
-      <Icon name="bandage" size={24} color="black" />
-      <Text style={styles.text}> Wow! such empty</Text>
+      <Icon name="emoticon-neutral-outline" size={120} color={Colors.grey} />
+      <Text style={styles.errorMsgText}>
+        Seems like, there is nothing much here!
+      </Text>
     </View>
   );
 };
@@ -18,9 +21,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  text: {
-    paddingTop: 15,
-    fontSize: 15,
+  errorMsgText: {
+    paddingTop: 8,
+    fontSize: 16,
   },
 });
 

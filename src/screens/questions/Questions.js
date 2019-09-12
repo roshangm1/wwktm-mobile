@@ -35,17 +35,18 @@ const Questions = ({ params }) => {
         <Spinner />
       </MainLayout>
     );
-  } else if (questions.length === [0]) {
-    <EmptyComponent />;
   }
+
   return (
     <MainLayout title="Questions">
-      <View style={{ padding: 16 }}>
-        <Subheading>{talkDetail.title}</Subheading>
+      <View style={{ flex: 1, padding: 16 }}>
+        {questions.length > 0 && <Subheading>{talkDetail.title}</Subheading>}
         <FlatList
+          contentContainerStyle={{ flex: 1 }}
           data={questions}
           renderItem={renderItem}
           keyExtractor={item => item.id}
+          ListEmptyComponent={<EmptyComponent />}
         />
       </View>
     </MainLayout>
