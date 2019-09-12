@@ -3,16 +3,18 @@ import firebase from 'react-native-firebase';
 import Toast from 'react-native-simple-toast';
 import { GoogleSignin } from 'react-native-google-signin';
 import { AccessToken, LoginManager } from 'react-native-fbsdk';
-import { Text, StyleSheet, View, ScrollView } from 'react-native';
+import { Text, StyleSheet, View, ScrollView, Alert } from 'react-native';
 import { Card, TextInput, Button, IconButton } from 'react-native-paper';
 
 import AuthLayout from '../../layouts/AuthLayout';
 import { loginWithEmailAsync } from '../../firebase/auth';
 import Row from '../../components/Row';
 import Colors from '../../configs/colors';
+import Spinner from '../../components/Spinner';
 
 const Login = ({ navigation }) => {
   const [loading, setLoading] = useState(false);
+  const [socialLoading, setSocialLoading] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const enterPassword = React.createRef();
@@ -30,19 +32,21 @@ const Login = ({ navigation }) => {
     }
   };
   const loginWithFacebook = async () => {
+    setSocialLoading(true);
     try {
       const result = await LoginManager.logInWithPermissions([
         'public_profile',
       ]);
 
       if (result.isCancelled) {
-        throw new Error('User cancelled request');
+        return;
       }
 
       const data = await AccessToken.getCurrentAccessToken();
 
       if (!data) {
-        throw new Error(
+        Alert.alert(
+          'Error',
           'Something went wrong obtaining the users access token',
         );
       }
@@ -55,10 +59,14 @@ const Login = ({ navigation }) => {
       navigation.navigate('Activity');
     } catch (e) {
       console.error(e);
+    } finally {
+      setSocialLoading(false);
     }
   };
 
   const loginWithGoogle = async () => {
+    setSocialLoading(true);
+
     try {
       await GoogleSignin.configure();
       await GoogleSignin.signIn();
@@ -71,12 +79,14 @@ const Login = ({ navigation }) => {
       await firebase.auth().signInWithCredential(credential);
       navigation.navigate('Activity');
     } catch (e) {
-      console.error(e);
+    } finally {
+      setSocialLoading(false);
     }
   };
 
   return (
     <AuthLayout>
+      {socialLoading && <Spinner />}
       <ScrollView
         contentContainerStyle={{ flexGrow: 1, justifyContent: 'center' }}
       >
@@ -107,6 +117,7 @@ const Login = ({ navigation }) => {
               dark
               mode="contained"
               loading={loading}
+              disabled={loading}
               onPress={loginWithEmail}
               style={styles.button}
             >
