@@ -13,12 +13,14 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <RNGoogleSignin/RNGoogleSignin.h>
 #import <Firebase.h>
+#import "RNFirebaseNotifications.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
   [FIRApp configure];
+  [RNFirebaseNotifications configure];
   [[FBSDKApplicationDelegate sharedInstance] application:application
                            didFinishLaunchingWithOptions:launchOptions];
   
@@ -57,6 +59,10 @@
                                                      annotation:options[UIApplicationOpenURLOptionsAnnotationKey]
           ] ||
   [RNGoogleSignin application:application openURL:url sourceApplication:options[UIApplicationOpenURLOptionsSourceApplicationKey] annotation:options[UIApplicationOpenURLOptionsAnnotationKey]];
+}
+
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
+  [[RNFirebaseNotifications instance] didReceiveLocalNotification:notification];
 }
 
 @end

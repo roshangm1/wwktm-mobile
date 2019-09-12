@@ -1,17 +1,17 @@
 package com.wwktmmobile;
 
 import android.app.Application;
-
 import com.facebook.react.PackageList;
-import com.facebook.react.ReactApplication;
-import com.facebook.react.ReactNativeHost;
-import com.facebook.react.ReactPackage;
 import com.facebook.soloader.SoLoader;
-import io.invertase.firebase.firestore.RNFirebaseFirestorePackage;
+import com.facebook.react.ReactPackage;
+import com.facebook.react.ReactNativeHost;
+import com.facebook.react.ReactApplication;
 import io.invertase.firebase.auth.RNFirebaseAuthPackage;
-import io.invertase.firebase.functions.RNFirebaseFunctionsPackage;
 import io.invertase.firebase.storage.RNFirebaseStoragePackage; 
-
+import io.invertase.firebase.firestore.RNFirebaseFirestorePackage;
+import io.invertase.firebase.functions.RNFirebaseFunctionsPackage;
+import io.invertase.firebase.messaging.RNFirebaseMessagingPackage;
+import io.invertase.firebase.notifications.RNFirebaseNotificationsPackage;
 import java.util.List;
 
 public class MainApplication extends Application implements ReactApplication {
@@ -33,6 +33,8 @@ public class MainApplication extends Application implements ReactApplication {
       packages.add(new RNFirebaseAuthPackage());
       packages.add(new RNFirebaseStoragePackage());
       packages.add(new RNFirebaseFunctionsPackage());
+      packages.add(new RNFirebaseMessagingPackage());
+       packages.add(new RNFirebaseNotificationsPackage());
       return packages;
     }
 

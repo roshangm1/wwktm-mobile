@@ -42,7 +42,7 @@ const Questions = ({ params }) => {
       <View style={{ flex: 1, padding: 16 }}>
         {questions.length > 0 && <Subheading>{talkDetail.title}</Subheading>}
         <FlatList
-          contentContainerStyle={{ flex: 1 }}
+          contentContainerStyle={{ flexGrow: 1 }}
           data={questions}
           renderItem={renderItem}
           keyExtractor={item => item.id}
