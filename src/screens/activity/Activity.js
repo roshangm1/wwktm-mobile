@@ -10,6 +10,7 @@ import Colors from '../../configs/colors';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import Spinner from '../../components/Spinner';
 import EmptyComponent from './../../components/EmptyComponent';
+import firebase from 'react-native-firebase';
 
 const Activity = ({ navigation }) => {
   const [feed, setFeed] = useState(null);
@@ -27,6 +28,23 @@ const Activity = ({ navigation }) => {
 
   useEffect(() => {
     getFeedData(updateFeed);
+  }, []);
+
+  const handlePermission = async () => {
+    const enabled = await firebase.messaging().hasPermission();
+    if (enabled) {
+      // user has permissions
+    } else {
+      try {
+        await firebase.messaging().requestPermission();
+        // User has authorised
+      } catch (error) {
+        // User has rejected permissions
+      }
+    }
+  };
+  useEffect(() => {
+    handlePermission();
   }, []);
 
   const renderItem = ({ item }) => {
@@ -52,8 +70,9 @@ const Activity = ({ navigation }) => {
     <MainLayout title="Activity Stream">
       <FlatList
         data={feed}
+        style={{ flex: 1 }}
         renderItem={renderItem}
-        contentContainerStyle={{ flex: 1 }}
+        contentContainerStyle={{ flexGrow: 1 }}
         ListEmptyComponent={<EmptyComponent />}
         keyExtractor={item => item.id}
       />

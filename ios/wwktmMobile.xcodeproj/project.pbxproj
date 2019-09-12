@@ -41,11 +41,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0054F4550A577C96C305B329 /* Pods-wwktmMobileTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wwktmMobileTests.debug.xcconfig"; path = "Target Support Files/Pods-wwktmMobileTests/Pods-wwktmMobileTests.debug.xcconfig"; sourceTree = "<group>"; };
 		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
 		00E356EE1AD99517003FC87E /* wwktmMobileTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = wwktmMobileTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* wwktmMobileTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = wwktmMobileTests.m; sourceTree = "<group>"; };
-		0BAB073B974A12390197EFB9 /* Pods-wwktmMobile-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wwktmMobile-tvOS.release.xcconfig"; path = "Target Support Files/Pods-wwktmMobile-tvOS/Pods-wwktmMobile-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* wwktmMobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wwktmMobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = wwktmMobile/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = wwktmMobile/AppDelegate.m; sourceTree = "<group>"; };
@@ -53,22 +53,23 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = wwktmMobile/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = wwktmMobile/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = wwktmMobile/main.m; sourceTree = "<group>"; };
-		1632E83C94C6AF42D192B7AF /* Pods-wwktmMobileTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wwktmMobileTests.release.xcconfig"; path = "Target Support Files/Pods-wwktmMobileTests/Pods-wwktmMobileTests.release.xcconfig"; sourceTree = "<group>"; };
-		2885312F5370A0309920B23A /* Pods-wwktmMobile-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wwktmMobile-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-wwktmMobile-tvOSTests/Pods-wwktmMobile-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		2276C0AD2F97170179D233CA /* Pods-wwktmMobileTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wwktmMobileTests.release.xcconfig"; path = "Target Support Files/Pods-wwktmMobileTests/Pods-wwktmMobileTests.release.xcconfig"; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* wwktmMobile-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "wwktmMobile-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* wwktmMobile-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "wwktmMobile-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2F59BA3F0B716121605895DA /* Pods-wwktmMobile-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wwktmMobile-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-wwktmMobile-tvOS/Pods-wwktmMobile-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
-		5687794DEC008116BB462E30 /* Pods-wwktmMobile.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wwktmMobile.release.xcconfig"; path = "Target Support Files/Pods-wwktmMobile/Pods-wwktmMobile.release.xcconfig"; sourceTree = "<group>"; };
+		2F127CD6938E868B8F7DC35F /* Pods-wwktmMobile-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wwktmMobile-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-wwktmMobile-tvOSTests/Pods-wwktmMobile-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		506F38CBE14F0EF20CD36473 /* Pods-wwktmMobile.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wwktmMobile.release.xcconfig"; path = "Target Support Files/Pods-wwktmMobile/Pods-wwktmMobile.release.xcconfig"; sourceTree = "<group>"; };
+		5224BF50DA76D3AA7738FD4E /* Pods-wwktmMobile.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wwktmMobile.debug.xcconfig"; path = "Target Support Files/Pods-wwktmMobile/Pods-wwktmMobile.debug.xcconfig"; sourceTree = "<group>"; };
 		5891ED862932BF60FDA9DE33 /* libPods-wwktmMobile-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-wwktmMobile-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		93FD6BB7D411058C5DF8A886 /* Pods-wwktmMobile.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wwktmMobile.debug.xcconfig"; path = "Target Support Files/Pods-wwktmMobile/Pods-wwktmMobile.debug.xcconfig"; sourceTree = "<group>"; };
-		A458841659ADBD7BA619E50A /* Pods-wwktmMobile-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wwktmMobile-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-wwktmMobile-tvOSTests/Pods-wwktmMobile-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		7332B20252C154BD4A3E3801 /* Pods-wwktmMobile-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wwktmMobile-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-wwktmMobile-tvOSTests/Pods-wwktmMobile-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		9889FF737AE2F268ADB98FB7 /* Pods-wwktmMobile-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wwktmMobile-tvOS.release.xcconfig"; path = "Target Support Files/Pods-wwktmMobile-tvOS/Pods-wwktmMobile-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		AA0D912622F36295000A864B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		AA4893B0232A5B13001E1163 /* wwktmMobile.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = wwktmMobile.entitlements; path = wwktmMobile/wwktmMobile.entitlements; sourceTree = "<group>"; };
 		C5883C7F8F224EE4C07C39AF /* libPods-wwktmMobile-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-wwktmMobile-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D313A78DD64353F2034DBDBC /* libPods-wwktmMobile.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-wwktmMobile.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		DF718BCE9CE8B0A499638356 /* Pods-wwktmMobileTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wwktmMobileTests.debug.xcconfig"; path = "Target Support Files/Pods-wwktmMobileTests/Pods-wwktmMobileTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E2B1BCE968BD36713835CA00 /* libPods-wwktmMobileTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-wwktmMobileTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
+		FA55DD89A21E513A900012CA /* Pods-wwktmMobile-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wwktmMobile-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-wwktmMobile-tvOS/Pods-wwktmMobile-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +128,7 @@
 		13B07FAE1A68108700A75B9A /* wwktmMobile */ = {
 			isa = PBXGroup;
 			children = (
+				AA4893B0232A5B13001E1163 /* wwktmMobile.entitlements */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -152,21 +154,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		4E9983F0DF576DD4EAC0BA09 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				93FD6BB7D411058C5DF8A886 /* Pods-wwktmMobile.debug.xcconfig */,
-				5687794DEC008116BB462E30 /* Pods-wwktmMobile.release.xcconfig */,
-				2F59BA3F0B716121605895DA /* Pods-wwktmMobile-tvOS.debug.xcconfig */,
-				0BAB073B974A12390197EFB9 /* Pods-wwktmMobile-tvOS.release.xcconfig */,
-				A458841659ADBD7BA619E50A /* Pods-wwktmMobile-tvOSTests.debug.xcconfig */,
-				2885312F5370A0309920B23A /* Pods-wwktmMobile-tvOSTests.release.xcconfig */,
-				DF718BCE9CE8B0A499638356 /* Pods-wwktmMobileTests.debug.xcconfig */,
-				1632E83C94C6AF42D192B7AF /* Pods-wwktmMobileTests.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
@@ -182,7 +169,7 @@
 				00E356EF1AD99517003FC87E /* wwktmMobileTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
-				4E9983F0DF576DD4EAC0BA09 /* Pods */,
+				C60503C36249287C4D2A4180 /* Pods */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -198,6 +185,21 @@
 				2D02E4901E0B4A5D006451C7 /* wwktmMobile-tvOSTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		C60503C36249287C4D2A4180 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5224BF50DA76D3AA7738FD4E /* Pods-wwktmMobile.debug.xcconfig */,
+				506F38CBE14F0EF20CD36473 /* Pods-wwktmMobile.release.xcconfig */,
+				FA55DD89A21E513A900012CA /* Pods-wwktmMobile-tvOS.debug.xcconfig */,
+				9889FF737AE2F268ADB98FB7 /* Pods-wwktmMobile-tvOS.release.xcconfig */,
+				2F127CD6938E868B8F7DC35F /* Pods-wwktmMobile-tvOSTests.debug.xcconfig */,
+				7332B20252C154BD4A3E3801 /* Pods-wwktmMobile-tvOSTests.release.xcconfig */,
+				0054F4550A577C96C305B329 /* Pods-wwktmMobileTests.debug.xcconfig */,
+				2276C0AD2F97170179D233CA /* Pods-wwktmMobileTests.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -297,7 +299,15 @@
 					};
 					13B07F861A680F5B00A75B9A = {
 						DevelopmentTeam = FL2UZ75BM6;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 0;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -643,7 +653,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DF718BCE9CE8B0A499638356 /* Pods-wwktmMobileTests.debug.xcconfig */;
+			baseConfigurationReference = 0054F4550A577C96C305B329 /* Pods-wwktmMobileTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -666,7 +676,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1632E83C94C6AF42D192B7AF /* Pods-wwktmMobileTests.release.xcconfig */;
+			baseConfigurationReference = 2276C0AD2F97170179D233CA /* Pods-wwktmMobileTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
@@ -686,14 +696,15 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 93FD6BB7D411058C5DF8A886 /* Pods-wwktmMobile.debug.xcconfig */;
+			baseConfigurationReference = 5224BF50DA76D3AA7738FD4E /* Pods-wwktmMobile.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = wwktmMobile/wwktmMobile.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
-				DEVELOPMENT_TEAM = FL2UZ75BM6;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = wwktmMobile/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -703,20 +714,21 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = info.roshan.wwktm;
 				PRODUCT_NAME = wwktmMobile;
-				PROVISIONING_PROFILE_SPECIFIER = "wwktm-development";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5687794DEC008116BB462E30 /* Pods-wwktmMobile.release.xcconfig */;
+			baseConfigurationReference = 506F38CBE14F0EF20CD36473 /* Pods-wwktmMobile.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_ENTITLEMENTS = wwktmMobile/wwktmMobile.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = FL2UZ75BM6;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = wwktmMobile/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -726,14 +738,14 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = info.roshan.wwktm;
 				PRODUCT_NAME = wwktmMobile;
-				PROVISIONING_PROFILE_SPECIFIER = wwktm;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
 		};
 		2D02E4971E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2F59BA3F0B716121605895DA /* Pods-wwktmMobile-tvOS.debug.xcconfig */;
+			baseConfigurationReference = FA55DD89A21E513A900012CA /* Pods-wwktmMobile-tvOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -761,7 +773,7 @@
 		};
 		2D02E4981E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0BAB073B974A12390197EFB9 /* Pods-wwktmMobile-tvOS.release.xcconfig */;
+			baseConfigurationReference = 9889FF737AE2F268ADB98FB7 /* Pods-wwktmMobile-tvOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -789,7 +801,7 @@
 		};
 		2D02E4991E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A458841659ADBD7BA619E50A /* Pods-wwktmMobile-tvOSTests.debug.xcconfig */;
+			baseConfigurationReference = 2F127CD6938E868B8F7DC35F /* Pods-wwktmMobile-tvOSTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -816,7 +828,7 @@
 		};
 		2D02E49A1E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2885312F5370A0309920B23A /* Pods-wwktmMobile-tvOSTests.release.xcconfig */;
+			baseConfigurationReference = 7332B20252C154BD4A3E3801 /* Pods-wwktmMobile-tvOSTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
