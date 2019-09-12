@@ -55,7 +55,7 @@ const Login = ({ navigation }) => {
         data.accessToken,
       );
 
-      // Nont sure why this is here and not in the auth file inside firebase, adding the addUser function here, please migrate that function too if you ever change it to auth module
+      // TODO: Move these tasks to auth.js
       await firebase.auth().signInWithCredential(credential);
       await addUserDetail();
       navigation.navigate('Activity');
@@ -78,7 +78,7 @@ const Login = ({ navigation }) => {
         tokenData.idToken,
         tokenData.accessToken,
       );
-      // Same thing, we can use signInWithCredntial function from module for both fb and google
+      // TODO: Move these tasks to auth.js
       await firebase.auth().signInWithCredential(credential);
       await addUserDetail();
 
