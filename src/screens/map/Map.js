@@ -3,27 +3,26 @@ import MainLayout from '../../layouts/MainLayout';
 import MapView, { Marker } from 'react-native-maps';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Colors from '../../configs/colors';
-
+const markerData = [
+  {
+    latlng: { latitude: 27.6946587, longitude: 85.3087533 },
+    title: 'Bougainvilla Events, Kathmandu',
+    description: 'Main Venue',
+    type: 'venue',
+  },
+  {
+    latlng: { latitude: 27.712059, longitude: 85.3247643 },
+    title: 'Hotel Kaze Darbar',
+    description: 'Hotel for the speakers',
+    type: 'hotel',
+  },
+];
 const Map = ({ params }) => {
-  const markerData = [
-    {
-      latlng: { latitude: 27.6946587, longitude: 85.3087533 },
-      title: 'Bougainvilla Events, Kathmandu',
-      description: 'Main Venue',
-      type: 'venue',
-    },
-    {
-      latlng: { latitude: 27.712059, longitude: 85.3247643 },
-      title: 'Hotel Kaze Darbar',
-      description: 'Hotel for the speakers',
-      type: 'hotel',
-    },
-  ];
   const [markers, setMarkers] = useState([]);
 
   useEffect(() => {
     setMarkers(markerData);
-  }, [markerData]);
+  }, []);
   return (
     <MainLayout title="Map">
       <MapView
