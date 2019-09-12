@@ -1,5 +1,5 @@
 import { FlatList, TextInput, StyleSheet } from 'react-native';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { TouchableRipple } from 'react-native-paper';
 
 import PostItem from './PostItem';
@@ -30,7 +30,44 @@ const Activity = ({ navigation }) => {
     getFeedData(updateFeed);
   }, []);
 
+  useEffect(() => {
+    handleNotification();
+    notificationListener();
+    notificationOpenedListener();
+    return () => {
+      notificationListener();
+      notificationOpenedListener();
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const notificationListener = () => {
+    return firebase.notifications().onNotification(async notification => {
+      const channel = new firebase.notifications.Android.Channel(
+        'rnc',
+        'rnc',
+        firebase.notifications.Android.Importance.Max,
+      );
+      firebase.notifications().android.createChannel(channel);
+      const notif = new firebase.notifications.Notification()
+        .setNotificationId('3')
+        .setTitle(notification.title)
+        .setBody(notification.body)
+        .android.setChannelId('rnc');
+
+      firebase.notifications().displayNotification(notif);
+    });
+  };
+
+  const notificationOpenedListener = () => {
+    return firebase.notifications().onNotificationOpened(notifOpen => {
+      handleNotificationClick(notifOpen);
+    });
+  };
+
   const handlePermission = async () => {
+    // const token = await firebase.messaging().getToken();
+    // await registerDeviceId(token);
     const enabled = await firebase.messaging().hasPermission();
     if (enabled) {
       // user has permissions
@@ -43,9 +80,16 @@ const Activity = ({ navigation }) => {
       }
     }
   };
-  useEffect(() => {
+
+  const handleNotification = () => {
     handlePermission();
-  }, []);
+  };
+
+  const handleNotificationClick = async notifOpen => {
+    if (notifOpen) {
+      const { notification } = notifOpen;
+    }
+  };
 
   const renderItem = ({ item }) => {
     return (
