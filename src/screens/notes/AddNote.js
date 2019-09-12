@@ -33,18 +33,16 @@ const AddNote = props => {
           numberOfLines={8}
           style={styles.inputTextStyle}
         />
-        {note && (
-          <Button
-            mode="contained"
-            loading={loading}
-            dark
-            disabled={loading}
-            style={styles.buttonStyle}
-            onPress={onSubmitPress}
-          >
-            Submit
-          </Button>
-        )}
+        <Button
+          mode="contained"
+          loading={loading}
+          dark
+          disabled={loading || !note}
+          style={styles.buttonStyle}
+          onPress={onSubmitPress}
+        >
+          Submit
+        </Button>
       </ScrollView>
     </MainLayout>
   );

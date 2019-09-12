@@ -33,6 +33,7 @@ const PostDetail = ({ navigation }) => {
   const onComment = () => {
     addCommentToPost(post.id, comment);
     inputRef.current.clear();
+    setComment('');
   };
 
   const updateComments = response => {
@@ -74,7 +75,7 @@ const PostDetail = ({ navigation }) => {
           {renderAllComments()}
         </View>
       </ScrollView>
-      <KeyboardAvoidingView behavior={Platform.OS === 'iOS' ? 'padding' : null}>
+      <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : null}>
         <View
           style={{
             flexDirection: 'row',
@@ -93,7 +94,7 @@ const PostDetail = ({ navigation }) => {
             value={comment}
             onChangeText={handleInputChange}
           />
-          {comment && (
+          {comment ? (
             <TouchableRipple
               style={{
                 paddingHorizontal: 15,
@@ -103,7 +104,7 @@ const PostDetail = ({ navigation }) => {
             >
               <Icon name="send" size={20} color={Colors.black} />
             </TouchableRipple>
-          )}
+          ) : null}
         </View>
       </KeyboardAvoidingView>
     </MainLayout>
