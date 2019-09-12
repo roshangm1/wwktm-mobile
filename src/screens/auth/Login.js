@@ -7,7 +7,7 @@ import { Text, StyleSheet, View, ScrollView } from 'react-native';
 import { Card, TextInput, Button, IconButton } from 'react-native-paper';
 
 import AuthLayout from '../../layouts/AuthLayout';
-import { loginWithEmailAsync } from '../../firebase/auth';
+import { loginWithEmailAsync, addUserDetail } from '../../firebase/auth';
 import Row from '../../components/Row';
 import Colors from '../../configs/colors';
 
@@ -51,7 +51,9 @@ const Login = ({ navigation }) => {
         data.accessToken,
       );
 
+      // Nont sure why this is here and not in the auth file inside firebase, adding the addUser function here, please migrate that function too if you ever change it to auth module
       await firebase.auth().signInWithCredential(credential);
+      await addUserDetail();
       navigation.navigate('Activity');
     } catch (e) {
       console.error(e);
@@ -68,7 +70,10 @@ const Login = ({ navigation }) => {
         tokenData.idToken,
         tokenData.accessToken,
       );
+      // Same thing, we can use signInWithCredntial function from module for both fb and google
       await firebase.auth().signInWithCredential(credential);
+      await addUserDetail();
+
       navigation.navigate('Activity');
     } catch (e) {
       console.error(e);
