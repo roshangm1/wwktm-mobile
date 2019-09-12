@@ -4,7 +4,8 @@ import Colors from './../configs/colors';
 import { SafeAreaView } from 'react-navigation';
 import { getNameInitials } from './../utils/string';
 import { Avatar, Drawer, Divider } from 'react-native-paper';
-import { ScrollView, StyleSheet, View, Text } from 'react-native';
+import { ScrollView, StyleSheet, View, Text, Alert } from 'react-native';
+import { logout } from '../firebase/auth';
 
 const DrawerContent = props => {
   const user = auth().currentUser;
@@ -14,6 +15,11 @@ const DrawerContent = props => {
   const handleDrawerItemPress = route => {
     props.navigation.navigate(route);
     setActive(route.toLowerCase());
+  };
+
+  const logoutUser = () => {
+    logout();
+    props.navigation.navigate('AuthStack');
   };
 
   return (
@@ -93,10 +99,16 @@ const DrawerContent = props => {
             onPress={() => handleDrawerItemPress('About')}
           />
           <Drawer.Item
-            label="Settings"
-            icon="settings"
-            active={active === 'settings'}
-            onPress={() => handleDrawerItemPress('Settings')}
+            label="Logout"
+            icon="logout"
+            active={active === 'logout'}
+            onPress={() => {
+              Alert.alert('Log out', 'Are you sure you want to logout ?', [
+                { text: 'No' },
+
+                { text: 'Yes', onPress: () => logoutUser() },
+              ]);
+            }}
           />
         </View>
       </SafeAreaView>
