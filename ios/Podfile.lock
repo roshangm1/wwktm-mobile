@@ -242,6 +242,8 @@ PODS:
     - React
   - react-native-image-picker (1.0.2):
     - React
+  - react-native-maps (0.25.0):
+    - React
   - react-native-simple-toast (0.1.1):
     - React
   - React-RCTActionSheet (0.60.0):
@@ -310,6 +312,7 @@ DEPENDENCIES:
   - react-native-date-picker (from `/Users/penguin/open-source/wwktmMobile/node_modules/react-native-date-picker`)
   - react-native-fbsdk (from `/Users/penguin/open-source/wwktmMobile/node_modules/react-native-fbsdk`)
   - react-native-image-picker (from `/Users/penguin/open-source/wwktmMobile/node_modules/react-native-image-picker`)
+  - react-native-maps (from `/Users/penguin/open-source/wwktmMobile/node_modules/react-native-maps`)
   - react-native-simple-toast (from `/Users/penguin/open-source/wwktmMobile/node_modules/react-native-simple-toast`)
   - React-RCTActionSheet (from `../node_modules/react-native/Libraries/ActionSheetIOS`)
   - React-RCTAnimation (from `../node_modules/react-native/Libraries/NativeAnimation`)
@@ -393,6 +396,8 @@ EXTERNAL SOURCES:
     :path: "/Users/penguin/open-source/wwktmMobile/node_modules/react-native-fbsdk"
   react-native-image-picker:
     :path: "/Users/penguin/open-source/wwktmMobile/node_modules/react-native-image-picker"
+  react-native-maps:
+    :path: "/Users/penguin/open-source/wwktmMobile/node_modules/react-native-maps"
   react-native-simple-toast:
     :path: "/Users/penguin/open-source/wwktmMobile/node_modules/react-native-simple-toast"
   React-RCTActionSheet:
@@ -477,6 +482,7 @@ SPEC CHECKSUMS:
   react-native-date-picker: 648606a44e21d15725a61cc9f28e864f40ae8cdd
   react-native-fbsdk: 1309be490bdf18ae29f4cef836f69194b436d9d7
   react-native-image-picker: 5c15ac0251475ae0b9f21e17d08d7c28db847abc
+  react-native-maps: 190c02ca533fddac5bb49cf17bdece3644612107
   react-native-simple-toast: 1fc69d83c24279ed4f9624352551a5a3406678a2
   React-RCTActionSheet: b27ff3cf3a68f917c46d2b94abf938b625b96570
   React-RCTAnimation: 9e4708e5bd65fca8285ce7c0aa076f3f4fa5c2f8

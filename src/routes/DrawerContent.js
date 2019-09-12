@@ -4,7 +4,14 @@ import Colors from './../configs/colors';
 import { SafeAreaView } from 'react-navigation';
 import { getNameInitials } from './../utils/string';
 import { Avatar, Drawer, Divider } from 'react-native-paper';
-import { ScrollView, StyleSheet, View, Text, Alert } from 'react-native';
+import {
+  ScrollView,
+  StyleSheet,
+  View,
+  Text,
+  Alert,
+  ImageBackground,
+} from 'react-native';
 import { logout } from '../firebase/auth';
 
 const DrawerContent = props => {
@@ -29,7 +36,10 @@ const DrawerContent = props => {
         forceInset={{ top: 0, horizontal: 'never' }}
       >
         <View>
-          <View style={styles.topContainer}>
+          <ImageBackground
+            source={require('../assets/images/wwktm.jpeg')}
+            style={styles.topContainer}
+          >
             {user.photoURL ? (
               <Avatar.Image
                 size={80}
@@ -44,9 +54,11 @@ const DrawerContent = props => {
                 style={{ marginBottom: 8 }}
               />
             )}
-            <Text>{user.displayName || 'Roshan Gautam'}</Text>
-            <Text>{user.email}</Text>
-          </View>
+            <Text style={styles.headerText}>
+              {user.displayName || 'Roshan Gautam'}
+            </Text>
+            <Text style={styles.headerText}>{user.email}</Text>
+          </ImageBackground>
 
           <Drawer.Item
             label="Activity Stream"
@@ -127,6 +139,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#ecece9',
+  },
+  headerText: {
+    color: Colors.white,
+    fontWeight: 'bold',
   },
 });
 
