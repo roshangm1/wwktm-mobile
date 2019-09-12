@@ -70,14 +70,10 @@ const Activity = ({ navigation }) => {
     // await registerDeviceId(token);
     const enabled = await firebase.messaging().hasPermission();
     if (enabled) {
-      // user has permissions
     } else {
       try {
         await firebase.messaging().requestPermission();
-        // User has authorised
-      } catch (error) {
-        // User has rejected permissions
-      }
+      } catch (error) {}
     }
   };
 
