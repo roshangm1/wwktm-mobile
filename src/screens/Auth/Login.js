@@ -7,7 +7,7 @@ import { Text, StyleSheet, View, ScrollView, Alert } from 'react-native';
 import { Card, TextInput, Button, IconButton } from 'react-native-paper';
 
 import AuthLayout from '../../layouts/AuthLayout';
-import { loginWithEmailAsync } from '../../firebase/auth';
+import { loginWithEmailAsync, addUserDetail } from '../../firebase/auth';
 import Row from '../../components/Row';
 import Colors from '../../configs/colors';
 import Spinner from '../../components/Spinner';
@@ -55,7 +55,9 @@ const Login = ({ navigation }) => {
         data.accessToken,
       );
 
+      // TODO: Move these tasks to auth.js
       await firebase.auth().signInWithCredential(credential);
+      await addUserDetail();
       navigation.navigate('Activity');
     } catch (e) {
       console.error(e);
@@ -76,7 +78,10 @@ const Login = ({ navigation }) => {
         tokenData.idToken,
         tokenData.accessToken,
       );
+      // TODO: Move these tasks to auth.js
       await firebase.auth().signInWithCredential(credential);
+      await addUserDetail();
+
       navigation.navigate('Activity');
     } catch (e) {
     } finally {
