@@ -28,14 +28,14 @@ export const addUserDetail = async () => {
     .doc(user.uid)
     .set(
       {
-        name: user.displayName,
+        uid: user.uid,
         email: user.email,
-        emailVerified: user.emailVerified,
-        isAnonymous: user.isAnonymous,
-        phoneNumber: user.phoneNumber,
+        name: user.displayName,
         photoURL: user.photoURL,
         providerId: user.providerId,
-        uid: user.uid,
+        isAnonymous: user.isAnonymous,
+        phoneNumber: user.phoneNumber,
+        emailVerified: user.emailVerified,
         creationTime: user.metadata.creationTime,
         lastSignInTime: user.metadata.lastSignInTime,
       },
