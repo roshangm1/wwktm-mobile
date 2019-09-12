@@ -27,9 +27,8 @@ export const addUserDetail = async () => {
     .collection('users')
     .doc(user.uid)
     .set(
-      {
-        ...user,
-      },
+      user,
+
       { merge: true },
     );
   await uploadToken();
