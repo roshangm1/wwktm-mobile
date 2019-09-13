@@ -27,6 +27,8 @@ const Map = ({ params }) => {
     <MainLayout title="Map">
       <MapView
         style={{ flex: 1 }}
+        showsUserLocation
+        showsMyLocationButton
         initialRegion={{
           latitude: 27.6946587,
           longitude: 85.3087533,
