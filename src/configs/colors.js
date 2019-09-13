@@ -1,5 +1,6 @@
 const Colors = {
   primary: '#45bef4',
+  primary_dark: '#2b7394',
   secondary: '#FF7D4A',
   facebook: '#3B5998',
   google: '#EA4335',
