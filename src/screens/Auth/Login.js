@@ -153,6 +153,7 @@ const Login = ({ navigation }) => {
                 onChangeText={text => setPassword(text)}
                 style={styles.inputText}
                 onSubmitEditing={loginWithEmail}
+                autoCapitalize="none"
               />
               <Button
                 dark

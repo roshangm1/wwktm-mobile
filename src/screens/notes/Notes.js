@@ -9,7 +9,7 @@ import Spinner from '../../components/Spinner';
 import EmptyComponent from './../../components/EmptyComponent';
 
 const Notes = ({ params }) => {
-  const [notes, setNotes] = useState(notes);
+  const [notes, setNotes] = useState(null);
   const [categorizedNotes, setCategorizedNotes] = useState(null);
 
   const updateNotes = response => {
@@ -41,7 +41,7 @@ const Notes = ({ params }) => {
     return <NoteItem key={index} note={item.note} date={item.date} />;
   };
 
-  if (!notes) {
+  if (!categorizedNotes) {
     return (
       <MainLayout title="Notes">
         <Spinner />
