@@ -6,18 +6,11 @@ import { StyleSheet, ScrollView } from 'react-native';
 
 const AddNote = props => {
   const [note, setNote] = useState('');
-  const [loading, setLoading] = useState(false);
 
   const onSubmitPress = () => {
     const { talkId } = props.navigation.state.params;
-    setLoading(true);
-    addNoteForTalk(talkId, note)
-      .then(() => {
-        props.navigation.goBack();
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+    addNoteForTalk(talkId, note);
+    props.navigation.goBack();
   };
 
   return (
@@ -35,9 +28,8 @@ const AddNote = props => {
         />
         <Button
           mode="contained"
-          loading={loading}
           dark
-          disabled={loading || !note}
+          disabled={!note}
           style={styles.buttonStyle}
           onPress={onSubmitPress}
         >

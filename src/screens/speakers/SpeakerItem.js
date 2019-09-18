@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, View } from 'react-native';
-import { TouchableRipple, Card, Avatar } from 'react-native-paper';
+import { TouchableRipple, Card, Avatar, Title } from 'react-native-paper';
 import Row from '../../components/Row';
 import Colors from './../../configs/colors';
 import { getNameInitials } from './../../utils/string';
@@ -11,16 +11,16 @@ const SpeakerItem = ({ item, onPress }) => (
       <Card.Content>
         <Row>
           {item.profilePicture ? (
-            <Avatar.Image size={40} source={{ uri: item.profilePicture }} />
+            <Avatar.Image size={60} source={{ uri: item.profilePicture }} />
           ) : (
             <Avatar.Text
-              size={40}
+              size={60}
               color={Colors.white}
               label={getNameInitials(item.name)}
             />
           )}
           <View style={{ marginLeft: 16 }}>
-            <Text>{item.name}</Text>
+            <Title>{item.name}</Title>
             <Text>{item.country}</Text>
           </View>
         </Row>

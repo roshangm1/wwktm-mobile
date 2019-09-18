@@ -9,7 +9,7 @@ const App = () => {
   return (
     <View style={{ flex: 1 }}>
       <StatusBar
-        backgroundColor={Colors.primary_dark}
+        backgroundColor={Colors.primaryDark}
         barStyle="light-content"
       />
       <AppContainer />

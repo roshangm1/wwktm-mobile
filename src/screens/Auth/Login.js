@@ -74,11 +74,10 @@ const Login = ({ navigation }) => {
             `https://graph.facebook.com/v2.12/me?fields=name,first_name,last_name,email&access_token=${credential.token}`,
           );
           const profileData = await graphResponse.json();
-          const { email } = profileData;
 
           const providers = await firebase
             .auth()
-            .fetchSignInMethodsForEmail(email);
+            .fetchSignInMethodsForEmail(profileData.email);
           Alert.alert(
             'Error',
             `This email is already used in a different account, try logging in with ${
@@ -99,9 +98,8 @@ const Login = ({ navigation }) => {
 
     try {
       await GoogleSignin.configure();
-      const result = await GoogleSignin.signIn();
+      await GoogleSignin.signIn();
       const tokenData = await GoogleSignin.getTokens();
-      console.log(result);
 
       const credential = firebase.auth.GoogleAuthProvider.credential(
         tokenData.idToken,
@@ -112,7 +110,7 @@ const Login = ({ navigation }) => {
         await firebase.auth().signInWithCredential(credential);
       } catch (error) {
         if (error.code === 'auth/account-exists-with-different-credential') {
-          console.log(result);
+          // console.log(result);
         }
       }
       await addUserDetail();
