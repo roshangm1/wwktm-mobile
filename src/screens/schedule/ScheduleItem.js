@@ -24,7 +24,11 @@ const ScheduleItem = ({
     >
       <Card>
         <Card.Content
-          style={{ flexDirection: 'row', justifyContent: 'space-between' }}
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            backgroundColor: session.isRunningNow && Colors.primaryLight,
+          }}
         >
           <View style={{ flex: 4 }}>
             <Text style={{ fontWeight: 'bold' }}>{session.title}</Text>

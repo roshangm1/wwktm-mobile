@@ -8,17 +8,12 @@ import { TextInput, Button, Switch } from 'react-native-paper';
 
 const AddQuestion = ({ navigation }) => {
   const [question, setQuestion] = useState('');
-  const [loading, setLoading] = useState(false);
   const [anonymous, setAnonymous] = useState(false);
 
   const onSubmitPress = () => {
     const { talkId } = navigation.state.params;
-    setLoading(true);
-    addQuestionForTalk(talkId, question, anonymous)
-      .then(() => navigation.goBack())
-      .finally(() => {
-        setLoading(false);
-      });
+    addQuestionForTalk(talkId, question, anonymous);
+    navigation.goBack();
   };
 
   return (
@@ -53,9 +48,8 @@ const AddQuestion = ({ navigation }) => {
         </Row>
         <Button
           mode="contained"
-          loading={loading}
           dark
-          disabled={loading || !question}
+          disabled={!question}
           style={styles.buttonStyle}
           onPress={onSubmitPress}
         >

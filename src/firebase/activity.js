@@ -10,28 +10,28 @@ export function getFeedData(updateFeed) {
     });
 }
 
+async function setPost(content, imageUrl = null) {
+  let user = auth().currentUser;
+  const feedRef = fireStoreRef.collection('feed').doc();
+  return await feedRef.set({
+    id: feedRef.id,
+    content,
+    name: user.displayName,
+    commentCount: 0,
+    uid: user.uid,
+    profileImageUrl: user.photoURL,
+    voters: [],
+    postImage: imageUrl,
+    date: new Date().getTime(),
+  });
+}
 export async function addNewPost(content, image) {
-  async function setPost(imageUrl = null) {
-    let user = auth().currentUser;
-    const feedRef = fireStoreRef.collection('feed').doc();
-    await feedRef.set({
-      id: feedRef.id,
-      content,
-      name: user.displayName,
-      commentCount: 0,
-      uid: user.uid,
-      profileImageUrl: user.photoURL,
-      voters: [],
-      postImage: imageUrl,
-      date: new Date().getTime(),
-    });
-  }
   if (image) {
-    uploadImage(image, async url => {
-      return await setPost(url);
-    });
+    const imgUrl = await uploadImage(image);
+    return await setPost(content, imgUrl);
+  } else {
+    return await setPost(content);
   }
-  return await setPost();
 }
 export async function upvoteFeed(feed) {
   let user = auth().currentUser;

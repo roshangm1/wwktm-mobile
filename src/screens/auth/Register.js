@@ -76,6 +76,7 @@ const Register = ({ navigation }) => {
                 dark
                 mode="contained"
                 loading={loading}
+                disabled={loading}
                 onPress={signupUser}
                 style={{ marginTop: 16 }}
               >

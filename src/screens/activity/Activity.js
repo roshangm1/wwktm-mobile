@@ -66,8 +66,6 @@ const Activity = ({ navigation }) => {
   };
 
   const handlePermission = async () => {
-    // const token = await firebase.messaging().getToken();
-    // await registerDeviceId(token);
     const enabled = await firebase.messaging().hasPermission();
     if (enabled) {
     } else {

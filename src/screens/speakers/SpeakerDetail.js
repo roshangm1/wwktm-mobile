@@ -42,12 +42,17 @@ const SpeakerDetail = ({ navigation }) => {
         <View style={{ alignItems: 'center', paddingVertical: 16 }}>
           {profilePicture ? (
             <Avatar.Image
+              size={80}
               source={{
                 uri: profilePicture,
               }}
             />
           ) : (
-            <Avatar.Text color={Colors.white} label={getNameInitials(name)} />
+            <Avatar.Text
+              size={80}
+              color={Colors.white}
+              label={getNameInitials(name)}
+            />
           )}
           <Title>{name}</Title>
           <Caption style={styles.speakerLabelText}>{designation}</Caption>
