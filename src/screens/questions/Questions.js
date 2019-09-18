@@ -47,6 +47,7 @@ const Questions = ({ params }) => {
           renderItem={renderItem}
           keyExtractor={item => item.id}
           ListEmptyComponent={<EmptyComponent />}
+          showsVerticalScrollIndicator={false}
         />
       </View>
     </MainLayout>
