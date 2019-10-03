@@ -5,6 +5,7 @@
   "scripts": {
     "start": "react-native start",
     "android": "react-native run-android",
+    "generate-color": "node ./src/utils/ColorGenerator.js",
     "ios": "react-native run-ios",
     "test": "jest",
     "lint": "eslint ."
