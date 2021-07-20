@@ -17,7 +17,7 @@
     "moment": "^2.24.0",
     "npm": "^6.11.3",
     "react": "16.9.0",
-    "react-native": "0.61.1",
+    "react-native": "0.62.3",
     "react-native-date-picker": "^2.7.0",
     "react-native-fbsdk": "^1.0.2",
     "react-native-firebase": "^5.5.6",
