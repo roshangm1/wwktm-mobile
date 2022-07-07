@@ -14,7 +14,7 @@
     "install": "^0.13.0",
     "jetifier": "^1.6.3",
     "lodash": "^4.17.15",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "npm": "^6.11.3",
     "react": "16.9.0",
     "react-native": "0.61.1",
